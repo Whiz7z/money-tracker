@@ -15,6 +15,7 @@ type Props = {};
 function Auth({}: Props) {
   const [isLogin, setIsLogin] = useState(true);
   const [isError, setIsError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -36,6 +37,7 @@ function Auth({}: Props) {
       //   );
 
       try {
+        setLoading(true);
         const response = await signIn("credentials", {
           redirect: false,
           username: data.username,
@@ -43,20 +45,42 @@ function Auth({}: Props) {
         });
 
         console.log(response);
+
         if (response && !response.error) {
           router.push("/profile");
         }
       } catch (err) {}
     } else {
-      registration(data);
+      setLoading(true);
+      registration(data)
+        .then(async () => {
+          try {
+            const response = await signIn("credentials", {
+              redirect: false,
+              username: data.username,
+              password: data.password,
+            });
+
+            console.log(response);
+
+            if (response && !response.error) {
+              router.push("/profile");
+            }
+          } catch (err) {}
+        })
+        .catch((err) => {
+          setLoading(false);
+          setIsError("User already exist");
+        });
     }
   };
 
   return (
-    <div className="h-[660px] w-[655px] ">
+    <div className="h-[640px] w-[655px] self-center ">
       <h2 className="text-skin-base text-[3.6rem] font-bold">
         {isLogin ? "Login" : "Register"}
       </h2>
+
       {isError && (
         <p className="text-skin-danger text-[1.6rem] relative top-[40px]">
           {isError}
@@ -106,7 +130,7 @@ function Auth({}: Props) {
             {errors?.password && <>{errors?.password?.message || "Error"}</>}
           </p>
         </div>
-
+        <p className="text-skin-base text-[2rem] font-bold text-center absolute"></p>
         <div className="grid grid-cols-2 gap-[30px] mt-[80px]">
           <button
             className={`${
@@ -115,14 +139,20 @@ function Auth({}: Props) {
             type="submit"
             disabled={!isValid}
           >
-            {isLogin ? "Login" : "Register"}
+            {isLogin && !loading
+              ? "Login"
+              : isLogin && loading
+              ? "Loading..."
+              : !isLogin && loading
+              ? "Loading..."
+              : "Register"}
           </button>
           <button
             className="bg-muted rounded-[15px] w-[220px] h-[60px] font-bold text-skin-base text-[2.8rem] justify-self-start"
             type="button"
             onClick={() => setIsLogin((prev) => !prev)}
           >
-            {isLogin ? "Register" : "Login"}
+            {isLogin ? "To register" : "To login"}
           </button>
         </div>
       </form>

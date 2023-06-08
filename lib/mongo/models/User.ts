@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import mongoConnect from "../mongoConnect";
 import bcrypt from "bcryptjs";
+
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -14,7 +15,7 @@ const userSchema = new mongoose.Schema(
     expenses: {
       type: [
         {
-          origin: { type: String, required: true },
+          origin: { type: { color: String, name: String }, required: true },
           amount: Number,
           date: Date,
         },
@@ -24,7 +25,7 @@ const userSchema = new mongoose.Schema(
     incomes: {
       type: [
         {
-          origin: { type: String, required: true },
+          origin: { type: { color: String, name: String }, required: true },
           amount: Number,
           date: Date,
         },
@@ -38,6 +39,13 @@ const userSchema = new mongoose.Schema(
     IncomeType: {
       type: Array,
       default: [],
+    },
+    expenseBalanse: {
+      type: Object,
+    },
+    incomeBalanse: {
+      type: Object,
+      default: {},
     },
   },
   { timestamps: true }

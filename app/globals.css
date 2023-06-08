@@ -1,4 +1,23 @@
 @tailwind base;
+
+::-webkit-scrollbar {
+  width: 11px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #eab839;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6a603c;
+}
 @tailwind components;
 @tailwind utilities;
 
@@ -8,12 +27,23 @@
     --color-text-muted: #1e1e1e;
     --color-text-inverted: #c7d;
     --color-text-danger: #ea4335;
+    --color-text-good: #40e482;
     --color-fill: #84a6b0;
     --color-block: #000;
     --color-btn-accent: #e49940;
     --color-btn-accent-hover: #76b6c0;
     --color-btn-muted: #1e1e1e;
     --color-btn-danger: #6f1a07;
+  }
+}
+
+@layer utilities {
+  .arrow-clip-right {
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+  }
+
+  .arrow-clip-left {
+    clip-path: polygon(0 50%, 100% 100%, 100% 0);
   }
 }
 

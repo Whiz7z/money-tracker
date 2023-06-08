@@ -5,6 +5,7 @@ import { Providers } from "../Redux/provider";
 import { SessionProvider } from "next-auth/react";
 import { authOption } from "./api/auth/[...nextauth]/route";
 import AuthProvider from "@/components/AuthProvider";
+import MainBlock from "@/components/MainBlock";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,13 @@ export default function RootLayout(
     <html lang="en" suppressHydrationWarning={true}>
       <body className={inter.className} suppressHydrationWarning={true}>
         <AuthProvider>
-          <Providers>{children}</Providers>
+          <Providers>
+            <main
+      className="flex h-screen w-screen bg-fill justify-center items-center  text-[2.2rem]
+       align-middle text-center m-auto"
+    >
+            <MainBlock>{children}</MainBlock></main>
+          </Providers>
         </AuthProvider>
       </body>
     </html>
