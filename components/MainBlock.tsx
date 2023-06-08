@@ -1,0 +1,20 @@
+import React from "react";
+import Balance from "./Balance";
+
+type Props = {
+  children: React.ReactNode;
+};
+
+const MainBlock = (props: Props) => {
+  return (
+    <div
+      className="h-[940px] max-w-[33%] min-w-[900px]
+     bg-block rounded-tl-[180px] rounded-br-[180px] rounded-tr-[45px] rounded-bl-[45px] shadow-mainBlock
+     flex justify-center items-center"
+    >
+      {props.children}
+    </div>
+  );
+};
+
+export default MainBlock;
