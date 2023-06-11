@@ -1,5 +1,6 @@
 import React from "react";
-
+import Types from "@/components/serverComponents/Types";
+import Input from "@/components/Input";
 type Props = {};
 
 const addExpense = (props: Props) => {
@@ -8,37 +9,16 @@ const addExpense = (props: Props) => {
       {/* <SignOut /> */}
 
       <div
-        className="grid grid-rows-blockRowGrid text-skin-base w-[655px]  h-[860px] mt-[70px] 
+        className="grid grid-rows-blockTypesGrid text-skin-base w-[655px]  h-[860px] mt-[70px] 
         outline-1 outline outline-white outline-offset-1"
       >
-        {/* BALANSE */}
+        {/* TYPES */}
         <p className=" text-[3.2rem] h-[40px] self-start justify-self-center text-skin-danger">
           New Expense
         </p>
-        <div className="min-w-[165px] grid justify-self-center self-start ">
-          <p className="text-[3.2rem] text-skin-good  justify-self-center	self-start">{`$8,653.00`}</p>
-          <p className="text-[3.2rem] text-skin-danger justify-self-center self-start	">
-            -$2,420.00
-          </p>
-        </div>
-        {/* MONTH */}
-        <div
-          className="grid min-w-[200px]  max-w-[400px] grid-cols-month gap-[20px] 
-            justify-self-center "
-        >
-          <div
-            className="w-[30px] h-[30px] arrow-clip-left bg-accent col-1 self-end 
-              relative bottom-[5px]"
-          ></div>
-          <div className="self-end">
-            <p className="text-[2rem] text-skin-accent leading-4	">2023</p>
-            <p className="text-[2.8rem] text-skin-accent">May</p>
-          </div>
-          <div
-            className="w-[30px] h-[30px] arrow-clip-right bg-accent col-3 justify-self-end self-end
-               relative bottom-[5px]"
-          ></div>
-        </div>
+        <Types type="expenses" />
+        {/* INPUT */}
+        <Input />
         {/* EXPENSES/INCOME SWITCH */}
         {/* <div className="max-w-[240px] self-start  grid grid-cols-switch justify-self-center gap-[5px] text-[2.8rem] mt-[25px]">
             <p

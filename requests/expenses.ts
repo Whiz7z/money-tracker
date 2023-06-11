@@ -1,4 +1,5 @@
 export const getExpenses = async (token: any) => {
+  "use server";
   const response = await fetch("/api/expenses", {
     next: { revalidate: 10 },
 

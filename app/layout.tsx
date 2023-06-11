@@ -2,8 +2,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "../Redux/provider";
-import { SessionProvider } from "next-auth/react";
-import { authOption } from "./api/auth/[...nextauth]/route";
 import AuthProvider from "@/components/AuthProvider";
 import MainBlock from "@/components/MainBlock";
 
@@ -28,10 +26,11 @@ export default function RootLayout(
         <AuthProvider>
           <Providers>
             <main
-      className="flex h-screen w-screen bg-fill justify-center items-center  text-[2.2rem]
+              className="flex h-screen w-screen bg-fill justify-center items-center  text-[2.2rem]
        align-middle text-center m-auto"
-    >
-            <MainBlock>{children}</MainBlock></main>
+            >
+              <MainBlock>{children}</MainBlock>
+            </main>
           </Providers>
         </AuthProvider>
       </body>

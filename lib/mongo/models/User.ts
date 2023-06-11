@@ -12,41 +12,36 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    expenses: {
-      type: [
-        {
-          origin: { type: { color: String, name: String }, required: true },
-          amount: Number,
-          date: Date,
-        },
-      ],
-      default: [],
-    },
-    incomes: {
-      type: [
-        {
-          origin: { type: { color: String, name: String }, required: true },
-          amount: Number,
-          date: Date,
-        },
-      ],
-      default: [],
-    },
-    ExpenseType: {
-      type: Array,
-      default: [],
-    },
-    IncomeType: {
-      type: Array,
-      default: [],
-    },
-    expenseBalanse: {
-      type: Object,
-    },
-    incomeBalanse: {
-      type: Object,
-      default: {},
-    },
+    expenses: [
+      {
+        origin: { color: String, name: String },
+        amount: { type: Number },
+        date: { type: String },
+      },
+    ],
+
+    // default: [
+    //   {
+    //     origin: {
+    //       color: "ea3445",
+    //       name: "Food",
+    //     },
+    //     amount: 140,
+    //     date: "2023.06.08",
+    //   },
+    // ],
+
+    incomes: [
+      {
+        origin: { color: String, name: String },
+        amount: { type: Number },
+        date: { type: String },
+      },
+    ],
+    ExpenseType: [{ type: String, color: String }],
+    IncomeType: [{ type: String, color: String }],
+    expenseBalanse: { date: String, amount: Number },
+    incomeBalanse: { date: String, amount: Number },
   },
   { timestamps: true }
 );

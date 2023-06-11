@@ -1,7 +1,6 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { getServerSession } from "next-auth/next";
-import { useSession } from "next-auth/react";
+
 import { authOption } from "../api/auth/[...nextauth]/route";
 import SignOut from "@/components/SignOut";
 import MainBlock from "@/components/MainBlock";
@@ -9,21 +8,16 @@ import ListSvg from "@/svgComponents/ListSvg";
 import ChartSvg from "@/svgComponents/ChartSvg";
 import ExpensesList from "@/components/serverComponents/ExpensesList";
 import Link from "next/link";
+import Switch from "@/components/Switch";
 
-const activeClass = "border-b-4 border-accent";
-const Profile = () => {
-  const [active, setActive] = useState("expenses");
-  const session = useSession(authOption);
-  console.log("sessi", session);
-
-  const switchHandler = (classname: string): void => {
-    setActive(classname);
-  };
-
+const Profile = ({ searchParams }) => {
   const toAddExpenseHandler = () => {};
 
   const toAddIncomeHandler = () => {};
-
+  let type = "expenses";
+  const changeType = (t: string) => {
+    type = t;
+  };
   return (
     <>
       {/* <SignOut /> */}
@@ -59,25 +53,7 @@ const Profile = () => {
           ></div>
         </div>
         {/* EXPENSES/INCOME SWITCH */}
-        <div className="max-w-[240px] self-start  grid grid-cols-switch justify-self-center gap-[5px] text-[2.8rem] mt-[25px]">
-          <p
-            className={`cursor-pointer	text-skin-danger self-start ${
-              active === "expenses" && activeClass
-            }`}
-            onClick={() => switchHandler("expenses")}
-          >
-            Expenses
-          </p>
-          <p className="text-skin-accent self-start">/</p>
-          <p
-            className={`cursor-pointer text-skin-good self-start ${
-              active === "incomes" && activeClass
-            }`}
-            onClick={() => switchHandler("incomes")}
-          >
-            Income
-          </p>
-        </div>
+        <Switch />
         {/* CHART OR LIST SWITCH */}
         <div className="grid self-start  w-[100%] grid-cols-2 mt-[20px]">
           <div className="justify-self-start">
@@ -88,7 +64,7 @@ const Profile = () => {
           </div>
         </div>
         {/* LIST */}
-        <ExpensesList />
+        <ExpensesList type={type} searchParams={searchParams} />
         {/* BUTTONS */}
         <div className="w-[480px] grid grid-cols-2 gap-[30px] justify-self-center self-end ">
           <Link

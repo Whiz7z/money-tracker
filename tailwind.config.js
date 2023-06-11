@@ -32,9 +32,11 @@ module.exports = {
         listItem: "150px 1fr auto",
         month: "auto 1fr auto",
         switch: "auto auto auto",
+        calendarInput: "auto auto",
       },
       gridTemplateRows: {
         blockRowGrid: "80px 1fr 145px 60px 80px",
+        blockTypesGrid: "80px 1fr 225px 60px 80px",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

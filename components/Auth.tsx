@@ -3,16 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { login, register as registration } from "@/requests/auth";
-import useSWR from "swr";
-import useSWRMutation from "swr/mutation";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 import { signIn } from "next-auth/react";
 
 type Props = {};
 
-function Auth({}: Props) {
+function Auth(props: Props) {
   const [isLogin, setIsLogin] = useState(true);
   const [isError, setIsError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -27,15 +24,6 @@ function Auth({}: Props) {
   const onSubmit = async (data: any) => {
     console.log(data);
     if (isLogin) {
-      // login(data)
-      //   .then(() => {
-      //     setIsError(null);
-      //     router.push("/profile");
-      //   })
-      //   .catch((err) =>
-      //     setIsError("Username or password is not correct. Try again")
-      //   );
-
       try {
         setLoading(true);
         const response = await signIn("credentials", {
