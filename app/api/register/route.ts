@@ -1,5 +1,5 @@
 import User from "@/lib/mongo/models/User";
-import mongoConnect from "../../../lib/mongo/mongoConnect";
+import dbConnect from "../../../lib/mongo/mongoConnect";
 import { NextResponse, NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 
@@ -12,7 +12,7 @@ export async function POST(req: Request, res: Response) {
 
   console.log(username, password);
 
-  await mongoConnect();
+  await dbConnect();
 
   const userExists = await User.findOne({ username }).select(
     "-__v -createdAt -updatedAt"

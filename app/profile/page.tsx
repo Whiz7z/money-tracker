@@ -20,7 +20,7 @@ const Profile = ({ searchParams }) => {
   };
   return (
     <>
-      {/* <SignOut /> */}
+      <SignOut />
 
       <div
         className="grid justify-self-center text-skin-base w-[655px]  h-[860px] mt-[70px] 
@@ -68,7 +68,7 @@ const Profile = ({ searchParams }) => {
         {/* BUTTONS */}
         <div className="w-[480px] grid grid-cols-2 gap-[30px] justify-self-center self-end ">
           <Link
-            href="/addIncome"
+            href="/profile/addIncome"
             className="inline-block w-[220px] h-[60px] justify-self-end
                bg-accent rounded-[15px] font-bold text-[2.8rem] text-skin-muted text-center leading-[6rem]	"
           >

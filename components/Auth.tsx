@@ -33,7 +33,9 @@ function Auth(props: Props) {
         });
 
         console.log(response);
-
+        if (response.error) {
+          setLoading(false);
+        }
         if (response && !response.error) {
           router.push("/profile");
         }

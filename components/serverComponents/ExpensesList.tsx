@@ -2,8 +2,10 @@ import React from "react";
 import ListItem from "../ListItem";
 import { getServerSession } from "next-auth";
 import { authOption } from "@/app/api/auth/[...nextauth]/route";
+
 import User from "@/lib/mongo/models/User";
 import jwt from "jsonwebtoken";
+import connectToDatabase from "./../../lib/mongo/mongoConnect";
 
 export interface FilterProps {
   type?: string;
@@ -12,15 +14,16 @@ type Props = { type: string; searchParams: FilterProps };
 interface JwtPayload {
   id: string;
 }
-const ExpensesList = async (props: Props) => {
-  const session = await getServerSession(authOption);
-  //console.log(session);
+const ExpensesList: any = async (props: Props) => {
+  const session = await getServerSession<unknown, any>(authOption);
+  console.log("profile session", session);
   const decoded = jwt.verify(
     session.user.token,
     process.env.JWT_SECRET
   ) as JwtPayload;
   const user = await User.findById(decoded.id);
 
+  console.log(user);
   let data = [];
   if (props.searchParams?.type === "expenses") {
     data = user.expenses;

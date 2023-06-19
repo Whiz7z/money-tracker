@@ -8,15 +8,15 @@ type Props = {
 };
 
 const ListItem = ({ color, type, amount }: Props) => {
-  let classStyle = `w-[100px] h-[30px] bg-[#${color}]`;
+  let classStyle = `w-[100px] h-[30px] bg-[${color}]`;
   return (
-    <div className="grid grid-cols-listItem">
+    <div className="grid grid-cols-listItem h-[45px]">
       <div
-        className={`w-[100px] h-[30px]`}
-        style={{ backgroundColor: `#${color}` }}
+        className={`w-[100px] h-[30px] self-center`}
+        style={{ backgroundColor: `${color}` }}
       ></div>
-      <div className="justify-self-start text-[2.8rem]">{type}</div>
-      <div className="text-[2.8rem] mr-[10px]">${amount}</div>
+      <div className="justify-self-start self-center text-[2.8rem]">{type}</div>
+      <div className="text-[2.8rem] self-center mr-[10px]">${amount}</div>
     </div>
   );
 };

@@ -1,8 +1,7 @@
 import User from "@/lib/mongo/models/User";
-import mongoConnect from "../../../lib/mongo/mongoConnect";
+import dbConnect from "../../../lib/mongo/mongoConnect";
 import { NextResponse, NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
-import { revalidatePath } from "next/cache";
 
 const genToken = (id: any) => {
   return jwt.sign({ id }, process.env.JWT_SECRET!, { expiresIn: "60d" });
@@ -11,13 +10,15 @@ const genToken = (id: any) => {
 export async function POST(req: Request) {
   const { username, password } = await req.json();
 
-  //console.log(username, password);
+  console.log(username, password);
 
-  await mongoConnect();
+  await dbConnect();
 
   const user = await User.findOne({ username }).select(
     "-__v -createdAt -updatedAt"
   );
+
+  console.log("login user", user);
 
   if (user && (await user.matchPasswords(password))) {
     return new NextResponse(

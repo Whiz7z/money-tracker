@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 type Props = {};
 const activeClass = "border-b-4 border-accent";
-const Switch = (props: Props) => {
+const Switch: any = (props: Props) => {
   const router = useRouter();
   const [active, setActive] = useState("expenses");
 

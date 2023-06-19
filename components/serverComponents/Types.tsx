@@ -1,9 +1,10 @@
-import React from "react";
-import User from "@/lib/mongo/models/User";
+import React, { useEffect, useState } from "react";
 import { getServerSession } from "next-auth";
 import { authOption } from "@/app/api/auth/[...nextauth]/route";
-import jwt from "jsonwebtoken";
-import TypeItems from "../TypeItems";
+
+import TypeItem from "../TypeItem";
+
+import connectToDatabase from "@/lib/mongo/mongoConnect";
 
 type Props = {
   type: string;
@@ -11,35 +12,46 @@ type Props = {
 interface JwtPayload {
   id: string;
 }
+// const fetchOrigins = async (session: any) => {
+//   const data = await fetch("http://localhost:3000/api/expenseOrigins", {
+//     method: "POST",
+//     body: JSON.stringify({
+//       session: session,
+//     }),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   console.log(data);
+//   return await data.json();
+// };
 
-const Types = async (props: Props) => {
+const Types: any = async (props: Props) => {
   const session = await getServerSession(authOption);
-  //console.log(session);
-  const decoded = jwt.verify(
-    session.user.token,
-    process.env.JWT_SECRET
-  ) as JwtPayload;
+  console.log("session", session);
 
-  const user = await User.findById(decoded.id);
-  let data = [];
-  if (props.type === "expenses") {
-    data = user.ExpenseType;
-  } else if (props.type === "incomes") {
-    data = user.IncomeType;
-  }
-  // if (props.searchParams?.type === "expenses") {
-  //   data = user.expenses;
-  // } else if (props.searchParams?.type === "incomes") {
-  //   data = user.incomes;
-  // } else {
-  //   data = user.expenses;
-  // }
+  const data = await fetch("http://localhost:3000/api/expenseOrigins", {
+    method: "PATCH",
+    body: JSON.stringify({
+      session: session,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    cache: "no-cache",
+  });
+
+  //console.log("data", data);
+
+  const parsedData = await data.json();
+
+  console.log("parsedData", parsedData);
+
   return (
     <div className="flex w-[100%] justify-center flex-wrap gap-y-[20px] gap-x-[35px] text-[2.6rem] place-content-start">
-      {data &&
-        data.length !== 0 &&
-        data.map((el) => (
-          <TypeItems type={el.type} color={el.color}></TypeItems>
+      {parsedData &&
+        parsedData.expenseOrigins.map((el) => (
+          <TypeItem key={el.name} type={el.name} color={el.color}></TypeItem>
         ))}
     </div>
   );

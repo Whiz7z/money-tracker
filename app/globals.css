@@ -96,6 +96,17 @@ select:-webkit-autofill:focus {
   -webkit-transition-delay: 9999s;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 html {
   font-size: 62.5%;
   font-family: "Arial", Arial, Helvetica, sans-serif;

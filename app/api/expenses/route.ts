@@ -1,9 +1,11 @@
 import Expense from "../../../lib/mongo/models/Expense";
-import mongoConnect from "../../../lib/mongo/mongoConnect";
+import dbConnect from "../../../lib/mongo/mongoConnect";
 import { NextResponse, NextRequest } from "next/server";
 import { headers } from "next/headers";
 import jwt from "jsonwebtoken";
 import User from "@/lib/mongo/models/User";
+import { getServerSession } from "next-auth";
+import { authOption } from "../auth/[...nextauth]/route";
 
 interface JwtPayload {
   id: string;
@@ -17,7 +19,7 @@ export async function GET(req: Request) {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET) as JwtPayload;
     console.log("decoded ID", decoded.id);
-    await mongoConnect();
+    await dbConnect();
 
     const user = await User.findById(decoded.id).select(
       "-__v -createdAt -updatedAt"
@@ -33,9 +35,24 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-  mongoConnect();
-  const expense = await Expense.create({ amount: 50, type: "expense" });
-  expense.save();
+  const session = await getServerSession<unknown, any>(authOption);
+  console.log(session);
+  const { origin, amount, date } = await req.json();
+
+  //console.log("headers", headersList);
+
+  const decoded = jwt.verify(
+    session!.user!.token,
+    process.env.JWT_SECRET
+  ) as JwtPayload;
+
+  await dbConnect();
+  const user = await User.findById(decoded.id).select(
+    "-__v -createdAt -updatedAt"
+  );
+  user.expenses.push({ origin: origin, amount: amount, date: date });
+
+  user.save();
 
   return new NextResponse("created");
 }

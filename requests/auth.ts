@@ -1,6 +1,3 @@
-import { login as Login } from "@/Redux/user/userSlice";
-import { store } from "@/Redux/store";
-
 type Body = {
   username: String;
   password: String;
@@ -16,7 +13,6 @@ export const login = async (body: Body) => {
 
   const data = await response.json();
   console.log(data);
-  store.dispatch(Login(data));
 
   return data;
 };
@@ -31,7 +27,6 @@ export const register = async (body: Body) => {
 
   const data = await response.json();
   console.log(data);
-  store.dispatch(Login(data));
 
   return data;
 };

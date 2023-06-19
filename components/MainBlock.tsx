@@ -1,5 +1,4 @@
 import React from "react";
-import Balance from "./Balance";
 
 type Props = {
   children: React.ReactNode;

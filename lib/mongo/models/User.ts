@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 import mongoConnect from "../mongoConnect";
 import bcrypt from "bcryptjs";
 
+const originSchema = new mongoose.Schema({
+  name: { type: String },
+  color: { type: String },
+});
+
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -38,8 +43,8 @@ const userSchema = new mongoose.Schema(
         date: { type: String },
       },
     ],
-    ExpenseType: [{ type: String, color: String }],
-    IncomeType: [{ type: String, color: String }],
+    ExpenseType: { type: Array },
+    IncomeType: [originSchema],
     expenseBalanse: { date: String, amount: Number },
     incomeBalanse: { date: String, amount: Number },
   },
@@ -60,5 +65,5 @@ userSchema.pre("save", async function (next) {
 });
 
 // const Expense = mongoose.model("Expense", expenseSchema);
-const User = mongoose.models.User || mongoose.model("User", userSchema);
+const User = mongoose.models?.User || mongoose.model("User", userSchema);
 export default User;

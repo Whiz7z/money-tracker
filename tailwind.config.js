@@ -36,7 +36,7 @@ module.exports = {
       },
       gridTemplateRows: {
         blockRowGrid: "80px 1fr 145px 60px 80px",
-        blockTypesGrid: "80px 1fr 225px 60px 80px",
+        blockTypesGrid: "80px 1fr 1fr",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

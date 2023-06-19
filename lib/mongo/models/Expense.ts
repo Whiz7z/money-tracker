@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import mongoConnect from "../mongoConnect";
 
 const expenseSchema = new mongoose.Schema(
   {

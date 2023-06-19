@@ -1,10 +1,6 @@
 import NextAuth from "next-auth";
-import type { User } from "next-auth";
-import { NextAuthOptions } from "next-auth";
+
 import CredentialsProvider from "next-auth/providers/credentials";
-import { login } from "@/requests/auth";
-import UserModel from "@/lib/mongo/models/User";
-import mongoConnect from "@/lib/mongo/mongoConnect";
 
 export const authOption: any = {
   providers: [
@@ -19,15 +15,6 @@ export const authOption: any = {
       },
       async authorize(credentials) {
         if (!credentials?.username || !credentials.password) return null;
-        // await mongoConnect();
-        // const user = await UserModel.findOne({
-        //   username: credentials.username,
-        // });
-        // console.log("user", user);
-        // if (credentials.username === "Yevhen") {
-        //   console.log("true");
-        //   return user as User;
-        // }
 
         const res = await fetch("http://localhost:3000/api/login", {
           method: "POST",
@@ -41,25 +28,6 @@ export const authOption: any = {
         } else {
           return null;
         }
-
-        // const { username, password } = credentials;
-        // console.log("next auth", username, password);
-        // const user = await User.findOne({ username });
-        // const res = login({
-        //   username: credentials.username,
-        //   password: credentials.password,
-        // });
-        // const res = await fetch("/api/login", {
-        //   method: "POST",
-        //   body: JSON.stringify(credentials),
-        //   headers: { "Content-Type": "application/json" },
-        // });
-        // const user = res;
-        // console.log(user);
-
-        // if (user) {
-        //   return user;
-        // }
 
         return null;
       },
