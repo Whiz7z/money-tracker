@@ -8,7 +8,7 @@ import MoveForward from "@/components/navigation/MoveForward";
 import MoveBack from "@/components/navigation/MoveBack";
 type Props = {};
 
-const addExpense = (props: Props) => {
+const addIncome = (props: Props) => {
   // const session = await getServerSession<unknown, any>(authOption);
 
   return (
@@ -20,14 +20,14 @@ const addExpense = (props: Props) => {
         </div>
       </div>
       <div className="grid grid-rows-blockTypesGrid text-skin-base w-[655px]  h-[860px] mt-[70px]">
-        <p className=" text-[3.2rem] h-[40px] self-start justify-self-center text-skin-danger">
-          New Expense
+        <p className=" text-[3.2rem] h-[40px] self-start justify-self-center text-skin-good">
+          New Income
         </p>
-        <Types type="expenses"></Types>
-        <Input type="expense" />
+        <Types type="incomes"></Types>
+        <Input type="income" />
       </div>
     </>
   );
 };
 
-export default addExpense;
+export default addIncome;

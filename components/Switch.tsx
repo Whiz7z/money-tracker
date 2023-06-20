@@ -41,7 +41,7 @@ const Switch: any = (props: Props) => {
         }`}
         onClick={() => switchHandler("incomes")}
       >
-        Income
+        Incomes
       </p>
     </div>
   );

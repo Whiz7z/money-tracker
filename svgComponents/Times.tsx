@@ -22,8 +22,8 @@ function Times({ color, w, h, className, style, ...props }: Props) {
         <path
           d="M16 8L8 16M8 8L16 16"
           stroke={color}
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
       </svg>
     </div>

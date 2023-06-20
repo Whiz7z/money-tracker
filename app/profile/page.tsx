@@ -20,11 +20,11 @@ const Profile = ({ searchParams }) => {
   };
   return (
     <>
-      <SignOut />
+      {/* <SignOut /> */}
 
       <div
-        className="grid justify-self-center text-skin-base w-[655px]  h-[860px] mt-[70px] 
-        outline-1 outline outline-white outline-offset-1"
+        className="grid justify-self-center text-skin-base w-[655px]  h-[860px] mt-[50px] 
+        "
       >
         {/* BALANSE */}
         <p className="text-[2rem] self-end">Balanse</p>

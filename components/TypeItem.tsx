@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Times from "@/svgComponents/Times";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrentOrigin } from "@/Redux/expensesOrigin";
 type Props = {
   type: string;
@@ -12,6 +12,7 @@ type Props = {
 const TypeItem = ({ type, color }: Props) => {
   const [showCross, setShowCross] = useState(false);
   const { data: session, status } = useSession();
+  const { currentOrigin } = useSelector((state: any) => state.expensesOrigin);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -45,6 +46,13 @@ const TypeItem = ({ type, color }: Props) => {
         onMouseEnter={() => setShowCross(true)}
         onMouseLeave={() => setShowCross(false)}
         onClick={() => setCurrentOriginHandler()}
+        style={{
+          backgroundColor:
+            currentOrigin.name === type ? "#e49940" : "transparent",
+          padding: "0px 10px 0px 10px",
+          color: currentOrigin.name === type && "#1e1e1e",
+          fontWeight: currentOrigin.name === type && "bold",
+        }}
       >
         <p
           className={`border-b-4 self-start cursor-pointer `}

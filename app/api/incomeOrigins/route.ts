@@ -32,7 +32,7 @@ export async function GET(req: NextRequest) {
 
       return new NextResponse(
         JSON.stringify({
-          origins: user.ExpenseType,
+          origins: user.IncomeType,
         }),
         { status: 200 }
       );
@@ -57,11 +57,11 @@ export async function PUT(req: NextRequest) {
     await dbConnect();
     const user = await User.findById(decoded.id);
     if (user) {
-      user.ExpenseType = user.ExpenseType.filter((el) => el.name !== type);
+      user.IncomeType = user.IncomeType.filter((el) => el.name !== type);
       await user.save();
       return new NextResponse(
         JSON.stringify({
-          expenseOrigins: "deleted",
+          incomeOrigins: "deleted",
         }),
         { status: 200 }
       );
@@ -91,7 +91,7 @@ export async function POST(req: NextRequest) {
     { _id: decoded.id },
     {
       $push: {
-        ExpenseType: { name: name, color: color },
+        IncomeType: { name: name, color: color },
       },
     }
   );

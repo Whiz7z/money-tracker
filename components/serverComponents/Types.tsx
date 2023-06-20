@@ -27,30 +27,33 @@ interface JwtPayload {
 // };
 
 const Types: any = async (props: Props) => {
-  const session = await getServerSession(authOption);
+  const session = await getServerSession<unknown, any>(authOption);
   console.log("session", session);
 
-  const data = await fetch("http://localhost:3000/api/expenseOrigins", {
-    method: "PATCH",
-    body: JSON.stringify({
-      session: session,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-    cache: "no-cache",
-  });
+  const data = await fetch(
+    `http://localhost:3000/api/${
+      props.type === "expenses" ? "expenseOrigins" : "incomeOrigins"
+    }`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${session.user.token}`,
+      },
+      cache: "no-cache",
+    }
+  );
 
   //console.log("data", data);
 
   const parsedData = await data.json();
 
-  console.log("parsedData", parsedData);
+  //console.log("parsedData", parsedData);
 
   return (
-    <div className="flex w-[100%] justify-center flex-wrap gap-y-[20px] gap-x-[35px] text-[2.6rem] place-content-start">
+    <div className="flex w-[100%] min-h-[300px] overflow-y-scroll mb-[5px] justify-center flex-wrap gap-y-[20px] gap-x-[35px] text-[2.6rem] place-content-start">
       {parsedData &&
-        parsedData.expenseOrigins.map((el) => (
+        parsedData.origins.map((el) => (
           <TypeItem key={el.name} type={el.name} color={el.color}></TypeItem>
         ))}
     </div>

@@ -13,7 +13,9 @@ import { useTransition } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector } from "react-redux/es/exports";
 
-type Props = {};
+type Props = {
+  type: string;
+};
 
 const weekday = new Array(7);
 weekday[0] = "Monday";
@@ -39,7 +41,7 @@ const months = [
   "December",
 ];
 
-const Input = (props: Props) => {
+const Input = ({ type }: Props) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [color, setColor] = useState("#D92F2F");
@@ -65,13 +67,18 @@ const Input = (props: Props) => {
     startTransition(async () => {
       console.log(name, color, "new origin values");
 
-      await fetch("http://localhost:3000/api/expenseOrigins", {
-        method: "POST",
-        body: JSON.stringify({ name: name, color: color }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch(
+        `http://localhost:3000/api/${
+          type === "expense" ? "expenseOrigins" : "incomeOrigins"
+        }`,
+        {
+          method: "POST",
+          body: JSON.stringify({ name: name, color: color }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       router.refresh();
 
@@ -85,15 +92,20 @@ const Input = (props: Props) => {
     setNewOriginValue(e.target.value);
   };
 
-  const createNewExpenseHandler = () => {
-    fetch("http://localhost:3000/api/expenses", {
-      method: "POST",
-      body: JSON.stringify({
-        origin: currentOrigin,
-        amount: amount,
-        date: startDate,
-      }),
-    });
+  const createNewExpenseIncomeHandler = () => {
+    fetch(
+      `http://localhost:3000/api/${
+        type === "expense" ? "expenses" : "incomes"
+      }`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          origin: currentOrigin,
+          amount: amount,
+          date: startDate,
+        }),
+      }
+    );
   };
 
   useEffect(() => {
@@ -176,8 +188,10 @@ const Input = (props: Props) => {
           </div>
         </div>
         <div className="grid grid-cols-2 justify-between">
-          <div className="justify-self-start self-center">
-            {currentOrigin.name ? currentOrigin.name : "Expense Origin"}
+          <div className="justify-self-start self-center text-center font-bold text-[3rem]">
+            {currentOrigin.name
+              ? currentOrigin.name
+              : `${type === "expense" ? "Expense" : "Income"} Origin`}
           </div>
           <div className="justify-self-end self-center">
             <span className="font-bold text-[3rem] mr-[20px]">$</span>
@@ -194,7 +208,7 @@ const Input = (props: Props) => {
 
         <button
           onClick={() => {
-            createNewExpenseHandler();
+            createNewExpenseIncomeHandler();
           }}
           className="inline-block w-[220px] h-[60px] justify-self-center self-end
                bg-accent rounded-[15px] font-bold text-[2.8rem] text-skin-muted text-center leading-[6rem]	"
