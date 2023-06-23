@@ -9,6 +9,8 @@ import connectToDatabase from "./../../lib/mongo/mongoConnect";
 
 export interface FilterProps {
   type?: string;
+  month?: string;
+  year?: string;
 }
 type Props = { type: string; searchParams: FilterProps };
 interface JwtPayload {
@@ -18,19 +20,33 @@ const ExpensesList: any = async (props: Props) => {
   const session = await getServerSession<unknown, any>(authOption);
   // console.log("profile session", props.searchParams.type);
   let type;
+  let month;
+  let year;
   if (!props.searchParams.type) {
     type = "expenses";
   } else {
     type = props.searchParams.type;
   }
-  console.log(props.searchParams.type);
-  const response = await fetch(`http://localhost:3000/api/${type}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${session.user.token}`,
-    },
-  });
+
+  if (!props.searchParams.month && !props.searchParams.year) {
+    month = new Date().getMonth();
+    year = new Date().getFullYear();
+  } else {
+    month = props.searchParams.month;
+    year = props.searchParams.year;
+  }
+
+  console.log("dates", month, year);
+  const response = await fetch(
+    `http://localhost:3000/api/${type}?month=${month}&year=${year}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${session.user.token}`,
+      },
+    }
+  );
   const data = await response.json();
   // } else {
   //   response = await fetch(`http://localhost:3000/api/incomes}`, {

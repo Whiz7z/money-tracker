@@ -4,13 +4,15 @@ import { getServerSession } from "next-auth/next";
 import { authOption } from "../api/auth/[...nextauth]/route";
 import SignOut from "@/components/SignOut";
 import MainBlock from "@/components/MainBlock";
+import MonthPicker from "@/components/MonthPicker";
 import ListSvg from "@/svgComponents/ListSvg";
 import ChartSvg from "@/svgComponents/ChartSvg";
 import ExpensesList from "@/components/serverComponents/ExpensesList";
 import Link from "next/link";
 import Switch from "@/components/Switch";
 
-const Profile = ({ searchParams }) => {
+const Profile: any = async ({ searchParams }) => {
+  const session = await getServerSession<unknown, any>(authOption);
   const toAddExpenseHandler = () => {};
 
   const toAddIncomeHandler = () => {};
@@ -18,6 +20,19 @@ const Profile = ({ searchParams }) => {
   const changeType = (t: string) => {
     type = t;
   };
+
+  const response = await fetch(
+    "http://localhost:3000/api/balanse?month=6&year=2023",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${session.user.token}`,
+      },
+    }
+  );
+
+  const balanse = await response.json();
   return (
     <>
       {/* <SignOut /> */}
@@ -29,29 +44,16 @@ const Profile = ({ searchParams }) => {
         {/* BALANSE */}
         <p className="text-[2rem] self-end">Balanse</p>
         <div className="min-w-[165px] grid justify-self-center self-start ">
-          <p className="text-[3.2rem] text-skin-good  justify-self-center	self-start">{`$8,653.00`}</p>
+          <p className="text-[3.2rem] text-skin-good  justify-self-center	self-start">
+            ${balanse && balanse.incomeBalanse.amount}
+          </p>
           <p className="text-[3.2rem] text-skin-danger justify-self-center self-start	">
-            -$2,420.00
+            -${balanse && balanse.expenseBalanse.amount}
           </p>
         </div>
         {/* MONTH */}
-        <div
-          className="grid min-w-[200px]  max-w-[400px] grid-cols-month gap-[20px] 
-            justify-self-center "
-        >
-          <div
-            className="w-[30px] h-[30px] arrow-clip-left bg-accent col-1 self-end 
-              relative bottom-[5px]"
-          ></div>
-          <div className="self-end">
-            <p className="text-[2rem] text-skin-accent leading-4	">2023</p>
-            <p className="text-[2.8rem] text-skin-accent">May</p>
-          </div>
-          <div
-            className="w-[30px] h-[30px] arrow-clip-right bg-accent col-3 justify-self-end self-end
-               relative bottom-[5px]"
-          ></div>
-        </div>
+        <MonthPicker />
+
         {/* EXPENSES/INCOME SWITCH */}
         <Switch searchParams={searchParams} />
         {/* CHART OR LIST SWITCH */}

@@ -14,19 +14,19 @@ interface JwtPayload {
 
 export async function GET(req: Request) {
   const headersList = headers();
-  console.log(headersList);
+  //console.log(headersList);
   let token = headersList.get("authorization").split(" ")[1];
-  console.log(token);
+  //console.log(token);
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET) as JwtPayload;
-    console.log("decoded ID", decoded.id);
+    //console.log("decoded ID", decoded.id);
     await dbConnect();
 
     const user = await User.findById(decoded.id).select(
       "-__v -createdAt -updatedAt"
     );
     if (user) {
-      console.log(user);
+      //console.log(user);
 
       const groupedData = groupData(user.incomes);
       return NextResponse.json({

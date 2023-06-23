@@ -1,0 +1,118 @@
+"use client";
+
+import React, { useRef, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+type Props = {};
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+console.log(new Date().getMonth());
+
+const MonthPicker: any = (props: Props) => {
+  const router = useRouter();
+  const pickerRef = useRef<any>();
+  const [date, setDate] = useState<any>(new Date());
+
+  const nextMonthHandler = () => {
+    if (date.getMonth() == 11) {
+      setDate((prev) => new Date(prev.getFullYear() + 1, 0, 1));
+    } else {
+      setDate((prev) => new Date(prev.getFullYear(), prev.getMonth() + 1, 1));
+    }
+  };
+
+  const prevMonthHandler = () => {
+    if (date.getMonth() == 0) {
+      setDate((prev) => new Date(prev.getFullYear() - 1, 11, 1));
+    } else {
+      setDate((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1));
+    }
+  };
+
+  const setDateHandler = (e) => {
+    setDate(new Date(e.target.value));
+
+    const searchParams = new URLSearchParams(window.location.search);
+    console.log("searchparams", window.location.pathname);
+
+    searchParams.set("month", date.getMonth());
+    searchParams.set("year", date.getFullYear());
+    console.log("search params", searchParams.toString());
+
+    if (window.location.pathname.includes("?")) {
+      const newPathname = `${
+        window.location.pathname
+      }&${searchParams.toString()}`;
+      router.push(newPathname);
+    } else {
+      const newPathname = `${
+        window.location.pathname
+      }?${searchParams.toString()}`;
+      router.push(newPathname);
+    }
+    // const newPathname = `${searchParams.toString()}`;
+    // router.push(newPathname);
+  };
+
+  useEffect(() => {
+    console.log(date);
+  }, [date]);
+  return (
+    <div
+      className="grid min-w-[200px]  max-w-[400px] grid-cols-month gap-[20px] 
+            justify-self-center "
+    >
+      <div
+        onClick={() => prevMonthHandler()}
+        className="w-[30px] h-[30px] arrow-clip-left bg-accent col-1 self-end 
+              relative bottom-[5px]"
+      ></div>
+      <div className="self-end w-[180px]">
+        <label
+          htmlFor="monthPicker"
+          onClick={() => pickerRef.current.showPicker()}
+        >
+          <p className="text-[2rem] text-skin-accent leading-4	">
+            {date.getFullYear()}
+          </p>
+          <p className="text-[2.8rem] text-skin-accent">
+            {months[date.getMonth()]}
+          </p>
+        </label>
+        <input
+          ref={pickerRef}
+          id="monthPicker"
+          name="monthPicker"
+          type="month"
+          value={`${date.getFullYear()}-${
+            date.getMonth() + 1 < 10
+              ? "0" + (date.getMonth() + 1).toString()
+              : date.getMonth() + 1
+          }`}
+          onChange={setDateHandler}
+          className="absolute w-[25px] h-[25px] bg-transparent"
+        />
+      </div>
+      <div
+        onClick={() => nextMonthHandler()}
+        className="w-[30px] h-[30px] arrow-clip-right bg-accent col-3 justify-self-end self-end
+               relative bottom-[5px]"
+      ></div>
+    </div>
+  );
+};
+
+export default MonthPicker;

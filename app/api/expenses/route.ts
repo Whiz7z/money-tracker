@@ -13,49 +13,40 @@ interface JwtPayload {
 }
 
 export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const month = searchParams.get("month");
+  const year = searchParams.get("year");
+
+  console.log("dates backend", month, year);
+
   const headersList = headers();
-  console.log(headersList);
   let token = headersList.get("authorization").split(" ")[1];
-  console.log(token);
+  //console.log(token);
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET) as JwtPayload;
-    console.log("decoded ID", decoded.id);
     await dbConnect();
 
     const user = await User.findById(decoded.id).select(
       "-__v -createdAt -updatedAt"
     );
     if (user) {
-      console.log("expenses", user.expenses);
-
-      const groupedData = groupData(user.expenses);
-      // let groupedData = [];
-      // for (let i = 0; i < user.expenses.length; i++) {
-      //   if (
-      //     groupedData.findIndex(
-      //       (el) => el.origin.name === user.expenses[i].origin.name
-      //     ) === -1
-      //   ) {
-      //     groupedData.push({
-      //       origin: user.expenses[i].origin,
-      //       amount: user.expenses[i].amount,
-      //     });
-      //   } else {
-      //     const index = groupedData.findIndex(
-      //       (el) => el.origin.name === user.expenses[i].origin.name
-      //     );
-
-      //     groupedData[index].amount += user.expenses[i].amount;
-      //   }
-      // }
-      console.log("grouped expenses", groupedData);
+      const groupedData = groupData(
+        user.expenses.filter(
+          (el) =>
+            new Date(el.date).getMonth() === Number(month) &&
+            new Date(el.date).getFullYear() === Number(year)
+        )
+      );
+      console.log(
+        "grouped expenses",
+        new Date(user.expenses[0].date).getMonth()
+      );
       return NextResponse.json({
         expenses: user.expenses,
         groupedExpenses: groupedData,
       });
     }
   } catch (err) {
-    //console.log("error", err)lj
     return new NextResponse("user expenses error");
   }
 }
