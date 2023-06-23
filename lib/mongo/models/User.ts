@@ -17,6 +17,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    ExpenseBalanse: [{ date: { type: String }, amount: { type: Number } }],
+    IncomeBalanse: [{ date: { type: String }, amount: { type: Number } }],
     expenses: [
       {
         origin: { color: String, name: String },
@@ -45,10 +47,8 @@ const userSchema = new mongoose.Schema(
     ],
     ExpenseType: { type: Array },
     IncomeType: [originSchema],
-    expenseBalanse: { date: String, amount: Number },
-    incomeBalanse: { date: String, amount: Number },
   },
-  { timestamps: true }
+  { timestamps: true, strict: false }
 );
 
 userSchema.methods.matchPasswords = async function (enteredPassword: any) {
@@ -65,5 +65,5 @@ userSchema.pre("save", async function (next) {
 });
 
 // const Expense = mongoose.model("Expense", expenseSchema);
-const User = mongoose.models?.User || mongoose.model("User", userSchema);
+const User = mongoose.models?.Userr || mongoose.model("Userr", userSchema);
 export default User;

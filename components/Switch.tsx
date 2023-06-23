@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-type Props = {};
+type Props = {
+  searchParams: any;
+};
 const activeClass = "border-b-4 border-accent";
-const Switch: any = (props: Props) => {
+const Switch: any = ({ searchParams: initialParams }: Props) => {
   const router = useRouter();
-  const [active, setActive] = useState("expenses");
+  const [active, setActive] = useState(initialParams.type);
 
   const switchHandler = (type: string): void => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -24,11 +26,13 @@ const Switch: any = (props: Props) => {
 
     router.push(newPathname);
   };
+
+  console.log(active);
   return (
     <div className="max-w-[240px] self-start  grid grid-cols-switch justify-self-center gap-[5px] text-[2.8rem] mt-[25px]">
       <p
         className={`cursor-pointer	text-skin-danger self-start ${
-          active === "expenses" && activeClass
+          (active === "expenses" || active == undefined) && activeClass
         }`}
         onClick={() => switchHandler("expenses")}
       >

@@ -53,7 +53,7 @@ const Profile = ({ searchParams }) => {
           ></div>
         </div>
         {/* EXPENSES/INCOME SWITCH */}
-        <Switch />
+        <Switch searchParams={searchParams} />
         {/* CHART OR LIST SWITCH */}
         <div className="grid self-start  w-[100%] grid-cols-2 mt-[20px]">
           <div className="justify-self-start">

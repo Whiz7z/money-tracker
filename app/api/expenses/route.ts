@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import User from "@/lib/mongo/models/User";
 import { getServerSession } from "next-auth";
 import { authOption } from "../auth/[...nextauth]/route";
+import { groupData } from "@/utils/groupData";
 
 interface JwtPayload {
   id: string;
@@ -25,8 +26,33 @@ export async function GET(req: Request) {
       "-__v -createdAt -updatedAt"
     );
     if (user) {
-      console.log(user);
-      return NextResponse.json(user.expenses);
+      console.log("expenses", user.expenses);
+
+      const groupedData = groupData(user.expenses);
+      // let groupedData = [];
+      // for (let i = 0; i < user.expenses.length; i++) {
+      //   if (
+      //     groupedData.findIndex(
+      //       (el) => el.origin.name === user.expenses[i].origin.name
+      //     ) === -1
+      //   ) {
+      //     groupedData.push({
+      //       origin: user.expenses[i].origin,
+      //       amount: user.expenses[i].amount,
+      //     });
+      //   } else {
+      //     const index = groupedData.findIndex(
+      //       (el) => el.origin.name === user.expenses[i].origin.name
+      //     );
+
+      //     groupedData[index].amount += user.expenses[i].amount;
+      //   }
+      // }
+      console.log("grouped expenses", groupedData);
+      return NextResponse.json({
+        expenses: user.expenses,
+        groupedExpenses: groupedData,
+      });
     }
   } catch (err) {
     //console.log("error", err)lj
@@ -50,7 +76,30 @@ export async function POST(req: Request) {
   const user = await User.findById(decoded.id).select(
     "-__v -createdAt -updatedAt"
   );
-  user.expenses.push({ origin: origin, amount: amount, date: date });
+
+  console.log("user", user);
+  const dateExists = user.ExpenseBalanse
+    ? user.ExpenseBalanse.findIndex(
+        (el) =>
+          new Date(el.date).getMonth() === new Date(date).getMonth() &&
+          new Date(el.date).getFullYear() === new Date(date).getFullYear()
+      )
+    : false;
+
+  if (dateExists !== -1) {
+    user.ExpenseBalanse[dateExists].amount += Number(amount);
+  } else if (dateExists === -1) {
+    user.ExpenseBalanse.push({
+      date: date,
+      amount: amount,
+    });
+  }
+
+  user.expenses.push({
+    origin: origin,
+    amount: amount,
+    date: date,
+  });
 
   user.save();
 

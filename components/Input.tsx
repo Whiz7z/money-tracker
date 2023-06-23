@@ -106,6 +106,8 @@ const Input = ({ type }: Props) => {
         }),
       }
     );
+
+    router.refresh();
   };
 
   useEffect(() => {

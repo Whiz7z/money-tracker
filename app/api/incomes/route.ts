@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import User from "@/lib/mongo/models/User";
 import { getServerSession } from "next-auth";
 import { authOption } from "../auth/[...nextauth]/route";
+import { groupData } from "@/utils/groupData";
 
 interface JwtPayload {
   id: string;
@@ -26,7 +27,12 @@ export async function GET(req: Request) {
     );
     if (user) {
       console.log(user);
-      return NextResponse.json(user.incomes);
+
+      const groupedData = groupData(user.incomes);
+      return NextResponse.json({
+        incomes: user.incomes,
+        groupedIncomes: groupedData,
+      });
     }
   } catch (err) {
     //console.log("error", err)lj
@@ -50,6 +56,23 @@ export async function POST(req: Request) {
   const user = await User.findById(decoded.id).select(
     "-__v -createdAt -updatedAt"
   );
+
+  const dateExists = user.IncomeBalanse
+    ? user.IncomeBalanse.findIndex(
+        (el) =>
+          new Date(el.date).getMonth() === new Date(date).getMonth() &&
+          new Date(el.date).getFullYear() === new Date(date).getFullYear()
+      )
+    : false;
+
+  if (dateExists !== -1) {
+    user.IncomeBalanse[dateExists].amount += Number(amount);
+  } else if (dateExists === -1) {
+    user.IncomeBalanse.push({
+      date: date,
+      amount: amount,
+    });
+  }
   user.incomes.push({ origin: origin, amount: amount, date: date });
 
   user.save();
