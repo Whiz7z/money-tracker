@@ -14,6 +14,9 @@ interface JwtPayload {
 
 export async function GET(req: Request) {
   const headersList = headers();
+  const { searchParams } = new URL(req.url);
+  const month = searchParams.get("month");
+  const year = searchParams.get("year");
   //console.log(headersList);
   let token = headersList.get("authorization").split(" ")[1];
   //console.log(token);
@@ -28,7 +31,13 @@ export async function GET(req: Request) {
     if (user) {
       //console.log(user);
 
-      const groupedData = groupData(user.incomes);
+      const groupedData = groupData(
+        user.incomes.filter(
+          (el) =>
+            new Date(el.date).getMonth() === Number(month) &&
+            new Date(el.date).getFullYear() === Number(year)
+        )
+      );
       return NextResponse.json({
         incomes: user.incomes,
         groupedIncomes: groupedData,

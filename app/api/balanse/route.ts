@@ -32,13 +32,13 @@ export async function GET(req: Request) {
       //console.log(user);
       const expenseBalanseOfTheMonth = user.ExpenseBalanse.filter(
         (el) =>
-          new Date(el.date).getMonth() === Number(month) - 1 &&
+          new Date(el.date).getMonth() === Number(month) &&
           new Date(el.date).getFullYear() === Number(year)
       );
 
       const incomeBalanseOfTheMonth = user.IncomeBalanse.filter(
         (el) =>
-          new Date(el.date).getMonth() === Number(month) - 1 &&
+          new Date(el.date).getMonth() === Number(month) &&
           new Date(el.date).getFullYear() === Number(year)
       );
 

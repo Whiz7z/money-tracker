@@ -48,8 +48,8 @@ const MonthPicker: any = (props: Props) => {
     const searchParams = new URLSearchParams(window.location.search);
     console.log("searchparams", window.location.pathname);
 
-    searchParams.set("month", date.getMonth());
-    searchParams.set("year", date.getFullYear());
+    searchParams.set("month", String(new Date(e.target.value).getMonth()));
+    searchParams.set("year", String(new Date(e.target.value).getFullYear()));
     console.log("search params", searchParams.toString());
 
     if (window.location.pathname.includes("?")) {
@@ -68,7 +68,24 @@ const MonthPicker: any = (props: Props) => {
   };
 
   useEffect(() => {
-    console.log(date);
+    const searchParams = new URLSearchParams(window.location.search);
+    console.log("searchparams", window.location.pathname);
+
+    searchParams.set("month", String(new Date(date).getMonth()));
+    searchParams.set("year", String(new Date(date).getFullYear()));
+    console.log("search params", searchParams.toString());
+
+    if (window.location.pathname.includes("?")) {
+      const newPathname = `${
+        window.location.pathname
+      }&${searchParams.toString()}`;
+      router.push(newPathname);
+    } else {
+      const newPathname = `${
+        window.location.pathname
+      }?${searchParams.toString()}`;
+      router.push(newPathname);
+    }
   }, [date]);
   return (
     <div

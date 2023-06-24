@@ -12,19 +12,6 @@ type Props = {
 interface JwtPayload {
   id: string;
 }
-// const fetchOrigins = async (session: any) => {
-//   const data = await fetch("http://localhost:3000/api/expenseOrigins", {
-//     method: "POST",
-//     body: JSON.stringify({
-//       session: session,
-//     }),
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-//   console.log(data);
-//   return await data.json();
-// };
 
 const Types: any = async (props: Props) => {
   const session = await getServerSession<unknown, any>(authOption);
@@ -44,14 +31,10 @@ const Types: any = async (props: Props) => {
     }
   );
 
-  //console.log("data", data);
-
   const parsedData = await data.json();
 
-  //console.log("parsedData", parsedData);
-
   return (
-    <div className="flex w-[100%] min-h-[300px] overflow-y-scroll mb-[5px] justify-center flex-wrap gap-y-[20px] gap-x-[35px] text-[2.6rem] place-content-start">
+    <div className="flex w-[100%] min-h-[300px] overflow-y-scroll  mb-[5px] justify-center flex-wrap gap-y-[20px] gap-x-[35px] text-[2.6rem] place-content-start">
       {parsedData &&
         parsedData.origins.map((el) => (
           <TypeItem key={el.name} type={el.name} color={el.color}></TypeItem>

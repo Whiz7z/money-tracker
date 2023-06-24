@@ -20,9 +20,18 @@ const Profile: any = async ({ searchParams }) => {
   const changeType = (t: string) => {
     type = t;
   };
+  let month;
+  let year;
+  if (!searchParams.month && !searchParams.year) {
+    month = new Date().getMonth();
+    year = new Date().getFullYear();
+  } else {
+    month = searchParams.month;
+    year = searchParams.year;
+  }
 
   const response = await fetch(
-    "http://localhost:3000/api/balanse?month=6&year=2023",
+    `http://localhost:3000/api/balanse?month=${month}&year=${year}`,
     {
       method: "GET",
       headers: {
@@ -45,10 +54,16 @@ const Profile: any = async ({ searchParams }) => {
         <p className="text-[2rem] self-end">Balanse</p>
         <div className="min-w-[165px] grid justify-self-center self-start ">
           <p className="text-[3.2rem] text-skin-good  justify-self-center	self-start">
-            ${balanse && balanse.incomeBalanse.amount}
+            $
+            {balanse && balanse.incomeBalanse
+              ? balanse.incomeBalanse.amount
+              : 0}
           </p>
           <p className="text-[3.2rem] text-skin-danger justify-self-center self-start	">
-            -${balanse && balanse.expenseBalanse.amount}
+            -$
+            {balanse && balanse.expenseBalanse
+              ? balanse.expenseBalanse.amount
+              : 0}
           </p>
         </div>
         {/* MONTH */}
