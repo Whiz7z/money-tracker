@@ -2,6 +2,8 @@ import NextAuth from "next-auth";
 
 import CredentialsProvider from "next-auth/providers/credentials";
 
+import { pages } from "@/utils/authOption";
+
 export const authOption: any = {
   providers: [
     CredentialsProvider({
@@ -54,9 +56,7 @@ export const authOption: any = {
       return token;
     },
   },
-  pages: {
-    signIn: "/",
-  },
+  pages,
 };
 const handler = NextAuth(authOption);
 export { handler as GET, handler as POST };

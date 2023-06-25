@@ -95,7 +95,7 @@ const MonthPicker: any = (props: Props) => {
       <div
         onClick={() => prevMonthHandler()}
         className="w-[30px] h-[30px] arrow-clip-left bg-accent col-1 self-end 
-              relative bottom-[5px]"
+              relative bottom-[5px] cursor-pointer"
       ></div>
       <div className="self-end w-[180px]">
         <label
@@ -126,7 +126,7 @@ const MonthPicker: any = (props: Props) => {
       <div
         onClick={() => nextMonthHandler()}
         className="w-[30px] h-[30px] arrow-clip-right bg-accent col-3 justify-self-end self-end
-               relative bottom-[5px]"
+               relative bottom-[5px] cursor-pointer"
       ></div>
     </div>
   );

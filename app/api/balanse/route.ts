@@ -11,7 +11,10 @@ import { groupData } from "@/utils/groupData";
 interface JwtPayload {
   id: string;
 }
-
+const getTokenId = (token) => {
+  const decoded = jwt.verify(token, process.env.JWT_SECRET) as JwtPayload;
+  return decoded.id;
+};
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const month = searchParams.get("month");
@@ -20,9 +23,10 @@ export async function GET(req: Request) {
 
   const headersList = headers();
   let token = headersList.get("authorization").split(" ")[1];
+  console.log(token);
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET) as JwtPayload;
-    //console.log("decoded ID", decoded.id);
+    console.log("decoded ID", decoded);
     await dbConnect();
     console.log("month", new Date("June 20, 2023 00:20:18").getMonth());
     const user = await User.findById(decoded.id).select(
