@@ -12,8 +12,12 @@ export const expensesOrigin = createSlice({
       state.currentOrigin.name = action.payload.name;
       state.currentOrigin.color = action.payload.color;
     },
+    resetCurrentOrigin: (state) => {
+      state.currentOrigin.name = null;
+      state.currentOrigin.color = null;
+    },
   },
 });
 
-export const { setCurrentOrigin } = expensesOrigin.actions;
+export const { setCurrentOrigin, resetCurrentOrigin } = expensesOrigin.actions;
 export const expensesOriginReducer = expensesOrigin.reducer;

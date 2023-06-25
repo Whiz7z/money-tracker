@@ -62,9 +62,9 @@ const TypeItem = ({ type, color }: Props) => {
         </p>
         <Times
           color="#fff"
-          w={"15px"}
-          h={"15px"}
-          className="absolute cursor-pointer bg-red-600 w-[15px] h-[15px] top-[0px] left-[99%] "
+          w={"25px"}
+          h={"25px"}
+          className="absolute cursor-pointer bg-red-600 w-[25px] h-[25px] top-[0px] left-[100%] "
           style={{ display: showCross ? "block" : "none" }}
           onClick={() => deleteOriginHandler(session, type)}
         />

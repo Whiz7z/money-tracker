@@ -1,17 +1,15 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CalendarSvg from "@/svgComponents/CalendarSvg";
 import DatePicker from "react-datepicker";
 import { SketchPicker } from "react-color";
-import { getSession } from "next-auth/react";
-import InputColor from "react-input-color";
-import { getToken } from "next-auth/jwt";
-import Router from "next/router";
+
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import { useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { resetCurrentOrigin } from "@/Redux/expensesOrigin";
 
 type Props = {
   type: string;
@@ -49,7 +47,7 @@ const Input = ({ type }: Props) => {
   const [startDate, setStartDate] = useState(new Date());
   const [amount, setAmount] = useState("00.00");
   const { currentOrigin } = useSelector((state: any) => state.expensesOrigin);
-
+  const dispatch = useDispatch();
   let [isPending, startTransition] = useTransition();
 
   const router = useRouter();
@@ -65,7 +63,7 @@ const Input = ({ type }: Props) => {
 
   const createNewOrigin = (name, color) => {
     startTransition(async () => {
-      console.log(name, color, "new origin values");
+      // console.log(name, color, "new origin values");
 
       await fetch(
         `http://localhost:3000/api/${
@@ -108,6 +106,7 @@ const Input = ({ type }: Props) => {
     );
 
     router.refresh();
+    dispatch(resetCurrentOrigin());
   };
 
   useEffect(() => {

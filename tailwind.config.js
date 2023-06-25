@@ -30,7 +30,7 @@ module.exports = {
         // Complex site-specific column configuration
         footer: "200px minmax(900px, 1fr) 100px",
         listItem: "150px 1fr auto",
-        month: "auto 1fr auto",
+        month: "50px 180px 50px",
         switch: "auto auto auto",
         calendarInput: "auto auto",
       },
