@@ -1,6 +1,6 @@
 import React from "react";
 import { getServerSession } from "next-auth/next";
-
+import { Suspense } from "react";
 import { authOption } from "../api/auth/[...nextauth]/route";
 import SignOut from "@/components/SignOut";
 import MainBlock from "@/components/MainBlock";
@@ -81,7 +81,18 @@ const Profile: any = async ({ searchParams }) => {
           </div>
         </div>
         {/* LIST */}
-        <ExpensesList type={type} searchParams={searchParams} />
+        <Suspense
+          fallback={
+            <div
+              className="grid gap-[15px] mt-[33px] h-[250px] 
+            overflow-y-scroll bg-neutral-900 p-[10px] rounded-[5px]"
+            >
+              <p className="self-center">Loading</p>
+            </div>
+          }
+        >
+          <ExpensesList type={type} searchParams={searchParams} />
+        </Suspense>
         {/* BUTTONS */}
         <div className="w-[480px] grid grid-cols-2 gap-[30px] justify-self-center self-end ">
           <Link

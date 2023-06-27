@@ -19,6 +19,7 @@ interface JwtPayload {
 const ExpensesList: any = async (props: Props) => {
   const session = await getServerSession<unknown, any>(authOption);
   // console.log("profile session", props.searchParams.type);
+
   let type;
   let month;
   let year;
@@ -56,8 +57,10 @@ const ExpensesList: any = async (props: Props) => {
         data.groupedExpenses.map((exp) => (
           <ListItem
             color={exp.origin.color}
-            type={exp.origin.name}
+            originName={exp.origin.name}
             amount={exp.amount}
+            type="incomes"
+            date={{ month: month, year: year }}
           />
         ))
       ) : type === "expenses" && data.groupedExpenses.length < 1 ? (
@@ -66,8 +69,10 @@ const ExpensesList: any = async (props: Props) => {
         data.groupedIncomes.map((exp) => (
           <ListItem
             color={exp.origin.color}
-            type={exp.origin.name}
+            originName={exp.origin.name}
             amount={exp.amount}
+            type="incomes"
+            date={{ month: month, year: year }}
           />
         ))
       ) : (
