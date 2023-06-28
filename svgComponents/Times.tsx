@@ -4,9 +4,9 @@ type Props = {
   color: string;
   w: string;
   h: string;
-  className: string;
-  style: any;
-  onClick: () => void;
+  className?: string;
+  style?: any;
+  onClick?: () => void;
 };
 
 function Times({ color, w, h, className, style, ...props }: Props) {

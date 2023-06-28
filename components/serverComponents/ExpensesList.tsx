@@ -59,7 +59,7 @@ const ExpensesList: any = async (props: Props) => {
             color={exp.origin.color}
             originName={exp.origin.name}
             amount={exp.amount}
-            type="incomes"
+            type="expenses"
             date={{ month: month, year: year }}
           />
         ))

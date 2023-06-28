@@ -1,4 +1,4 @@
-import Expense from "../../../lib/mongo/models/Expense";
+
 import dbConnect from "../../../lib/mongo/mongoConnect";
 import { NextResponse, NextRequest } from "next/server";
 import { headers } from "next/headers";

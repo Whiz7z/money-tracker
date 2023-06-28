@@ -13,7 +13,7 @@ type Props = {
 const ListItem = ({ color, amount, originName, date, type }: Props) => {
   return (
     <Link
-      href={`/items?month=${date.month}&year=${date.year}&type=${type}`}
+      href={`/items?month=${date.month}&year=${date.year}&type=${type}&originName=${originName}`}
       className="grid grid-cols-listItem h-[45px] cursor-pointer
        hover:bg-neutral-950  pl-[10px]"
     >
