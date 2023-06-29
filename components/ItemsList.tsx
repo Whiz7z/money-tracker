@@ -40,7 +40,7 @@ const ItemsList = async ({ searchParams }: Props) => {
       >
         {originName} {type === "expenses" ? "Expenses" : "Incomes"}
       </h2>
-      <div className="grid gap-[15px] mt-[33px] h-[250px] overflow-y-scroll bg-neutral-900 p-[10px] rounded-[5px]">
+      <div className="grid gap-[15px] mt-[33px] h-[550px] overflow-y-scroll bg-neutral-900 p-[10px] rounded-[5px]">
         {data &&
           data.items.length >= 1 &&
           data.items.map((el) => <ItemsListItem item={el} type={type} />)}

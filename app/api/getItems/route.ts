@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import User from "@/lib/mongo/models/User";
 import { groupData } from "@/utils/groupData";
 import { NextResponse, NextRequest } from "next/server";
+import sortByDate from "@/utils/sortByDate";
 
 interface JwtPayload {
   id: string;
@@ -36,8 +37,10 @@ export async function GET(req: Request) {
           new Date(el.date).getFullYear() === Number(year)
       );
 
+      const expensesSorted = expensesFiltered.sort(sortByDate);
+
       return NextResponse.json({
-        items: expensesFiltered,
+        items: expensesSorted,
       });
     } else if (user && type === "incomes") {
       const incomesFiltered = user.incomes.filter(
@@ -46,6 +49,8 @@ export async function GET(req: Request) {
           new Date(el.date).getMonth() === Number(month) &&
           new Date(el.date).getFullYear() === Number(year)
       );
+
+      const incomesSorted = incomesFiltered.sort(sortByDate);
 
       return NextResponse.json({
         items: incomesFiltered,
