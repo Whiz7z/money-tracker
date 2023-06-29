@@ -28,7 +28,7 @@ const ItemsList = async ({ searchParams }: Props) => {
 
   const data = await response.json();
 
-  console.log(data.items);
+  //console.log(data.items);
   return (
     <div className="grid text-skin-base w-[655px]  h-[860px] mt-[70px]">
       <h2

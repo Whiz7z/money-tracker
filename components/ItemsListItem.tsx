@@ -23,18 +23,22 @@ function ItemsListItem({ item, type }: Props) {
   const dayAndMonth =
     new Date(date).getDate() + " " + months[new Date(date).getMonth()];
   return (
-    <div className="grid grid-cols-3">
-      <div className="grid grid-cols-2">
-        <div className="justify-self-start ">${amount}</div>
-        <div>{origin.name}</div>
+    <div
+      className="grid grid-cols-[1fr_1fr_auto] cursor-pointer
+     hover:bg-neutral-950 p-[5px] hover:transition-all items-center content-center"
+    >
+      <div className="grid grid-cols-2 items-center content-center">
+        <div className="justify-self-start">${amount}</div>
+        <div className="justify-self-start">{origin.name}</div>
       </div>
+
+      <div className="justify-self-center">{dayAndMonth}</div>
       <button
         type="button"
-        className="w-[30px] h-[30px] hover:bg-danger justify-self-end"
+        className="w-[35px] h-[35px] hover:bg-danger justify-self-end"
       >
-        <Times w="30px" h="30px" color="#c7ccdb" />
+        <Times w="35px" h="35px" color="#c7ccdb" />
       </button>
-      <div className="justify-self-end">{dayAndMonth}</div>
     </div>
   );
 }
