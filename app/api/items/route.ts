@@ -5,6 +5,8 @@ import User from "@/lib/mongo/models/User";
 import { groupData } from "@/utils/groupData";
 import { NextResponse, NextRequest } from "next/server";
 import sortByDate from "@/utils/sortByDate";
+import { getServerSession } from "next-auth";
+import { authOption } from "../auth/[...nextauth]/route";
 
 interface JwtPayload {
   id: string;
@@ -61,4 +63,40 @@ export async function GET(req: Request) {
   } catch (err) {
     return new NextResponse("cannot get items ");
   }
+}
+
+export async function POST(req: Request) {
+  const session = await getServerSession<unknown, any>(authOption);
+  console.log(session);
+  const { searchParams } = new URL(req.url);
+  const type = searchParams.get("type");
+  const id = searchParams.get("id");
+
+  //console.log("headers", headersList);
+
+  const decoded = jwt.verify(
+    session!.user!.token,
+    process.env.JWT_SECRET
+  ) as JwtPayload;
+
+  await dbConnect();
+  const user = await User.findById(decoded.id).select(
+    "-__v -createdAt -updatedAt"
+  );
+
+  if (type === "expenses") {
+    //console.log(user.expenses.filter((el) => el.id !== id));
+    user.expenses = user.expenses.filter((el) => el.id !== id);
+    user.save();
+    return new NextResponse("deleted");
+  }
+
+  if (type === "incomes") {
+    // console.log(user.incomes.filter((el) => el.id !== id));
+    user.expenses = user.incomes.filter((el) => el.id !== id);
+    user.save();
+    return new NextResponse("deleted");
+  }
+
+  return new NextResponse("Invalid request, could not delete an item");
 }

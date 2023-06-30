@@ -20,6 +20,7 @@ module.exports = {
       fill: { accent: "var(--color-btn-accent)" },
       backgroundColor: {
         fill: "var(--color-fill)",
+        modal: "var(--color-modal)",
         block: "var(--color-block)",
         accent: "var(--color-btn-accent)",
         accentHover: "var(--color-btn-accent-hover)",

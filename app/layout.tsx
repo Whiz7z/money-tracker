@@ -24,6 +24,7 @@ export default function RootLayout({
         <AuthProvider>
           <Provider store={store}>
             <main
+              id="main"
               className="flex h-screen w-screen bg-fill justify-center items-center  text-[2.2rem]
        align-middle text-center m-auto"
             >

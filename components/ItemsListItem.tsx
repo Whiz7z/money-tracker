@@ -1,6 +1,5 @@
 import React from "react";
-import Times from "@/svgComponents/Times";
-
+import DeleteItemBtn from "./DeleteItemBtn";
 type Props = { item: any; type: string };
 
 const months = [
@@ -33,12 +32,7 @@ function ItemsListItem({ item, type }: Props) {
       </div>
 
       <div className="justify-self-center">{dayAndMonth}</div>
-      <button
-        type="button"
-        className="w-[35px] h-[35px] hover:bg-danger justify-self-end"
-      >
-        <Times w="35px" h="35px" color="#c7ccdb" />
-      </button>
+      <DeleteItemBtn id={item._id} type={type} />
     </div>
   );
 }

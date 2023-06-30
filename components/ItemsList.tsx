@@ -16,7 +16,7 @@ const ItemsList = async ({ searchParams }: Props) => {
   const { originName, year, month, type } = searchParams;
   const session = await getServerSession<unknown, any>(authOption);
   const response = await fetch(
-    `http://localhost:3000/api/getItems?type=${type}&month=${month}&year=${year}&originName=${originName}`,
+    `http://localhost:3000/api/items?type=${type}&month=${month}&year=${year}&originName=${originName}`,
     {
       method: "GET",
       headers: {
@@ -28,7 +28,7 @@ const ItemsList = async ({ searchParams }: Props) => {
 
   const data = await response.json();
 
-  //console.log(data.items);
+  console.log(data.items[0]._id);
   return (
     <div className="grid text-skin-base w-[655px]  h-[860px] mt-[70px]">
       <h2
