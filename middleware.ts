@@ -10,15 +10,15 @@ interface JwtPayload {
   id: string;
 }
 export async function middleware(request: NextRequest) {
-  console.log(request.cookies.get("next-auth.session-token").value);
+  //console.log(request.cookies.get("next-auth.session-token").value);
 
   // const userId = getTokenId(
   //   request.cookies.get("next-auth.session-token").value
   // );
 
-  if (request.cookies.get("next-auth.session-token").value) {
-    return NextResponse.redirect(new URL("/profile", request.url));
-  }
+  // if (request.cookies.get("next-auth.session-token").value) {
+  //   return NextResponse.redirect(new URL("/profile", request.url));
+  // }
 
   return NextResponse.next();
 }

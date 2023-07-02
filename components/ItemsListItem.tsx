@@ -24,7 +24,7 @@ function ItemsListItem({ item, type }: Props) {
   return (
     <div
       className="grid grid-cols-[1fr_1fr_auto] cursor-pointer
-     hover:bg-neutral-950 p-[5px] hover:transition-all items-center content-center"
+     hover:bg-neutral-950 p-[5px] hover:transition-all content-center h-[45px]"
     >
       <div className="grid grid-cols-2 items-center content-center">
         <div className="justify-self-start">${amount}</div>
