@@ -2,7 +2,7 @@ import React from "react";
 import ListItem from "../ListItem";
 import { getServerSession } from "next-auth";
 import { authOption } from "@/app/api/auth/[...nextauth]/route";
-
+import PieChartWrapper from "../UI/PieChartWrapper";
 import User from "@/lib/mongo/models/User";
 import jwt from "jsonwebtoken";
 import connectToDatabase from "./../../lib/mongo/mongoConnect";
@@ -50,10 +50,25 @@ const ExpensesList: any = async (props: Props) => {
   );
   const data = await response.json();
 
+  const dataChart = data.groupedExpenses.map((el) => {
+    return {
+      title: el.origin.name,
+      label: el.origin.name,
+      value: Number(el.amount),
+      color: el.origin.color,
+    };
+  });
+
+  console.log(dataChart);
+
+  const options = {
+    title: "My Week Expenses",
+    backgroundColor: "transparent",
+    color: "#fff",
+  };
   return (
-    <div className="grid gap-[15px] mt-[33px] h-[250px] overflow-y-scroll bg-neutral-900 p-[10px] rounded-[5px]">
-      {/* <p>{props.type}</p> */}
-      {type === "expenses" && data.groupedExpenses.length >= 1 ? (
+    <div className="grid gap-[15px] mt-[33px] h-[350px] overflow-y-scroll bg-transparent p-[10px] rounded-[5px] text-skin-base">
+      {/* {type === "expenses" && data.groupedExpenses.length >= 1 ? (
         data.groupedExpenses.map((exp) => (
           <ListItem
             color={exp.origin.color}
@@ -80,7 +95,9 @@ const ExpensesList: any = async (props: Props) => {
         data.groupedIncomes.length < 1 && (
           <p className="self-center">No income found for this month</p>
         )
-      )}
+      )} */}
+
+      <PieChartWrapper data={dataChart} />
     </div>
   );
 };

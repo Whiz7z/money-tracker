@@ -54,7 +54,7 @@ const Profile: any = async ({ searchParams }) => {
         <p className="text-[2rem] self-end">Balanse</p>
         <div className="min-w-[165px] grid justify-self-center self-start ">
           <p className="text-[3.2rem] text-skin-good  justify-self-center	self-start">
-            $
+            +$
             {balanse && balanse.incomeBalanse
               ? balanse.incomeBalanse.amount
               : 0}
