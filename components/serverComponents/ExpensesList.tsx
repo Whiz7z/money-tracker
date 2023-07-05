@@ -11,12 +11,14 @@ export interface FilterProps {
   type?: string;
   month?: string;
   year?: string;
+  display?: string;
 }
 type Props = { type: string; searchParams: FilterProps };
 interface JwtPayload {
   id: string;
 }
 const ExpensesList: any = async (props: Props) => {
+  const { display } = props.searchParams;
   const session = await getServerSession<unknown, any>(authOption);
   // console.log("profile session", props.searchParams.type);
 
@@ -50,14 +52,24 @@ const ExpensesList: any = async (props: Props) => {
   );
   const data = await response.json();
 
-  const dataChart = data.groupedExpenses.map((el) => {
-    return {
-      title: el.origin.name,
-      label: el.origin.name,
-      value: Number(el.amount),
-      color: el.origin.color,
-    };
-  });
+  const dataChart =
+    type === "incomes"
+      ? data.groupedIncomes.map((el) => {
+          return {
+            title: el.origin.name,
+            label: el.origin.name,
+            value: Number(el.amount),
+            color: el.origin.color,
+          };
+        })
+      : data.groupedExpenses.map((el) => {
+          return {
+            title: el.origin.name,
+            label: el.origin.name,
+            value: Number(el.amount),
+            color: el.origin.color,
+          };
+        });
 
   console.log(dataChart);
 
@@ -66,9 +78,53 @@ const ExpensesList: any = async (props: Props) => {
     backgroundColor: "transparent",
     color: "#fff",
   };
+
+  if (display === "chart") {
+    return (
+      <div className="grid gap-[15px] mt-[33px] h-[350px] overflow-y-scroll bg-transparent p-[10px] rounded-[5px] text-skin-base">
+        <PieChartWrapper data={dataChart} />
+      </div>
+    );
+  }
+
+  if (display === "list") {
+    return (
+      <div className="grid gap-[15px] mt-[33px] h-[350px] overflow-y-scroll bg-transparent p-[10px] rounded-[5px] text-skin-base">
+        {type === "expenses" && data.groupedExpenses.length >= 1 ? (
+          data.groupedExpenses.map((exp) => (
+            <ListItem
+              color={exp.origin.color}
+              originName={exp.origin.name}
+              amount={exp.amount}
+              type="expenses"
+              date={{ month: month, year: year }}
+            />
+          ))
+        ) : type === "expenses" && data.groupedExpenses.length < 1 ? (
+          <p className="self-center">No expense found for this month</p>
+        ) : type === "incomes" && data.groupedIncomes.length >= 1 ? (
+          data.groupedIncomes.map((exp) => (
+            <ListItem
+              color={exp.origin.color}
+              originName={exp.origin.name}
+              amount={exp.amount}
+              type="incomes"
+              date={{ month: month, year: year }}
+            />
+          ))
+        ) : (
+          type === "incomes" &&
+          data.groupedIncomes.length < 1 && (
+            <p className="self-center">No income found for this month</p>
+          )
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="grid gap-[15px] mt-[33px] h-[350px] overflow-y-scroll bg-transparent p-[10px] rounded-[5px] text-skin-base">
-      {/* {type === "expenses" && data.groupedExpenses.length >= 1 ? (
+      {type === "expenses" && data.groupedExpenses.length >= 1 ? (
         data.groupedExpenses.map((exp) => (
           <ListItem
             color={exp.origin.color}
@@ -95,9 +151,7 @@ const ExpensesList: any = async (props: Props) => {
         data.groupedIncomes.length < 1 && (
           <p className="self-center">No income found for this month</p>
         )
-      )} */}
-
-      <PieChartWrapper data={dataChart} />
+      )}
     </div>
   );
 };
