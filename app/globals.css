@@ -24,13 +24,14 @@
 @layer base {
   :root {
     --color-text-base: #c7ccdb;
-    --color-text-muted: #1e1e1e;
+    --color-text-muted: rgba(30, 30, 30, 0.6);
     --color-text-inverted: #c7d;
     --color-text-danger: #ea4335;
     --color-text-good: #40e482;
     --color-fill: #84a6b0;
     --color-block: #000;
-    --color-btn-accent: #e49940;
+    --color-semi-tranparent: rgba(0, 0, 0, 0.7);
+    --color-btn-accent: rgba(228, 153, 64, 0.8);
     --color-btn-accent-hover: #76b6c0;
     --color-btn-muted: #1e1e1e;
     --color-btn-danger: #6f1a07;

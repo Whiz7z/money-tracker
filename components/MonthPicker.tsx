@@ -120,7 +120,7 @@ const MonthPicker: any = (props: Props) => {
               : date.getMonth() + 1
           }`}
           onChange={setDateHandler}
-          className="absolute w-[25px] h-[25px] bg-transparent"
+          className=" absolute w-[0px] h-[0px] bg-transparent"
         />
       </div>
       <div

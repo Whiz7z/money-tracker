@@ -10,6 +10,7 @@ import ChartSvg from "@/svgComponents/ChartSvg";
 import ExpensesList from "@/components/serverComponents/ExpensesList";
 import Link from "next/link";
 import Switch from "@/components/Switch";
+import Button from "@/components/UI/Button";
 
 const Profile: any = async ({ searchParams }) => {
   const session = await getServerSession<unknown, any>(authOption);
@@ -95,20 +96,22 @@ const Profile: any = async ({ searchParams }) => {
         </Suspense>
         {/* BUTTONS */}
         <div className="w-[480px] grid grid-cols-2 gap-[30px] justify-self-center self-end ">
-          <Link
+          {/* <Link
             href="/profile/addIncome"
             className="inline-block w-[220px] h-[60px] justify-self-end
-               bg-accent rounded-[15px] font-bold text-[2.8rem] text-skin-muted text-center leading-[6rem]	"
+               bg-accent rounded-[15px] font-bold text-[2.8rem] text-skin-dark text-center leading-[6rem]	"
           >
             + income
-          </Link>
-          <Link
+          </Link> */}
+          <Button type={"expense"} />
+          <Button type={"income"} />
+          {/* <Link
             href="/profile/addExpense"
             className="inline-block w-[220px] h-[60px] justify-self-start
                bg-muted rounded-[15px] font-bold text-[2.8rem] text-center leading-[6rem]"
           >
             + expense
-          </Link>
+          </Link> */}
         </div>
       </div>
     </>

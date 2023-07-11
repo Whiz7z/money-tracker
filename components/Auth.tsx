@@ -124,7 +124,7 @@ function Auth(props: Props) {
         <div className="grid grid-cols-2 gap-[30px] mt-[80px]">
           <button
             className={`${
-              isValid ? "bg-accent text-skin-muted" : "bg-muted text-skin-base"
+              isValid ? "bg-accent text-skin-dark" : "bg-muted text-skin-base"
             } rounded-[15px] w-[220px] h-[60px] font-bold  text-[2.8rem] justify-self-end`}
             type="submit"
             disabled={!isValid}

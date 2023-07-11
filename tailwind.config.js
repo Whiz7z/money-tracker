@@ -11,6 +11,7 @@ module.exports = {
         skin: {
           base: "var(--color-text-base)",
           muted: "var(--color-text-muted)",
+          dark: "var(--color-block)",
           danger: "var(--color-text-danger)",
           good: "var(--color-text-good)",
           inverted: "var(--color-text-inverted)",
@@ -22,6 +23,7 @@ module.exports = {
         fill: "var(--color-fill)",
         modal: "var(--color-modal)",
         block: "var(--color-block)",
+        semitransparent: "var(--color-semi-tranparent)",
         accent: "var(--color-btn-accent)",
         accentHover: "var(--color-btn-accent-hover)",
         muted: "var(--color-btn-muted)",
