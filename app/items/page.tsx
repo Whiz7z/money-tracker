@@ -4,7 +4,7 @@ import MoveBack from "../../components/navigation/MoveBack";
 
 type Props = {};
 
-const page = async ({ searchParams }) => {
+const page = ({ searchParams }) => {
   //console.log(searchParams);
   return (
     <>
@@ -13,7 +13,7 @@ const page = async ({ searchParams }) => {
           <MoveBack />
         </div>
       </div>
-
+      {/* @ts-expect-error Server Component */}
       <ItemsList searchParams={searchParams} />
     </>
   );

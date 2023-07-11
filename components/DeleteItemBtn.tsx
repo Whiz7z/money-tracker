@@ -36,7 +36,7 @@ const deleteItemBtn = ({ id, type }: Props) => {
         className="w-[35px] h-[35px] hover:bg-danger justify-self-end"
         onClick={() => setOpenModal(true)}
       >
-        <Times w="35px" h="35px" color="#c7ccdb" />
+        <Times w="35px" h="35px" color="#e49940" />
       </button>
       {openModal && (
         <Modal>
@@ -52,7 +52,7 @@ const deleteItemBtn = ({ id, type }: Props) => {
             </button>
             <button
               onClick={() => deleteItemHandler(id, type)}
-              className="w-[200px] bg-accent rounded-[10px] h-[40px] justify-self-start text-skin-muted font-bold"
+              className="w-[200px] bg-accent rounded-[10px] h-[40px] justify-self-start text-skin-dark font-bold"
             >
               Yes
             </button>

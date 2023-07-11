@@ -17,7 +17,7 @@ const months = [
   "December",
 ];
 
-function ItemsListItem({ item, type }: Props) {
+const ItemsListItem: any = ({ item, type }: Props) => {
   const { origin, amount, date } = item;
   const dayAndMonth =
     new Date(date).getDate() + " " + months[new Date(date).getMonth()];
@@ -35,6 +35,6 @@ function ItemsListItem({ item, type }: Props) {
       <DeleteItemBtn id={item._id} type={type} />
     </div>
   );
-}
+};
 
 export default ItemsListItem;

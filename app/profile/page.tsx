@@ -48,7 +48,7 @@ const Profile: any = async ({ searchParams }) => {
       {/* <SignOut /> */}
 
       <div
-        className="grid justify-self-center text-skin-base w-[655px]  h-[860px] mt-[50px] 
+        className="grid justify-self-center text-skin-ordinary w-[655px]  h-[860px] mt-[50px] 
         "
       >
         {/* BALANSE */}

@@ -7,7 +7,12 @@ type Props = {};
 const MoveBack = (props: Props) => {
   const router = useRouter();
   return (
-    <LeftArrow w="30px" h="30px" color="#fff" onClick={() => router.back()} />
+    <LeftArrow
+      w="30px"
+      h="30px"
+      color="#e49940"
+      onClick={() => router.back()}
+    />
   );
 };
 

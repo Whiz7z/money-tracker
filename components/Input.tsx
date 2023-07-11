@@ -149,12 +149,12 @@ const Input = ({ type }: Props) => {
             value={newOriginValue}
             onChange={newOriginChangeHandler}
             className="block font-bold w-[400px] bg-transparent pl-[25px]
-             border-t-[3px] border-b-[3px] border-l-[3px] text-skin-base  border-base rounded-tl-[25px] rounded-bl-[25px] h-[60px]"
+             border-t-[3px] border-b-[3px] border-l-[3px] text-skin-ordinary
+              border-ordinary rounded-tl-[25px] rounded-bl-[25px] h-[60px] placeholder:text-skin-ordinary"
           />
           <button
-            className="h-[60px]  pl-[25px] pr-[25px] self-start border-t-[3px] border-b-[3px] border-r-[3px] border-base rounded-tr-[25px] rounded-br-[25px]"
+            className="h-[60px] bg-good text-skin-base  pl-[25px] pr-[25px] self-start border-t-[3px] border-b-[3px] border-r-[3px] border-ordinary rounded-tr-[25px] rounded-br-[25px]"
             type="button"
-            style={{ backgroundColor: `#168B45` }}
             onClick={() => createNewOrigin(newOriginValue, color)}
           >
             Add
@@ -166,7 +166,7 @@ const Input = ({ type }: Props) => {
             onMouseLeave={() => setShowColorPicker(false)}
           >
             <div
-              className="h-[60px] w-[70px] border-[3px] rounded-[20px] cursor-pointer"
+              className="h-[60px] w-[70px] border-[3px] border-ordinary  rounded-[20px] cursor-pointer"
               style={{ backgroundColor: `${color}` }}
               onClick={() => setShowColorPicker(true)}
             ></div>
@@ -198,7 +198,7 @@ const Input = ({ type }: Props) => {
             <span className="font-bold text-[3rem] mr-[20px]">$</span>
             <input
               className="text-center font-bold w-[200px] bg-transparent
-              border-[3px]  text-skin-base  border-base rounded-[25px] h-[60px]"
+              border-[3px]  text-skin-ordinary placeholder:text-skin-ordinary border-ordinary rounded-[25px] h-[60px]"
               placeholder="00.00"
               value={amount}
               type="number"

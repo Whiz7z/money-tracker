@@ -97,8 +97,9 @@ const MonthPicker: any = (props: Props) => {
         className="w-[30px] h-[30px] arrow-clip-left bg-accent col-1 self-end 
               relative bottom-[5px] cursor-pointer hover:w-[35px] hover:h-[35px] justify-self-end"
       ></div>
-      <div className="self-end w-[180px]">
+      <div className="self-end w-[180px] ">
         <label
+          className="cursor-pointer"
           htmlFor="monthPicker"
           onClick={() => pickerRef.current.showPicker()}
         >

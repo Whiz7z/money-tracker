@@ -16,6 +16,7 @@ module.exports = {
           good: "var(--color-text-good)",
           inverted: "var(--color-text-inverted)",
           accent: "var(--color-btn-accent)",
+          ordinary: "var(--color-text-ordinary)",
         },
       },
       fill: { accent: "var(--color-btn-accent)" },
@@ -23,6 +24,7 @@ module.exports = {
         fill: "var(--color-fill)",
         modal: "var(--color-modal)",
         block: "var(--color-block)",
+        good: "var(--color-btn-good)",
         semitransparent: "var(--color-semi-tranparent)",
         accent: "var(--color-btn-accent)",
         accentHover: "var(--color-btn-accent-hover)",
@@ -49,6 +51,7 @@ module.exports = {
       borderColor: {
         base: "var(--color-text-base)",
         accent: "var(--color-btn-accent)",
+        ordinary: "var(--color-text-ordinary)",
       },
       boxShadow: {
         mainBlock: "0px 30px 90px 5px #1E1E1E;",

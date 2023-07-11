@@ -14,12 +14,12 @@ const addIncome = (props: Props) => {
   return (
     <>
       {/* <SignOut /> */}
-      <div className="absolute w-[100%] grid grid-cols-2 top-[80px]">
+      <div className="absolute w-[100%] text-skin-ordinary grid grid-cols-2 top-[80px]">
         <div className="absolute text-skin-base left-[100px] cursor-pointer">
           <MoveBack />
         </div>
       </div>
-      <div className="grid grid-rows-blockTypesGrid text-skin-base w-[655px]  h-[860px] mt-[70px]">
+      <div className="grid grid-rows-blockTypesGrid text-skin-ordinary w-[655px]  h-[860px] mt-[70px]">
         <p className=" text-[3.2rem] h-[40px] self-start justify-self-center text-skin-good">
           New Income
         </p>

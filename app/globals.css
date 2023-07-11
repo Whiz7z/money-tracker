@@ -24,17 +24,21 @@
 @layer base {
   :root {
     --color-text-base: #c7ccdb;
-    --color-text-muted: rgba(30, 30, 30, 0.6);
+    --color-text-muted: rgb(30, 30, 30);
     --color-text-inverted: #c7d;
-    --color-text-danger: #ea4335;
-    --color-text-good: #40e482;
-    --color-fill: #84a6b0;
+    --color-text-danger: rgb(232, 72, 85);
+    --color-text-good: #86bc34;
+    --color-text-ordinary: #e49940;
+    /* --color-fill: #84a6b0; */
+    --color-fill: rgb(156, 175, 183);
     --color-block: #000;
-    --color-semi-tranparent: rgba(0, 0, 0, 0.7);
+    /* --color-semi-tranparent: rgba(0, 0, 0, 0.7); */
+    --color-semi-tranparent: rgba(20, 20, 20, 1);
     --color-btn-accent: rgba(228, 153, 64, 0.8);
     --color-btn-accent-hover: #76b6c0;
     --color-btn-muted: #1e1e1e;
     --color-btn-danger: #6f1a07;
+    --color-btn-good: rgb(134, 188, 52);
     --color-modal: rgba(92, 91, 90, 0.3);
   }
 }
