@@ -44,10 +44,11 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PUT(req: NextRequest) {
-  // const session = await getServerSession<unknown, any>(authOption);
-  // console.log("session", session);
   const { session, type } = await req.json();
-  console.log("session type", session, type);
+
+  if (!session || type.trim().length < 1) {
+    return new NextResponse("Invadid session or type data");
+  }
   try {
     const decoded = jwt.verify(
       session!.user!.token,
@@ -74,10 +75,11 @@ export async function PUT(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession<unknown, any>(authOption);
-  console.log(session);
+
   const { name, color } = await req.json();
-  console.log("name", name, "color", color);
-  //console.log("headers", headersList);
+  if (name.trim().length < 1 || color.trim().length < 1) {
+    return new NextResponse("Invadid name or color data");
+  }
 
   const decoded = jwt.verify(
     session!.user!.token,
@@ -85,7 +87,6 @@ export async function POST(req: NextRequest) {
   ) as JwtPayload;
 
   await dbConnect();
-  const expenseOrigin = await User.findById(decoded.id);
 
   await User.findOneAndUpdate(
     { _id: decoded.id },
@@ -96,13 +97,6 @@ export async function POST(req: NextRequest) {
     }
   );
 
-  // if (expenseOrigin) {
-  //   console.log("array", expenseOrigin);
-  //   expenseOrigin.ExpenseType.push(
-  //     JSON.stringify({ name: name, color: color })
-  //   );
-  //   await expenseOrigin.save();
-  // }
   const tag = req.nextUrl.searchParams.get("tag");
   revalidateTag(tag);
   return NextResponse.json({ revalidated: true });
