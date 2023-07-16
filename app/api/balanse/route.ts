@@ -19,11 +19,14 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const month = searchParams.get("month");
   const year = searchParams.get("year");
-  console.log("params", month);
+  //console.log("params", month);
 
+  if (month.trim().length < 1 || year.trim().length < 1) {
+    return new NextResponse("Invadid month or year data");
+  }
   const headersList = headers();
   let token = headersList.get("authorization").split(" ")[1];
-  console.log(token);
+  //console.log(token);
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET) as JwtPayload;
     console.log("decoded ID", decoded);

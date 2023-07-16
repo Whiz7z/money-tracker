@@ -41,9 +41,9 @@ const ItemsList = async ({ searchParams }: Props) => {
         {originName} {type === "expenses" ? "Expenses" : "Incomes"}
       </h2>
       <div
-        className="grid grid-rows-[max-content] 
-      gap-[15px] mt-[33px] h-[550px] overflow-y-scroll
-       bg-neutral-800 p-[10px] rounded-[5px]
+        className="grid grid-rows-[max-content]  justify-self-center
+       mt-[33px] w-[100%] h-[550px] overflow-y-auto
+       bg-neutral-800  rounded-[5px]
        text-skin-ordinary"
       >
         {data &&

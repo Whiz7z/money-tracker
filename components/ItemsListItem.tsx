@@ -23,8 +23,10 @@ const ItemsListItem: any = ({ item, type }: Props) => {
     new Date(date).getDate() + " " + months[new Date(date).getMonth()];
   return (
     <div
-      className="grid grid-cols-[1fr_1fr_auto] cursor-pointer
-     hover:bg-neutral-950 p-[5px] hover:transition-all content-center h-[45px]"
+      className="grid grid-cols-[1fr_1fr_auto] cursor-pointer 
+      p-[10px]  content-center w-[100%] h-[45px] justify-self-center
+      border-b-2 border-transparent
+       hover:transition-all hover:bg-semitransparent hover:border-b-2 hover:border-ordinary"
     >
       <div className="grid grid-cols-2 items-center content-center">
         <div className="justify-self-start">${amount}</div>

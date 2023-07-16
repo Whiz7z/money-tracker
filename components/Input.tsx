@@ -153,7 +153,7 @@ const Input = ({ type }: Props) => {
               border-ordinary rounded-tl-[25px] rounded-bl-[25px] h-[60px] placeholder:text-skin-ordinary"
           />
           <button
-            className="h-[60px] bg-good text-skin-base  pl-[25px] pr-[25px] self-start border-t-[3px] border-b-[3px] border-r-[3px] border-ordinary rounded-tr-[25px] rounded-br-[25px]"
+            className="h-[60px] bg-good text-skin-muted font-bold  pl-[25px] pr-[25px] self-start border-t-[3px] border-b-[3px] border-r-[3px] border-ordinary rounded-tr-[25px] rounded-br-[25px]"
             type="button"
             onClick={() => createNewOrigin(newOriginValue, color)}
           >

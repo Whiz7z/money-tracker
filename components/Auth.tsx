@@ -67,7 +67,7 @@ function Auth(props: Props) {
 
   return (
     <div className="h-[640px] w-[655px] self-center ">
-      <h2 className="text-skin-base text-[3.6rem] font-bold">
+      <h2 className="text-skin-ordinary  text-[3.6rem] font-bold">
         {isLogin ? "Login" : "Register"}
       </h2>
 
@@ -81,12 +81,12 @@ function Auth(props: Props) {
         className="grid gap-[65px] mt-[70px]"
       >
         <div className="grid w-[100%] relative">
-          <label className="justify-self-start  text-left  text-skin-base text-[2rem]">
+          <label className="justify-self-start  text-left  text-skin-ordinary  text-[2rem]">
             Username
           </label>
           <input
             autoComplete="false"
-            className="block font-bold w-[100%] bg-transparent pl-[25px] border-[3px] text-skin-base  border-base rounded-[25px] h-[60px]
+            className="block font-bold w-[100%] bg-transparent pl-[25px] border-[3px] text-skin-ordinary placeholder:text-skin-ordinary border-ordinary  rounded-[25px] h-[60px]
             mt-[20px]"
             type="text"
             placeholder="Username"
@@ -102,11 +102,11 @@ function Auth(props: Props) {
         </div>
 
         <div className="grid w-[100%] relative">
-          <label className="justify-self-start text-left text-skin-base text-[2rem] w-[100% ">
+          <label className="justify-self-start text-left text-skin-ordinary  text-[2rem] w-[100% ">
             Password
           </label>
           <input
-            className="block font-bold w-[100%] bg-transparent pl-[25px] border-[3px] text-skin-base  border-base rounded-[25px] h-[60px]
+            className="block font-bold w-[100%] bg-transparent pl-[25px] border-[3px] text-skin-ordinary placeholder:text-skin-ordinary border-ordinary  rounded-[25px] h-[60px]
             mt-[20px]"
             type="password"
             placeholder="Password"
@@ -120,11 +120,13 @@ function Auth(props: Props) {
             {errors?.password && <>{errors?.password?.message || "Error"}</>}
           </p>
         </div>
-        <p className="text-skin-base text-[2rem] font-bold text-center absolute"></p>
+        {/* <p className="text-skin-base text-[2rem] font-bold text-center absolute"></p> */}
         <div className="grid grid-cols-2 gap-[30px] mt-[80px]">
           <button
             className={`${
-              isValid ? "bg-accent text-skin-dark" : "bg-muted text-skin-base"
+              isValid
+                ? "bg-accent text-skin-dark"
+                : "bg-muted text-skin-ordinary "
             } rounded-[15px] w-[220px] h-[60px] font-bold  text-[2.8rem] justify-self-end`}
             type="submit"
             disabled={!isValid}
@@ -138,7 +140,7 @@ function Auth(props: Props) {
               : "Register"}
           </button>
           <button
-            className="bg-muted rounded-[15px] w-[220px] h-[60px] font-bold text-skin-base text-[2.8rem] justify-self-start"
+            className="bg-muted rounded-[15px] w-[220px] h-[60px] font-bold text-skin-ordinary text-[2.8rem] justify-self-start"
             type="button"
             onClick={() => setIsLogin((prev) => !prev)}
           >
