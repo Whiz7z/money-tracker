@@ -16,7 +16,9 @@ export async function GET(req: Request) {
   const month = searchParams.get("month");
   const year = searchParams.get("year");
 
-  console.log("dates backend", month, year);
+  if (month.trim().length < 1 || year.trim().length < 1) {
+    return new NextResponse("Invadid month or year data");
+  }
 
   const headersList = headers();
   let token = headersList.get("authorization").split(" ")[1];
@@ -54,6 +56,14 @@ export async function POST(req: Request) {
   const session = await getServerSession<unknown, any>(authOption);
   console.log(session);
   const { origin, amount, date } = await req.json();
+
+  if (
+    origin.trim().length < 1 ||
+    amount.trim().length < 1 ||
+    date.trim().length < 1
+  ) {
+    return new NextResponse("Invadid amount, origin or date data");
+  }
 
   //console.log("headers", headersList);
 

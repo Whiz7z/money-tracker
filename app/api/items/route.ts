@@ -19,6 +19,15 @@ export async function GET(req: Request) {
   const originName = searchParams.get("originName");
   const type = searchParams.get("type");
 
+  if (
+    month.trim().length < 1 ||
+    year.trim().length < 1 ||
+    originName.trim().length < 1 ||
+    type.trim().length < 1
+  ) {
+    return new NextResponse("Invadid data");
+  }
+
   //console.log("dates backend", month, year);
 
   const headersList = headers();
@@ -71,6 +80,14 @@ export async function POST(req: Request) {
   const { searchParams } = new URL(req.url);
   const type = searchParams.get("type");
   const id = searchParams.get("id");
+
+  if (type.trim().length < 1 || id.trim().length < 1) {
+    return new NextResponse("Invadid month or year data");
+  }
+
+  if (!session) {
+    return new NextResponse("Invadid session  data");
+  }
 
   //console.log("headers", headersList);
 
