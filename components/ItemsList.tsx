@@ -43,7 +43,7 @@ const ItemsList = async ({ searchParams }: Props) => {
       <div
         className="grid grid-rows-[max-content]  justify-self-center
        mt-[33px] w-[100%] h-[550px] overflow-y-auto
-       bg-neutral-800  rounded-[5px]
+       bg-muted  
        text-skin-ordinary"
       >
         {data &&

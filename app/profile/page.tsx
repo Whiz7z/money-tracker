@@ -86,7 +86,7 @@ const Profile: any = async ({ searchParams }) => {
           fallback={
             <div
               className="grid gap-[15px] mt-[33px] h-[250px] 
-            overflow-y-scroll bg-neutral-900 p-[10px] rounded-[5px]"
+            overflow-y-scroll bg-muted p-[10px]"
             >
               <p className="self-center">Loading</p>
             </div>
