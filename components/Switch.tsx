@@ -1,12 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-
+import { getSession } from "next-auth/react";
 type Props = {
   searchParams: any;
 };
 const activeClass = "border-b-4 border-accent";
-const Switch: any = ({ searchParams: initialParams }: Props) => {
+const Switch: any = async ({ searchParams: initialParams }: Props) => {
   const router = useRouter();
   const [active, setActive] = useState(initialParams.type);
 
@@ -27,7 +27,6 @@ const Switch: any = ({ searchParams: initialParams }: Props) => {
     router.push(newPathname);
   };
 
-  console.log(active);
   return (
     <div className="max-w-[240px] self-start  grid grid-cols-switch justify-self-center gap-[5px] text-[2.8rem] mt-[25px]">
       <p

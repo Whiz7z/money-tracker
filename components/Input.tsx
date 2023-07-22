@@ -114,8 +114,11 @@ const Input = ({ type }: Props) => {
   }, [startDate]);
 
   return (
-    <div className="grid gap-[60px]">
-      <div className="grid justify-self-center grid-cols-calendarInput h-[55px]">
+    <div className="grid gap-[20px]">
+      <div
+        className="grid justify-self-center h-[95px]
+      grid-cols-calendarInput  bg-muted p-[20px] rounded-[5px] overflow-hidden"
+      >
         <div onClick={(e) => openDatePicker()}>
           <CalendarSvg
             w="55px"
@@ -141,8 +144,8 @@ const Input = ({ type }: Props) => {
           className="hidden"
         />
       </div>
-      <div className="grid gap-[80px]">
-        <div className="flex">
+      <div className="grid gap-[20px]">
+        <div className="flex bg-muted p-[20px] rounded-[5px]">
           <input
             type="text"
             placeholder="Add new origin"
@@ -190,7 +193,7 @@ const Input = ({ type }: Props) => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 justify-between">
+        <div className="grid grid-cols-2 justify-between bg-muted p-[20px] rounded-[5px]">
           <div className="justify-self-start self-center text-center font-bold text-[3rem]">
             {currentOrigin.name
               ? currentOrigin.name
@@ -209,15 +212,18 @@ const Input = ({ type }: Props) => {
           </div>
         </div>
 
-        <button
-          onClick={() => {
-            createNewExpenseIncomeHandler();
-          }}
-          className="inline-block w-[220px] h-[60px] justify-self-center self-end
-               bg-accent rounded-[15px] font-bold text-[2.8rem] text-skin-muted text-center leading-[6rem]	"
-        >
-          Save
-        </button>
+        <div className="bg-muted p-[20px] rounded-[5px]">
+          <button
+            onClick={() => {
+              createNewExpenseIncomeHandler();
+            }}
+            className="inline-block w-[220px] h-[60px] justify-self-center self-end
+               bg-accent rounded-[15px] font-bold text-[2.8rem] 
+               text-skin-muted text-center leading-[6rem]"
+          >
+            Save
+          </button>
+        </div>
       </div>
     </div>
   );

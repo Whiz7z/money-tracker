@@ -39,7 +39,7 @@ const Button = ({ type }: Props) => {
         onClick={() => setLoadingExpenseHandler()}
         href="/profile/addExpense"
         className="inline-block w-[220px] h-[60px] justify-self-start
-               bg-muted rounded-[15px] font-bold text-[2.8rem] text-center leading-[6rem]"
+               bg-semitransparent rounded-[15px] font-bold text-[2.8rem] text-center leading-[6rem]"
       >
         {isLoadingExpense ? "Loading..." : "+ expense"}
       </Link>

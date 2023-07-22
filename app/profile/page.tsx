@@ -51,29 +51,31 @@ const Profile: any = async ({ searchParams }) => {
         className="grid justify-self-center text-skin-ordinary w-[655px]  h-[860px] mt-[50px] 
         "
       >
-        {/* BALANSE */}
-        <p className="text-[2rem] self-end">Balanse</p>
-        <div className="min-w-[165px] grid justify-self-center self-start ">
-          <p className="text-[3.2rem] text-skin-good  justify-self-center	self-start">
-            +$
-            {balanse && balanse.incomeBalanse
-              ? balanse.incomeBalanse.amount
-              : 0}
-          </p>
-          <p className="text-[3.2rem] text-skin-danger justify-self-center self-start	">
-            -$
-            {balanse && balanse.expenseBalanse
-              ? balanse.expenseBalanse.amount
-              : 0}
-          </p>
-        </div>
-        {/* MONTH */}
-        <MonthPicker />
+        <div className="grid bg-muted p-[20px] rounded-[5px]">
+          {/* BALANSE */}
+          <p className="text-[2rem] self-end">Balanse</p>
+          <div className="min-w-[100%] grid grid-cols-2 justify-self-center self-start ">
+            <p className="text-[3.2rem] text-skin-good  justify-self-center	self-start">
+              +$
+              {balanse && balanse.incomeBalanse
+                ? balanse.incomeBalanse.amount
+                : 0}
+            </p>
+            <p className="text-[3.2rem] text-skin-danger justify-self-center self-start	">
+              -$
+              {balanse && balanse.expenseBalanse
+                ? balanse.expenseBalanse.amount
+                : 0}
+            </p>
+          </div>
+          {/* MONTH */}
+          <MonthPicker />
 
-        {/* EXPENSES/INCOME SWITCH */}
-        <Switch searchParams={searchParams} />
+          {/* EXPENSES/INCOME SWITCH */}
+          <Switch searchParams={searchParams} />
+        </div>
         {/* CHART OR LIST SWITCH */}
-        <div className="grid self-start  w-[100%] grid-cols-2 mt-[20px]">
+        <div className="grid self-start bg-muted p-[20px] rounded-[5px] w-[100%] grid-cols-2 mt-[20px]">
           <div className="justify-self-start">
             <ListSvg w="45px" h="45px" fill="#E49940" />
           </div>
@@ -92,26 +94,31 @@ const Profile: any = async ({ searchParams }) => {
             </div>
           }
         >
-          <ExpensesList type={type} searchParams={searchParams} />
+          <div className="grid bg-muted p-[20px] rounded-[5px] my-[20px] ">
+            <ExpensesList type={type} searchParams={searchParams} />
+          </div>
         </Suspense>
         {/* BUTTONS */}
-        <div className="w-[480px] grid grid-cols-2 gap-[30px] justify-self-center self-end ">
-          {/* <Link
+        <div className="grid bg-muted p-[30px] rounded-[5px] ">
+          <div className="w-[480px] grid grid-cols-2 gap-[30px] justify-self-center self-end ">
+            {/* <Link
             href="/profile/addIncome"
             className="inline-block w-[220px] h-[60px] justify-self-end
                bg-accent rounded-[15px] font-bold text-[2.8rem] text-skin-dark text-center leading-[6rem]	"
           >
             + income
           </Link> */}
-          <Button type={"expense"} />
-          <Button type={"income"} />
-          {/* <Link
+
+            <Button type={"expense"} />
+            <Button type={"income"} />
+            {/* <Link
             href="/profile/addExpense"
             className="inline-block w-[220px] h-[60px] justify-self-start
                bg-muted rounded-[15px] font-bold text-[2.8rem] text-center leading-[6rem]"
           >
             + expense
           </Link> */}
+          </div>
         </div>
       </div>
     </>

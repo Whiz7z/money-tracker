@@ -15,8 +15,11 @@ const addExpense = (props: Props) => {
           <MoveBack />
         </div>
       </div>
-      <div className="grid grid-rows-blockTypesGrid text-skin-ordinary w-[655px]  h-[860px] mt-[70px]">
-        <p className=" text-[3.2rem] h-[40px] self-start justify-self-center text-skin-danger">
+      <div className="grid grid-rows-blockTypesGrid text-skin-ordinary w-[655px]  h-[860px] mt-[50px]">
+        <p
+          className=" text-[3.2rem] self-start justify-self-center 
+          text-skin-danger bg-muted p-[20px] rounded-[5px]"
+        >
           New Expense
         </p>
         <Types type="expenses"></Types>

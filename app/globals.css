@@ -120,3 +120,7 @@ html {
 
 body {
 }
+
+.react-datepicker-wrapper {
+  display: none;
+}

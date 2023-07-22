@@ -40,7 +40,7 @@ const deleteItemBtn = ({ id, type }: Props) => {
       </button>
       {openModal && (
         <Modal>
-          <p className="self-end text-skin-base">
+          <p className="self-end text-skin-ordinary">
             Do you want to delete this record?
           </p>
           <div className="grid grid-cols-2 gap-x-[20px] self-center w-[100%] ">

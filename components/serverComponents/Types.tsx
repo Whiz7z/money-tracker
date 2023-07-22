@@ -34,11 +34,13 @@ const Types: any = async (props: Props) => {
   const parsedData = await data.json();
 
   return (
-    <div className="flex w-[100%] min-h-[300px] overflow-y-scroll  mb-[5px] justify-center flex-wrap gap-y-[20px] gap-x-[35px] text-[2.6rem] place-content-start">
-      {parsedData &&
-        parsedData.origins.map((el) => (
-          <TypeItem key={el.name} type={el.name} color={el.color}></TypeItem>
-        ))}
+    <div className="grid bg-muted p-[20px] rounded-[5px] my-[20px] ">
+      <div className="flex w-[100%] min-h-[300px] overflow-y-scroll  mb-[5px] justify-center flex-wrap gap-y-[20px] gap-x-[35px] text-[2.6rem] place-content-start">
+        {parsedData &&
+          parsedData.origins.map((el) => (
+            <TypeItem key={el.name} type={el.name} color={el.color}></TypeItem>
+          ))}
+      </div>
     </div>
   );
 };
