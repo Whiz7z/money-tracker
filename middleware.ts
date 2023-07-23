@@ -23,7 +23,7 @@
 //   return NextResponse.next();
 // }
 export { default } from "next-auth/middleware";
-export const config = { matcher: "/profile" };
+export const config = { matcher: "/profile/:path*" };
 
 // export default withAuth({
 //   pages,
