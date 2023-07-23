@@ -10,8 +10,8 @@ const addExpense = (props: Props) => {
   return (
     <>
       {/* <SignOut /> */}
-      <div className="absolute w-[100%] grid grid-cols-2 top-[80px]">
-        <div className="absolute text-skin-ordinary left-[100px] cursor-pointer">
+      <div className="absolute w-[100%] grid grid-cols-2 top-[60px]">
+        <div className="absolute text-skin-ordinary left-[123px] bg-muted p-[20px] rounded-[5px] cursor-pointer">
           <MoveBack />
         </div>
       </div>

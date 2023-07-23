@@ -9,7 +9,7 @@ const page = ({ searchParams }) => {
   return (
     <>
       <div className="absolute w-[100%] grid grid-cols-2 top-[80px]">
-        <div className="absolute text-skin-base left-[100px] cursor-pointer">
+        <div className="absolute text-skin-base left-[123px] bg-muted p-[20px] rounded-[5px] cursor-pointer">
           <MoveBack />
         </div>
       </div>

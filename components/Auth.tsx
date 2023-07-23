@@ -67,7 +67,7 @@ function Auth(props: Props) {
 
   return (
     <div className="h-[640px] w-[655px] self-center ">
-      <h2 className="text-skin-ordinary  text-[3.6rem] font-bold">
+      <h2 className="text-skin-ordinary bg-muted p-[20px] rounded-[5px]  text-[3.6rem] font-bold">
         {isLogin ? "Login" : "Register"}
       </h2>
 
@@ -78,9 +78,9 @@ function Auth(props: Props) {
       )}
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid gap-[65px] mt-[70px]"
+        className="grid gap-[20px] mt-[40px]"
       >
-        <div className="grid w-[100%] relative">
+        <div className="grid w-[100%] bg-muted p-[20px] rounded-[5px] relative">
           <label className="justify-self-start  text-left  text-skin-ordinary  text-[2rem]">
             Username
           </label>
@@ -101,7 +101,7 @@ function Auth(props: Props) {
           </p>
         </div>
 
-        <div className="grid w-[100%] relative">
+        <div className="grid w-[100%] bg-muted p-[20px] rounded-[5px] relative">
           <label className="justify-self-start text-left text-skin-ordinary  text-[2rem] w-[100% ">
             Password
           </label>
@@ -121,12 +121,12 @@ function Auth(props: Props) {
           </p>
         </div>
         {/* <p className="text-skin-base text-[2rem] font-bold text-center absolute"></p> */}
-        <div className="grid grid-cols-2 gap-[30px] mt-[80px]">
+        <div className="grid grid-cols-2 bg-muted p-[20px] rounded-[5px] gap-[30px] mt-[80px]">
           <button
             className={`${
               isValid
                 ? "bg-accent text-skin-dark"
-                : "bg-muted text-skin-ordinary "
+                : "bg-semitransparent text-skin-ordinary "
             } rounded-[15px] w-[220px] h-[60px] font-bold  text-[2.8rem] justify-self-end`}
             type="submit"
             disabled={!isValid}
@@ -140,7 +140,7 @@ function Auth(props: Props) {
               : "Register"}
           </button>
           <button
-            className="bg-muted rounded-[15px] w-[220px] h-[60px] font-bold text-skin-ordinary text-[2.8rem] justify-self-start"
+            className="bg-semitransparent rounded-[15px] w-[220px] h-[60px] font-bold text-skin-ordinary text-[2.8rem] justify-self-start"
             type="button"
             onClick={() => setIsLogin((prev) => !prev)}
           >

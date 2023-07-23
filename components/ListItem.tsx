@@ -15,7 +15,7 @@ const ListItem = ({ color, amount, originName, date, type }: Props) => {
     <Link
       href={`/items?month=${date.month}&year=${date.year}&type=${type}&originName=${originName}`}
       className="grid grid-cols-listItem h-[45px] cursor-pointer
-       hover:bg-neutral-950  pl-[10px]"
+       hover:bg-semitransparent  pl-[10px] rounded-[5px]"
     >
       <div
         className={`w-[100px] h-[30px] self-center`}
