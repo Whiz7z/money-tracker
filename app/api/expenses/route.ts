@@ -30,7 +30,9 @@ export async function GET(req: Request) {
     const user = await User.findById(decoded.id).select(
       "-__v -createdAt -updatedAt"
     );
-    if (user) {
+
+    console.log("user expenses", user.expenses);
+    if (user && user.expenses.length > 1) {
       const groupedData = groupData(
         user.expenses.filter(
           (el) =>
@@ -46,6 +48,9 @@ export async function GET(req: Request) {
         expenses: user.expenses,
         groupedExpenses: groupedData,
       });
+    } else {
+      console.log("no expenses");
+      return new NextResponse("user expenses error", { status: 400 });
     }
   } catch (err) {
     return new NextResponse("user expenses error");

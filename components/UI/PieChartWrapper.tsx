@@ -14,6 +14,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.defaults.color = "#c7ccdb";
 
 const PieChartWrapper = (props: Props) => {
+  if (!props.data) {
+    return <p className="self-center">You have no expense or income</p>;
+  }
   const data = props.data.map((el) => el.value);
   const colors = props.data.map((el) => el.color);
 

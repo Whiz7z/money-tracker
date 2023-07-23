@@ -43,6 +43,9 @@ const Profile: any = async ({ searchParams }) => {
   );
 
   const balanse = await response.json();
+  // if (balanse.expenseBalanse === undefined) {
+  //   return <p>Huui</p>;
+  // }
   return (
     <>
       {/* <SignOut /> */}
@@ -57,15 +60,15 @@ const Profile: any = async ({ searchParams }) => {
           <div className="min-w-[100%] grid grid-cols-2 justify-self-center self-start ">
             <p className="text-[3.2rem] text-skin-danger justify-self-center self-start	">
               -$
-              {balanse && balanse.expenseBalanse
-                ? balanse.expenseBalanse.amount
-                : 0}
+              {balanse.expenseBalanse === undefined
+                ? 0
+                : balanse.expenseBalanse?.amount}
             </p>
             <p className="text-[3.2rem] text-skin-good  justify-self-center	self-start">
               +$
-              {balanse && balanse.incomeBalanse
-                ? balanse.incomeBalanse.amount
-                : 0}
+              {balanse.incomeBalanse === undefined
+                ? 0
+                : balanse.incomeBalanse?.amount}
             </p>
           </div>
           {/* MONTH */}

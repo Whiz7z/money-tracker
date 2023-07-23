@@ -50,10 +50,11 @@ const ExpensesList: any = async (props: Props) => {
       },
     }
   );
-  const data = await response.json();
+  console.log("data data", response);
+  const data = response.ok ? await response.json() : undefined;
 
   const dataChart =
-    type === "incomes"
+    data && type === "incomes"
       ? data.groupedIncomes.map((el) => {
           return {
             title: el.origin.name,
@@ -62,7 +63,8 @@ const ExpensesList: any = async (props: Props) => {
             color: el.origin.color,
           };
         })
-      : data.groupedExpenses.map((el) => {
+      : data &&
+        data.groupedExpenses.map((el) => {
           return {
             title: el.origin.name,
             label: el.origin.name,
@@ -90,7 +92,7 @@ const ExpensesList: any = async (props: Props) => {
   if (display === "list") {
     return (
       <div className="grid gap-[15px] mt-[33px] h-[350px] overflow-y-scroll bg-transparent p-[10px] rounded-[5px] text-skin-ordinary">
-        {type === "expenses" && data.groupedExpenses.length >= 1 ? (
+        {type === "expenses" && data && data.groupedExpenses.length >= 1 ? (
           data.groupedExpenses.map((exp) => (
             <ListItem
               color={exp.origin.color}
@@ -100,9 +102,9 @@ const ExpensesList: any = async (props: Props) => {
               date={{ month: month, year: year }}
             />
           ))
-        ) : type === "expenses" && data.groupedExpenses.length < 1 ? (
+        ) : type === "expenses" && data && data.groupedExpenses.length < 1 ? (
           <p className="self-center">No expense found for this month</p>
-        ) : type === "incomes" && data.groupedIncomes.length >= 1 ? (
+        ) : type === "incomes" && data && data.groupedIncomes.length >= 1 ? (
           data.groupedIncomes.map((exp) => (
             <ListItem
               color={exp.origin.color}
@@ -114,6 +116,7 @@ const ExpensesList: any = async (props: Props) => {
           ))
         ) : (
           type === "incomes" &&
+          data &&
           data.groupedIncomes.length < 1 && (
             <p className="self-center">No income found for this month</p>
           )
@@ -124,7 +127,7 @@ const ExpensesList: any = async (props: Props) => {
 
   return (
     <div className="grid gap-[15px] mt-[33px] h-[350px] overflow-y-scroll bg-transparent p-[10px] rounded-[5px] text-skin-ordinary">
-      {type === "expenses" && data.groupedExpenses.length >= 1 ? (
+      {type === "expenses" && data && data.groupedExpenses.length >= 1 ? (
         data.groupedExpenses.map((exp) => (
           <ListItem
             color={exp.origin.color}
@@ -134,9 +137,11 @@ const ExpensesList: any = async (props: Props) => {
             date={{ month: month, year: year }}
           />
         ))
-      ) : type === "expenses" && data.groupedExpenses.length < 1 ? (
+      ) : type === "expenses" && data && data.groupedExpenses.length < 1 ? (
         <p className="self-center">No expense found for this month</p>
-      ) : type === "incomes" && data.groupedIncomes.length >= 1 ? (
+      ) : type === "expenses" && !data ? (
+        <p className="self-center">No expense found for this month</p>
+      ) : type === "incomes" && data && data.groupedIncomes.length >= 1 ? (
         data.groupedIncomes.map((exp) => (
           <ListItem
             color={exp.origin.color}
@@ -148,6 +153,7 @@ const ExpensesList: any = async (props: Props) => {
         ))
       ) : (
         type === "incomes" &&
+        data &&
         data.groupedIncomes.length < 1 && (
           <p className="self-center">No income found for this month</p>
         )
