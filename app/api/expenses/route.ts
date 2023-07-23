@@ -58,7 +58,8 @@ export async function POST(req: Request) {
   const { origin, amount, date } = await req.json();
 
   if (
-    origin.trim().length < 1 ||
+    origin.name.trim().length < 1 ||
+    origin.color.trim().length < 1 ||
     amount.trim().length < 1 ||
     date.trim().length < 1
   ) {

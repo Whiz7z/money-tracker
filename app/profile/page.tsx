@@ -55,16 +55,16 @@ const Profile: any = async ({ searchParams }) => {
           {/* BALANSE */}
           <p className="text-[2rem] self-end">Balanse</p>
           <div className="min-w-[100%] grid grid-cols-2 justify-self-center self-start ">
-            <p className="text-[3.2rem] text-skin-good  justify-self-center	self-start">
-              +$
-              {balanse && balanse.incomeBalanse
-                ? balanse.incomeBalanse.amount
-                : 0}
-            </p>
             <p className="text-[3.2rem] text-skin-danger justify-self-center self-start	">
               -$
               {balanse && balanse.expenseBalanse
                 ? balanse.expenseBalanse.amount
+                : 0}
+            </p>
+            <p className="text-[3.2rem] text-skin-good  justify-self-center	self-start">
+              +$
+              {balanse && balanse.incomeBalanse
+                ? balanse.incomeBalanse.amount
                 : 0}
             </p>
           </div>
