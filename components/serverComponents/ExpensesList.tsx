@@ -50,7 +50,7 @@ const ExpensesList: any = async (props: Props) => {
       },
     }
   );
-  console.log("data data", response);
+  //console.log("data data", response);
   const data = response.ok ? await response.json() : undefined;
 
   const dataChart =

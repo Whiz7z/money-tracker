@@ -109,7 +109,7 @@ export async function POST(req: Request) {
   if (type === "expenses") {
     //console.log(user.expenses.filter((el) => el.id !== id)); ПЕРЕСТАВИТИ МІСЦЯМИ
     console.log(user.expenses.findIndex((el) => el.id === id));
-    user.expenses = user.expenses.filter((el) => el.id !== id);
+
     const index = user.ExpenseBalanse.findIndex(
       (el) =>
         new Date(el.date).getFullYear() === Number(year) &&
@@ -119,12 +119,24 @@ export async function POST(req: Request) {
     user.ExpenseBalanse[index].amount =
       user.ExpenseBalanse[index].amount -
       user.expenses.find((el) => el.id === id).amount;
+
+    user.expenses = user.expenses.filter((el) => el.id !== id);
     user.save();
     return new NextResponse("deleted");
   }
 
   if (type === "incomes") {
     // console.log(user.incomes.filter((el) => el.id !== id));
+    const index = user.IncomeBalanse.findIndex(
+      (el) =>
+        new Date(el.date).getFullYear() === Number(year) &&
+        new Date(el.date).getMonth() === Number(month)
+    );
+
+    user.IncomeBalanse[index].amount =
+      user.IncomeBalanse[index].amount -
+      user.incomes.find((el) => el.id === id).amount;
+
     user.incomes = user.incomes.filter((el) => el.id !== id);
     user.save();
     return new NextResponse("deleted");

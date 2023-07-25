@@ -32,7 +32,7 @@ export async function GET(req: Request) {
     );
 
     console.log("user expenses", user.expenses);
-    if (user && user.expenses.length > 1) {
+    if (user && user.expenses.length > 0) {
       const groupedData = groupData(
         user.expenses.filter(
           (el) =>
