@@ -7,14 +7,15 @@ import { useRouter } from "next/navigation";
 type Props = {
   id: string;
   type: string;
+  date: any;
 };
 
-const deleteItemBtn = ({ id, type }: Props) => {
+const deleteItemBtn = ({ id, type, date }: Props) => {
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
   const deleteItemHandler = async (id: string, type: string) => {
     const response = await fetch(
-      `http://localhost:3000/api/items?type=${type}&id=${id}`,
+      `http://localhost:3000/api/items?type=${type}&id=${id}&date=${date}`,
       {
         method: "POST",
         headers: {

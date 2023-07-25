@@ -34,7 +34,7 @@ const ItemsListItem: any = ({ item, type }: Props) => {
       </div>
 
       <div className="justify-self-center">{dayAndMonth}</div>
-      <DeleteItemBtn id={item._id} type={type} />
+      <DeleteItemBtn id={item._id} date={date} type={type} />
     </div>
   );
 };

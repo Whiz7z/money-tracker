@@ -28,14 +28,17 @@ const ItemsList = async ({ searchParams }: Props) => {
 
   const data = await response.json();
 
-  console.log(data.items[0]._id);
+  //console.log(data);
+
   return (
     <div className="grid  w-[655px] text-skin-base h-[860px] mt-[70px]">
       <h2
         className=" text-[3.2rem] self-start justify-self-center bg-muted p-[20px] rounded-[5px] "
         style={{
           color: type === "expenses" ? "#ea4335" : "#86bc34",
-          borderBottom: `solid 4px ${data.items[0].origin.color}`,
+          borderBottom: `solid 4px ${
+            data && data.items.length >= 1 && data.items[0].origin.color
+          }`,
         }}
       >
         {originName} {type === "expenses" ? "Expenses" : "Incomes"}
@@ -46,9 +49,11 @@ const ItemsList = async ({ searchParams }: Props) => {
       bg-muted p-[20px] rounded-[5px] 
        text-skin-ordinary"
       >
-        {data &&
-          data.items.length >= 1 &&
-          data.items.map((el) => <ItemsListItem item={el} type={type} />)}
+        {data && data.items.length >= 1 ? (
+          data.items.map((el) => <ItemsListItem item={el} type={type} />)
+        ) : (
+          <p className="self-center">No items found</p>
+        )}
       </div>
     </div>
   );

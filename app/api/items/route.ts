@@ -80,6 +80,11 @@ export async function POST(req: Request) {
   const { searchParams } = new URL(req.url);
   const type = searchParams.get("type");
   const id = searchParams.get("id");
+  const date = searchParams.get("date");
+
+  const month = new Date(date).getMonth();
+  const year = new Date(date).getFullYear();
+  console.log("date date", date);
 
   if (type.trim().length < 1 || id.trim().length < 1) {
     return new NextResponse("Invadid month or year data");
@@ -102,15 +107,25 @@ export async function POST(req: Request) {
   );
 
   if (type === "expenses") {
-    //console.log(user.expenses.filter((el) => el.id !== id));
+    //console.log(user.expenses.filter((el) => el.id !== id)); ПЕРЕСТАВИТИ МІСЦЯМИ
+    console.log(user.expenses.findIndex((el) => el.id === id));
     user.expenses = user.expenses.filter((el) => el.id !== id);
+    const index = user.ExpenseBalanse.findIndex(
+      (el) =>
+        new Date(el.date).getFullYear() === Number(year) &&
+        new Date(el.date).getMonth() === Number(month)
+    );
+
+    user.ExpenseBalanse[index].amount =
+      user.ExpenseBalanse[index].amount -
+      user.expenses.find((el) => el.id === id).amount;
     user.save();
     return new NextResponse("deleted");
   }
 
   if (type === "incomes") {
     // console.log(user.incomes.filter((el) => el.id !== id));
-    user.expenses = user.incomes.filter((el) => el.id !== id);
+    user.incomes = user.incomes.filter((el) => el.id !== id);
     user.save();
     return new NextResponse("deleted");
   }
