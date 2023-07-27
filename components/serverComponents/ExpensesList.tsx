@@ -83,7 +83,10 @@ const ExpensesList: any = async (props: Props) => {
 
   if (display === "chart") {
     return (
-      <div className="grid gap-[15px] mt-[33px] h-[350px] overflow-y-scroll bg-transparent p-[10px] rounded-[5px] text-skin-ordinary">
+      <div
+        className="grid gap-[15px] max-h-[350px] overflow-y-scroll 
+      bg-transparent p-[10px] rounded-[5px] text-skin-ordinary"
+      >
         <PieChartWrapper data={dataChart} />
       </div>
     );
@@ -91,7 +94,10 @@ const ExpensesList: any = async (props: Props) => {
 
   if (display === "list") {
     return (
-      <div className="grid gap-[15px] mt-[33px] h-[350px] overflow-y-scroll bg-transparent p-[10px] rounded-[5px] text-skin-ordinary">
+      <div
+        className="grid gap-[15px] max-h-[350px] overflow-y-scroll 
+      bg-transparent p-[10px] rounded-[5px] text-skin-ordinary"
+      >
         {type === "expenses" && data && data.groupedExpenses.length >= 1 ? (
           data.groupedExpenses.map((exp) => (
             <ListItem
@@ -128,7 +134,10 @@ const ExpensesList: any = async (props: Props) => {
   }
 
   return (
-    <div className="grid gap-[15px] mt-[33px] h-[350px] overflow-y-scroll bg-transparent p-[10px] rounded-[5px] text-skin-ordinary">
+    <div
+      className="grid gap-[15px] max-h-[350px] overflow-y-scroll 
+    bg-transparent p-[10px] rounded-[5px] text-skin-ordinary"
+    >
       {type === "expenses" && data && data.groupedExpenses.length >= 1 ? (
         data.groupedExpenses.map((exp) => (
           <ListItem

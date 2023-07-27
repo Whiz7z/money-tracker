@@ -15,16 +15,18 @@ const ListItem = ({ color, amount, originName, date, type }: Props) => {
     <Link
       href={`/items?month=${date.month}&year=${date.year}&type=${type}&originName=${originName}`}
       className="grid grid-cols-listItem h-[45px] cursor-pointer
-       hover:bg-semitransparent  pl-[10px] rounded-[5px]"
+       hover:bg-semitransparent  pl-[10px] rounded-[5px] gap-[20px]"
     >
       <div
-        className={`w-[100px] h-[30px] self-center`}
+        className={`w-[40px] tablet:w-[70px] laptop:w-[100px] h-[30px] self-center`}
         style={{ backgroundColor: `${color}` }}
       ></div>
-      <div className="justify-self-start self-center text-[2.8rem]">
+      <div className="justify-self-start self-center text-[1.2rem] laptop:text-[2.8rem] tablet:text-[2rem]">
         {originName}
       </div>
-      <div className="text-[2.8rem] self-center mr-[10px]">${amount}</div>
+      <div className="laptop:text-[2.8rem] text-[1.2rem]  tablet:text-[2rem] self-center mr-[10px]">
+        ${amount}
+      </div>
     </Link>
   );
 };

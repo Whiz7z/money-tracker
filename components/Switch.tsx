@@ -28,7 +28,7 @@ const Switch: any = async ({ searchParams: initialParams }: Props) => {
   };
 
   return (
-    <div className="max-w-[240px] self-start  grid grid-cols-switch justify-self-center gap-[5px] text-[2.8rem] mt-[25px]">
+    <div className="max-w-[240px] self-start  grid grid-cols-switch justify-self-center gap-[5px] tablet:text-[2.4rem] laptop:text-[2.8rem] mt-[25px]">
       <p
         className={`cursor-pointer	text-skin-danger self-start ${
           (active === "expenses" || active == undefined) && activeClass

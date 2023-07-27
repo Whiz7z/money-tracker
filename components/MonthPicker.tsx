@@ -89,7 +89,7 @@ const MonthPicker: any = (props: Props) => {
   }, [date]);
   return (
     <div
-      className="grid min-w-[200px]   grid-cols-month gap-[20px] 
+      className="grid min-w-[200px] phone:grid-cols-monthPhone tablet:grid-cols-month gap-[20px] 
             justify-self-center "
     >
       <div
@@ -97,16 +97,16 @@ const MonthPicker: any = (props: Props) => {
         className="w-[30px] h-[30px] arrow-clip-left bg-accent col-1 self-end 
               relative bottom-[5px] cursor-pointer hover:w-[35px] hover:h-[35px] justify-self-end"
       ></div>
-      <div className="self-end w-[180px] ">
+      <div className="self-end w-[120px] tablet:w-[180px] ">
         <label
-          className="cursor-pointer"
+          className="grid cursor-pointer"
           htmlFor="monthPicker"
           onClick={() => pickerRef.current.showPicker()}
         >
-          <p className="text-[2rem] text-skin-accent leading-4	">
+          <p className="phone:text-[1.8rem] tablet:text-[2rem] text-skin-accent leading-4">
             {date.getFullYear()}
           </p>
-          <p className="text-[2.8rem] text-skin-accent">
+          <p className="text-[1.8rem] tablet:text-[2.4rem] laptop:text-[2.8rem] text-skin-accent">
             {months[date.getMonth()]}
           </p>
         </label>

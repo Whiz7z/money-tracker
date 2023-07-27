@@ -9,8 +9,7 @@ type Props = {
 const MainBlock = (props: Props) => {
   return (
     <div
-      className="relative grid h-[1020px] max-w-[33%] min-w-[900px]
-     
+      className="relative grid h-[1020px] 
       justify-center "
     >
       {/* <div className="absolute w-[100%] grid grid-cols-2 top-[80px]">

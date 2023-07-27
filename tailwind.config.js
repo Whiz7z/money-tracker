@@ -34,8 +34,9 @@ module.exports = {
       gridTemplateColumns: {
         // Complex site-specific column configuration
         footer: "200px minmax(900px, 1fr) 100px",
-        listItem: "150px 1fr auto",
+        listItem: "auto 1fr auto",
         month: "50px 180px 50px",
+        monthPhone: "30px 120px 30px",
         switch: "auto auto auto",
         calendarInput: "auto auto",
       },
@@ -56,6 +57,18 @@ module.exports = {
       boxShadow: {
         mainBlock: "0px 30px 90px 5px #1E1E1E;",
       },
+    },
+    screens: {
+      tiny: "200px",
+      phone: "300px",
+      tablet: "460px",
+      // => @media (min-width: 640px) { ... }
+
+      laptop: "768px",
+      // => @media (min-width: 1024px) { ... }
+
+      desktop: "1280px",
+      // => @media (min-width: 1280px) { ... }
     },
   },
   plugins: [],

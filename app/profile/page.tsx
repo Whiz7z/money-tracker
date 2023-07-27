@@ -51,20 +51,21 @@ const Profile: any = async ({ searchParams }) => {
       {/* <SignOut /> */}
 
       <div
-        className="grid justify-self-center text-skin-ordinary w-[655px]  h-[860px] mt-[50px] 
+        className="grid justify-self-center text-skin-ordinary 
+         w-[300px] tablet:w-[420px] laptop:w-[655px]  h-[860px] mt-[50px] 
         "
       >
         <div className="grid bg-muted p-[20px] rounded-[5px]">
           {/* BALANSE */}
           <p className="text-[2rem] self-end">Balanse</p>
           <div className="min-w-[100%] grid grid-cols-2 justify-self-center self-start ">
-            <p className="text-[3.2rem] text-skin-danger justify-self-center self-start	">
+            <p className="tablet:text-[2.6rem]  laptop:text-[3.2rem] text-skin-danger justify-self-center self-start	">
               -$
               {balanse.expenseBalanse === undefined
                 ? 0
                 : balanse.expenseBalanse?.amount}
             </p>
-            <p className="text-[3.2rem] text-skin-good  justify-self-center	self-start">
+            <p className="tablet:text-[2.6rem]  laptop:text-[3.2rem] text-skin-good  justify-self-center	self-start">
               +$
               {balanse.incomeBalanse === undefined
                 ? 0
@@ -103,24 +104,9 @@ const Profile: any = async ({ searchParams }) => {
         </Suspense>
         {/* BUTTONS */}
         <div className="grid bg-muted p-[30px] rounded-[5px] ">
-          <div className="w-[480px] grid grid-cols-2 gap-[30px] justify-self-center self-end ">
-            {/* <Link
-            href="/profile/addIncome"
-            className="inline-block w-[220px] h-[60px] justify-self-end
-               bg-accent rounded-[15px] font-bold text-[2.8rem] text-skin-dark text-center leading-[6rem]	"
-          >
-            + income
-          </Link> */}
-
+          <div className="phone:w-[240px] tablet:w-[380px] grid grid-cols-2 gap-[30px] justify-self-center self-end ">
             <Button type={"expense"} />
             <Button type={"income"} />
-            {/* <Link
-            href="/profile/addExpense"
-            className="inline-block w-[220px] h-[60px] justify-self-start
-               bg-muted rounded-[15px] font-bold text-[2.8rem] text-center leading-[6rem]"
-          >
-            + expense
-          </Link> */}
           </div>
         </div>
       </div>
