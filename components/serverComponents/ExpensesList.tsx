@@ -95,6 +95,7 @@ const ExpensesList: any = async (props: Props) => {
         {type === "expenses" && data && data.groupedExpenses.length >= 1 ? (
           data.groupedExpenses.map((exp) => (
             <ListItem
+              key={exp.origin.id}
               color={exp.origin.color}
               originName={exp.origin.name}
               amount={exp.amount}
@@ -107,6 +108,7 @@ const ExpensesList: any = async (props: Props) => {
         ) : type === "incomes" && data && data.groupedIncomes.length >= 1 ? (
           data.groupedIncomes.map((exp) => (
             <ListItem
+              key={exp.origin.id}
               color={exp.origin.color}
               originName={exp.origin.name}
               amount={exp.amount}

@@ -47,7 +47,7 @@ const deleteItemBtn = ({ id, type, date }: Props) => {
           <div className="grid grid-cols-2 gap-x-[20px] self-center w-[100%] ">
             <button
               onClick={() => setOpenModal(false)}
-              className="w-[200px] bg-muted rounded-[10px] h-[40px] justify-self-end text-skin-ordinary font-bold"
+              className="w-[200px] bg-semitransparent rounded-[10px] h-[40px] justify-self-end text-skin-ordinary font-bold"
             >
               No
             </button>
