@@ -12,14 +12,6 @@ const MainBlock = (props: Props) => {
       className="relative grid h-[1020px] 
       justify-center "
     >
-      {/* <div className="absolute w-[100%] grid grid-cols-2 top-[80px]">
-        <div className="absolute text-skin-base left-[100px] cursor-pointer">
-          <MoveBack />
-        </div>
-        <div className="absolute text-skin-base right-[100px] cursor-pointer">
-          <MoveForward />
-        </div>
-      </div> */}
       {props.children}
     </div>
   );

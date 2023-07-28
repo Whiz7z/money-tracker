@@ -31,9 +31,10 @@ const ItemsList = async ({ searchParams }: Props) => {
   //console.log(data);
 
   return (
-    <div className="grid  w-[655px] text-skin-base h-[860px] mt-[70px]">
+    <div className="grid w-[300px] laptop:w-[655px] tablet:w-[420px] text-skin-base h-[860px] ">
       <h2
-        className=" text-[3.2rem] self-start justify-self-center bg-muted p-[20px] rounded-[5px] "
+        className=" text-[2.2rem] tablet:text-[2.6rem] 
+        laptop:text-[3.2rem] self-start justify-self-center bg-muted p-[20px] rounded-[5px] "
         style={{
           color: type === "expenses" ? "#ea4335" : "#86bc34",
           borderBottom: `solid 4px ${
@@ -45,7 +46,7 @@ const ItemsList = async ({ searchParams }: Props) => {
       </h2>
       <div
         className="grid grid-rows-[max-content]  justify-self-center
-       mt-[33px] w-[100%] h-[550px] overflow-y-auto
+        w-[100%] h-[550px] overflow-y-auto
       bg-muted p-[20px] rounded-[5px] 
        text-skin-ordinary"
       >

@@ -66,8 +66,8 @@ function Auth(props: Props) {
   };
 
   return (
-    <div className="h-[640px] w-[655px] self-center ">
-      <h2 className="text-skin-ordinary bg-muted p-[20px] rounded-[5px]  text-[3.6rem] font-bold">
+    <div className="h-[640px] tablet:w-[420px] laptop:w-[655px] self-center ">
+      <h2 className="text-skin-ordinary bg-muted p-[20px] rounded-[5px] tablet:text-[3rem]  laptop:text-[3.6rem] font-bold">
         {isLogin ? "Login" : "Register"}
       </h2>
 
@@ -81,12 +81,19 @@ function Auth(props: Props) {
         className="grid gap-[20px] mt-[40px]"
       >
         <div className="grid w-[100%] bg-muted p-[20px] rounded-[5px] relative">
-          <label className="justify-self-start  text-left  text-skin-ordinary  text-[2rem]">
+          <label
+            className="justify-self-start  text-left  
+          text-skin-ordinary text-[1.4rem]
+          tablet:text-[1.6rem]  laptop:text-[2rem]"
+          >
             Username
           </label>
           <input
             autoComplete="false"
-            className="block font-bold w-[100%] bg-transparent pl-[25px] border-[3px] text-skin-ordinary placeholder:text-skin-ordinary border-ordinary  rounded-[25px] h-[60px]
+            className="block font-bold w-[100%] bg-transparent pl-[25px] 
+            border-[1px] tablet:border-[3px] text-skin-ordinary placeholder:text-skin-ordinary 
+            border-ordinary  rounded-[25px] h-[40px] tablet:h-[60px] text-[1.4rem]
+          tablet:text-[1.6rem]  laptop:text-[2rem]
             mt-[20px]"
             type="text"
             placeholder="Username"
@@ -102,11 +109,18 @@ function Auth(props: Props) {
         </div>
 
         <div className="grid w-[100%] bg-muted p-[20px] rounded-[5px] relative">
-          <label className="justify-self-start text-left text-skin-ordinary  text-[2rem] w-[100% ">
+          <label
+            className="justify-self-start text-left text-skin-ordinary text-[1.4rem]
+          tablet:text-[1.6rem]  laptop:text-[2rem]
+           w-[100% "
+          >
             Password
           </label>
           <input
-            className="block font-bold w-[100%] bg-transparent pl-[25px] border-[3px] text-skin-ordinary placeholder:text-skin-ordinary border-ordinary  rounded-[25px] h-[60px]
+            className="block font-bold w-[100%] bg-transparent pl-[25px] 
+            border-[1px] tablet:border-[3px] text-skin-ordinary placeholder:text-skin-ordinary 
+            border-ordinary  rounded-[25px] h-[40px] tablet:h-[60px] text-[1.4rem]
+          tablet:text-[1.6rem]  laptop:text-[2rem]
             mt-[20px]"
             type="password"
             placeholder="Password"
@@ -121,13 +135,15 @@ function Auth(props: Props) {
           </p>
         </div>
         {/* <p className="text-skin-base text-[2rem] font-bold text-center absolute"></p> */}
-        <div className="grid grid-cols-2 bg-muted p-[20px] rounded-[5px] gap-[30px] mt-[80px]">
+        <div className="grid grid-cols-2 bg-muted p-[20px] rounded-[5px] gap-[30px] laptop:mt-[80px]">
           <button
             className={`${
               isValid
                 ? "bg-accent text-skin-dark"
                 : "bg-semitransparent text-skin-ordinary "
-            } rounded-[15px] w-[220px] h-[60px] font-bold  text-[2.8rem] justify-self-end`}
+            } rounded-[15px] w-[110px] laptop:w-[220px] tablet:w-[160px] h-[40px]  laptop:h-[60px] 
+            font-bold  
+            text-[1.6rem] tablet:text-[2.2rem] laptop:text-[2.8rem] justify-self-end`}
             type="submit"
             disabled={!isValid}
           >
@@ -140,7 +156,8 @@ function Auth(props: Props) {
               : "Register"}
           </button>
           <button
-            className="bg-semitransparent rounded-[15px] w-[220px] h-[60px] font-bold text-skin-ordinary text-[2.8rem] justify-self-start"
+            className="bg-semitransparent rounded-[15px] w-[110px] laptop:w-[220px] tablet:w-[160px]
+             h-[40px]  laptop:h-[60px]  font-bold text-skin-ordinary text-[1.6rem] tablet:text-[2.2rem] laptop:text-[2.8rem] justify-self-start"
             type="button"
             onClick={() => setIsLogin((prev) => !prev)}
           >

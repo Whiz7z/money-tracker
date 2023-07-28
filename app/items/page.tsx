@@ -8,8 +8,8 @@ const page = ({ searchParams }) => {
   //console.log(searchParams);
   return (
     <>
-      <div className="absolute w-[100%] grid grid-cols-2 top-[80px]">
-        <div className="absolute text-skin-base left-[123px] bg-muted p-[20px] rounded-[5px] cursor-pointer">
+      <div className="w-[100%] grid ">
+        <div className="text-skin-base w-[70px] h-[70px] bg-muted p-[20px] rounded-[5px] cursor-pointer">
           <MoveBack />
         </div>
       </div>

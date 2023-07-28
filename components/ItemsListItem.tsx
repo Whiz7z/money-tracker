@@ -26,14 +26,15 @@ const ItemsListItem: any = ({ item, type }: Props) => {
       className="grid grid-cols-[1fr_1fr_auto] cursor-pointer 
       p-[10px]  content-center w-[100%] h-[45px] justify-self-center
       border-b-2 border-transparent
-       hover:transition-all hover:bg-semitransparent hover:border-b-2 hover:border-ordinary"
+       hover:transition-all hover:bg-semitransparent hover:border-b-2 hover:border-ordinary
+       text-[1.6rem] tablet:text-[1.8rem] laptop:text-[2.2rem]"
     >
       <div className="grid grid-cols-2 items-center content-center">
-        <div className="justify-self-start">${amount}</div>
+        <div className="justify-self-start self-center">${amount}</div>
         <div className="justify-self-start">{origin.name}</div>
       </div>
 
-      <div className="justify-self-center">{dayAndMonth}</div>
+      <div className="justify-self-center self-center">{dayAndMonth}</div>
       <DeleteItemBtn id={item._id} date={date} type={type} />
     </div>
   );
