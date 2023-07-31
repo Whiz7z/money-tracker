@@ -114,9 +114,9 @@ const Input = ({ type }: Props) => {
   }, [startDate]);
 
   return (
-    <div className="grid gap-[20px]">
+    <div className="grid gap-[20px] w-[300px] tablet:w-[400px] laptop:w-[100%]">
       <div
-        className="grid justify-self-center h-[95px]
+        className="grid justify-self-center h-[95px] 
       grid-cols-calendarInput  bg-muted p-[20px] rounded-[5px] overflow-hidden"
       >
         <div onClick={(e) => openDatePicker()}>
@@ -128,7 +128,7 @@ const Input = ({ type }: Props) => {
         </div>
         <label
           htmlFor="date"
-          className="self-center cursor-pointer"
+          className="self-center cursor-pointer text-[1.8rem] laptop:text-[2.2rem]"
           onClick={(e) => openDatePicker()}
         >
           {`${weekday[startDate.getDay()]}, ${startDate.getDate()} ${
@@ -144,21 +144,23 @@ const Input = ({ type }: Props) => {
           className="hidden"
         />
       </div>
-      <div className="grid gap-[20px]">
-        <div className="flex bg-muted p-[20px] rounded-[5px]">
+      <div className="grid gap-[20px] w-[300px] tablet:w-[400px] laptop:w-[100%]">
+        <div className="flex bg-muted p-[20px] rounded-[5px] w-[300px] tablet:w-[400px] laptop:w-[100%]">
           <input
             type="text"
             placeholder="Add new origin"
             value={newOriginValue}
             onChange={newOriginChangeHandler}
-            className="block font-bold w-[400px] bg-transparent pl-[25px]
+            className="block font-bold w-[140px] tablet:w-[200px] laptop:w-[400px] bg-transparent pl-[10px] tablet:pl-[25px]
              border-t-[3px] border-b-[3px] border-l-[3px] text-skin-ordinary
-              border-ordinary rounded-tl-[25px] rounded-bl-[25px] h-[60px] placeholder:text-skin-ordinary"
+              border-ordinary rounded-tl-[25px] rounded-bl-[25px] text-[1.4rem] tablet:text-[1.6rem] laptop:text-[2.6rem] 
+              tablet:h-[40px] laptop:h-[60px] placeholder:text-skin-ordinary"
           />
           <button
-            className="h-[60px] bg-good text-skin-muted font-bold  pl-[25px] pr-[25px] self-start 
+            className="h-[40px] laptop:h-[60px] bg-good text-skin-muted font-bold  
+            tablet:pl-[25px] tablet:pr-[25px] self-start text-center
             border-t-[3px] border-b-[3px] border-r-[3px] border-ordinary rounded-tr-[25px] 
-            rounded-br-[25px]"
+            rounded-br-[25px] text-[1.2rem] tablet:text-[1.6rem] laptop:text-[2.6rem] w-[50px]  tablet:w-[110px]"
             type="button"
             onClick={() => createNewOrigin(newOriginValue, color)}
           >
@@ -171,7 +173,7 @@ const Input = ({ type }: Props) => {
             onMouseLeave={() => setShowColorPicker(false)}
           >
             <div
-              className="h-[60px] w-[70px] border-[3px] border-ordinary  rounded-[20px] cursor-pointer"
+              className="tablet:h-[40px] laptop:h-[60px] w-[50px] h-[40px] tablet:w-[50px] laptop:w-[70px] border-[3px] border-ordinary  rounded-[20px] cursor-pointer"
               style={{ backgroundColor: `${color}` }}
               onClick={() => setShowColorPicker(true)}
             ></div>
@@ -193,17 +195,23 @@ const Input = ({ type }: Props) => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 justify-between bg-muted p-[20px] rounded-[5px]">
-          <div className="justify-self-start self-center text-center font-bold text-[3rem]">
+        <div
+          className="grid justify-self-center tablet:grid-cols-2 justify-items-start bg-muted w-[300px] tablet:w-[400px] laptop:w-[100%]
+        p-[20px] rounded-[5px]"
+        >
+          <div className="justify-self-center tablet:justify-self-start self-center text-center font-bold phone:text-[1.8rem] laptop:text-[3rem]">
             {currentOrigin.name
               ? currentOrigin.name
               : `${type === "expense" ? "Expense" : "Income"} Origin`}
           </div>
-          <div className="justify-self-end self-center">
-            <span className="font-bold text-[3rem] mr-[20px]">$</span>
+          <div className="justify-self-center tablet:justify-self-end self-center">
+            <span className="font-bold phone:text-[2.4rem] laptop:text-[3rem] mr-[20px]">
+              $
+            </span>
             <input
-              className="text-center font-bold w-[200px] bg-transparent
-              border-[3px]  text-skin-ordinary placeholder:text-skin-ordinary border-ordinary rounded-[25px] h-[60px]"
+              className="text-center font-bold w-[120px] laptop:w-[200px] bg-transparent 
+              border-[3px]  text-skin-ordinary placeholder:text-skin-ordinary 
+              border-ordinary rounded-[25px] h-[40px] tablet:h-[60px] text-[1.8rem] tablet:text-[2.2rem]"
               placeholder="00.00"
               value={amount}
               type="number"
@@ -212,14 +220,15 @@ const Input = ({ type }: Props) => {
           </div>
         </div>
 
-        <div className="bg-muted p-[20px] rounded-[5px]">
+        <div className="bg-muted p-[20px] rounded-[5px] w-[300px] tablet:w-[400px] laptop:w-[100%]">
           <button
             onClick={() => {
               createNewExpenseIncomeHandler();
             }}
-            className="inline-block w-[220px] h-[60px] justify-self-center self-end
-               bg-accent rounded-[15px] font-bold text-[2.8rem] 
-               text-skin-muted text-center leading-[6rem]"
+            className="inline-block w-[140px] tablet:w-[220px] h-[50px] tablet:h-[60px] 
+            justify-self-center self-end
+               bg-accent rounded-[15px] font-bold tablet:text-[2.8rem] text-[2.4rem] 
+               text-skin-muted text-center leading-[5rem] tablet:leading-[6rem]"
           >
             Save
           </button>

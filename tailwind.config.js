@@ -42,7 +42,7 @@ module.exports = {
       },
       gridTemplateRows: {
         blockRowGrid: "80px 1fr 145px 60px 80px",
-        blockTypesGrid: "80px 1fr 1fr",
+        blockTypesGrid: "80px min-content min-content",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

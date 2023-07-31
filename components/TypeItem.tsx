@@ -8,8 +8,9 @@ import { setCurrentOrigin } from "@/Redux/expensesOrigin";
 type Props = {
   type: string;
   color: string;
+  recordType: string;
 };
-const TypeItem = ({ type, color }: Props) => {
+const TypeItem = ({ type, color, recordType }: Props) => {
   const [showCross, setShowCross] = useState(false);
   const { data: session, status } = useSession();
   const { currentOrigin } = useSelector((state: any) => state.expensesOrigin);
@@ -23,16 +24,21 @@ const TypeItem = ({ type, color }: Props) => {
         type: typeName,
       })
     );
-    fetch("http://localhost:3000/api/expenseOrigins", {
-      method: "PUT",
-      body: JSON.stringify({
-        session: session,
-        type: typeName,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(() => router.refresh());
+    fetch(
+      `http://localhost:3000/api/${
+        recordType === "expenses" ? "expenseOrigins" : "incomeOrigins"
+      }`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          session: session,
+          type: typeName,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then(() => router.refresh());
   };
 
   const setCurrentOriginHandler = () => {
@@ -49,7 +55,7 @@ const TypeItem = ({ type, color }: Props) => {
         style={{
           backgroundColor:
             currentOrigin.name === type ? "#e49940" : "transparent",
-          padding: "0px 10px 0px 10px",
+
           color: currentOrigin.name === type && "#1e1e1e",
           fontWeight: currentOrigin.name === type && "bold",
         }}

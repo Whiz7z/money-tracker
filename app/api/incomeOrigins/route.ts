@@ -88,14 +88,23 @@ export async function POST(req: NextRequest) {
 
   await dbConnect();
 
-  await User.findOneAndUpdate(
-    { _id: decoded.id },
-    {
-      $push: {
-        IncomeType: { name: name, color: color },
-      },
-    }
+  const user = await User.findById(decoded.id);
+  const isTypeExists = user.IncomeType.find(
+    (el) => el.name.toLowerCase() === name.toLowerCase()
   );
+
+  if (isTypeExists === undefined) {
+    await User.findOneAndUpdate(
+      { _id: decoded.id },
+      {
+        $push: {
+          IncomeType: { name: name, color: color },
+        },
+      }
+    );
+  } else {
+    return new NextResponse("Type already exists");
+  }
 
   const tag = req.nextUrl.searchParams.get("tag");
   revalidateTag(tag);

@@ -9,7 +9,7 @@ type Props = {
 const MainBlock = (props: Props) => {
   return (
     <div
-      className="relative grid h-[1020px] 
+      className="relative grid h-[auto] gap-[20px] laptop:h-[1020px] 
       justify-center "
     >
       {props.children}
