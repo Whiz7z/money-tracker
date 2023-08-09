@@ -18,7 +18,7 @@ export const authOption: any = {
       async authorize(credentials) {
         if (!credentials?.username || !credentials.password) return null;
 
-        const res = await fetch("http://localhost:3000/api/login", {
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/login`, {
           method: "POST",
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" },

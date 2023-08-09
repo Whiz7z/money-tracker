@@ -32,7 +32,7 @@ const Profile: any = async ({ searchParams }) => {
   }
 
   const response = await fetch(
-    `http://localhost:3000/api/balanse?month=${month}&year=${year}`,
+    `${process.env.NEXTAUTH_URL}/api/balanse?month=${month}&year=${year}`,
     {
       method: "GET",
       headers: {
@@ -81,10 +81,10 @@ const Profile: any = async ({ searchParams }) => {
         {/* CHART OR LIST SWITCH */}
         <div className="grid self-start bg-muted p-[20px] rounded-[5px] w-[100%] grid-cols-2 ">
           <div className="justify-self-start">
-            <ListSvg w="45px" h="45px" fill="#E49940" />
+            <ListSvg w="30px" h="30px" fill="#E49940" />
           </div>
           <div className="justify-self-end">
-            <ChartSvg w="45px" h="45px" />
+            <ChartSvg w="30px" h="30px" />
           </div>
         </div>
         {/* LIST */}

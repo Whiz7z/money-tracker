@@ -18,7 +18,7 @@ const Types: any = async (props: Props) => {
   console.log("session", session);
 
   const data = await fetch(
-    `http://localhost:3000/api/${
+    `${process.env.NEXTAUTH_URL}/api/${
       props.type === "expenses" ? "expenseOrigins" : "incomeOrigins"
     }`,
     {

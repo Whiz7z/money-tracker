@@ -25,7 +25,7 @@ const TypeItem = ({ type, color, recordType }: Props) => {
       })
     );
     fetch(
-      `http://localhost:3000/api/${
+      `${process.env.NEXTAUTH_URL}/api/${
         recordType === "expenses" ? "expenseOrigins" : "incomeOrigins"
       }`,
       {
