@@ -15,7 +15,10 @@ const addIncome = (props: Props) => {
           <MoveBack />
         </div>
       </div>
-      <div className="grid grid-rows-blockTypesGrid text-skin-ordinary w-[300px] tablet:w-[400px] laptop:w-[655px]  h-[860px]">
+      <div
+        className="grid grid-rows-blockTypesGrid text-skin-ordinary 
+      w-[300px] tablet:w-[400px] laptop:w-[655px]  max-h-[860px]"
+      >
         <p
           className=" text-[3.2rem]  self-start justify-self-center 
           text-skin-good bg-muted p-[20px] rounded-[5px] "

@@ -51,8 +51,8 @@ const Profile: any = async ({ searchParams }) => {
       {/* <SignOut /> */}
 
       <div
-        className="grid justify-self-center text-skin-ordinary 
-         w-[300px] tablet:w-[420px] laptop:w-[655px]  h-[860px] mt-[50px] 
+        className="grid justify-self-center text-skin-ordinary gap-[10px] tablet:gap-[20px]
+         w-[300px] tablet:w-[420px] laptop:w-[655px] mt-[0] tablet:mt-[50px] 
         "
       >
         <div className="grid bg-muted p-[20px] rounded-[5px]">
@@ -79,7 +79,7 @@ const Profile: any = async ({ searchParams }) => {
           <Switch searchParams={searchParams} />
         </div>
         {/* CHART OR LIST SWITCH */}
-        <div className="grid self-start bg-muted p-[20px] rounded-[5px] w-[100%] grid-cols-2 mt-[20px]">
+        <div className="grid self-start bg-muted p-[20px] rounded-[5px] w-[100%] grid-cols-2 ">
           <div className="justify-self-start">
             <ListSvg w="45px" h="45px" fill="#E49940" />
           </div>
@@ -98,13 +98,13 @@ const Profile: any = async ({ searchParams }) => {
             </div>
           }
         >
-          <div className="grid bg-muted p-[20px] rounded-[5px] my-[20px] ">
+          <div className="grid bg-muted p-[20px] rounded-[5px] ">
             <ExpensesList type={type} searchParams={searchParams} />
           </div>
         </Suspense>
         {/* BUTTONS */}
         <div className="grid bg-muted p-[30px] rounded-[5px] ">
-          <div className="phone:w-[240px] tablet:w-[380px] grid grid-cols-2 gap-[30px] justify-self-center self-end ">
+          <div className="phone:w-[240px] self-center tablet:w-[380px] grid grid-cols-2 gap-[30px] justify-self-center">
             <Button type={"expense"} />
             <Button type={"income"} />
           </div>

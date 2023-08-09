@@ -68,7 +68,7 @@
 }
 
 * {
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 
 *,
@@ -81,6 +81,11 @@
 
 *:focus {
   outline: none;
+}
+
+body {
+  height: 100%;
+  background-color: rgb(156, 175, 183);
 }
 
 textarea:focus,
@@ -120,9 +125,6 @@ input[type="number"] {
 html {
   font-size: 62.5%;
   font-family: "Arial", Arial, Helvetica, sans-serif;
-}
-
-body {
 }
 
 .react-datepicker-wrapper {

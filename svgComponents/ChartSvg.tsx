@@ -21,8 +21,8 @@ const ChartSvg = (props: Props) => {
   return (
     <div className="cursor-pointer" onClick={() => changeDisplayHandler()}>
       <svg
-        height={props.h}
-        width={props.w}
+        height={window.innerWidth <= 460 ? "30px" : props.h}
+        width={window.innerWidth <= 460 ? "30px" : props.w}
         version="1.1"
         id="Capa_1"
         xmlns="http://www.w3.org/2000/svg"
