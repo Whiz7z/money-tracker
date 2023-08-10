@@ -66,7 +66,7 @@ const Input = ({ type }: Props) => {
       // console.log(name, color, "new origin values");
 
       await fetch(
-        `${process.env.NEXTAUTH_URL}/api/${
+        `${process.env.NEXTAUTH_URL}api/${
           type === "expense" ? "expenseOrigins" : "incomeOrigins"
         }`,
         {
@@ -92,7 +92,7 @@ const Input = ({ type }: Props) => {
 
   const createNewExpenseIncomeHandler = () => {
     fetch(
-      `${process.env.NEXTAUTH_URL}/api/${
+      `${process.env.NEXTAUTH_URL}api/${
         type === "expense" ? "expenses" : "incomes"
       }`,
       {
