@@ -32,7 +32,7 @@ const Profile: any = async ({ searchParams }) => {
   }
 
   const response = await fetch(
-    `${process.env.NEXTAUTH_URL}api/balanse?month=${month}&year=${year}`,
+    `${process.env.BASE_URL}api/balanse?month=${month}&year=${year}`,
     {
       method: "GET",
       headers: {

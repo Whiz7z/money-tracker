@@ -6,7 +6,7 @@ type Props = {
   searchParams: any;
 };
 const activeClass = "border-b-4 border-accent";
-const Switch: any = async ({ searchParams: initialParams }: Props) => {
+const Switch: any = ({ searchParams: initialParams }: Props) => {
   const router = useRouter();
   const [active, setActive] = useState(initialParams.type);
 

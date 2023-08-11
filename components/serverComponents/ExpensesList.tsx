@@ -41,7 +41,7 @@ const ExpensesList: any = async (props: Props) => {
 
   console.log("dates", month, year);
   const response = await fetch(
-    `${process.env.NEXTAUTH_URL}api/${type}?month=${month}&year=${year}`,
+    `${process.env.BASE_URL}api/${type}?month=${month}&year=${year}`,
     {
       method: "GET",
       headers: {

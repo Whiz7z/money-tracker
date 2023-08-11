@@ -66,7 +66,7 @@ const Input = ({ type }: Props) => {
       // console.log(name, color, "new origin values");
 
       await fetch(
-        `${process.env.NEXTAUTH_URL}api/${
+        `${process.env.BASE_URL}api/${
           type === "expense" ? "expenseOrigins" : "incomeOrigins"
         }`,
         {
@@ -80,7 +80,7 @@ const Input = ({ type }: Props) => {
 
       router.refresh();
 
-      // await fetch("${process.env.NEXTAUTH_URL}api/revalidate", {
+      // await fetch("${process.env.BASE_URL}api/revalidate", {
       //   method: "GET",
       // });
     });
@@ -92,7 +92,7 @@ const Input = ({ type }: Props) => {
 
   const createNewExpenseIncomeHandler = () => {
     fetch(
-      `${process.env.NEXTAUTH_URL}api/${
+      `${process.env.BASE_URL}api/${
         type === "expense" ? "expenses" : "incomes"
       }`,
       {
