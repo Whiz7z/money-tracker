@@ -31,13 +31,16 @@ const Profile: any = async ({ searchParams }) => {
     year = searchParams.year;
   }
 
-  const response = await fetch(`/api/balanse?month=${month}&year=${year}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${session.user.token}`,
-    },
-  });
+  const response = await fetch(
+    `${process.env.BASE_URL}api/balanse?month=${month}&year=${year}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${session.user.token}`,
+      },
+    }
+  );
 
   const balanse = await response.json();
   // if (balanse.expenseBalanse === undefined) {

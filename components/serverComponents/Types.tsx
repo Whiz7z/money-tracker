@@ -18,7 +18,9 @@ const Types: any = async (props: Props) => {
   console.log("session", session);
 
   const data = await fetch(
-    `/api/${props.type === "expenses" ? "expenseOrigins" : "incomeOrigins"}`,
+    `${process.env.BASE_URL}api/${
+      props.type === "expenses" ? "expenseOrigins" : "incomeOrigins"
+    }`,
     {
       method: "GET",
       headers: {

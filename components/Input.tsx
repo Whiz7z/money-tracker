@@ -78,7 +78,7 @@ const Input = ({ type }: Props) => {
 
       router.refresh();
 
-      // await fetch("/api/revalidate", {
+      // await fetch("${process.env.BASE_URL}api/revalidate", {
       //   method: "GET",
       // });
     });

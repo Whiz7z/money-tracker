@@ -16,7 +16,7 @@ const ItemsList = async ({ searchParams }: Props) => {
   const { originName, year, month, type } = searchParams;
   const session = await getServerSession<unknown, any>(authOption);
   const response = await fetch(
-    `/api/items?type=${type}&month=${month}&year=${year}&originName=${originName}`,
+    `${process.env.BASE_URL}api/items?type=${type}&month=${month}&year=${year}&originName=${originName}`,
     {
       method: "GET",
       headers: {
