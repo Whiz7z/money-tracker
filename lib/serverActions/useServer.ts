@@ -3,7 +3,7 @@
 export const createNewOrigin = async (name, color) => {
   console.log(name, color, "new origin values");
 
-  await fetch(`${process.env.BASE_URL}api/expenseOrigins`, {
+  await fetch(`/api/expenseOrigins`, {
     method: "POST",
     body: JSON.stringify({ name: name, color: color }),
     headers: {
@@ -11,7 +11,7 @@ export const createNewOrigin = async (name, color) => {
     },
   });
 
-  // await fetch(`${process.env.BASE_URL}api/revalidate`, {
+  // await fetch(`/api/revalidate`, {
   //   method: "GET",
   //   next: { tags: ["collection"] },
   // });

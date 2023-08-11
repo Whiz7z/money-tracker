@@ -15,7 +15,7 @@ const deleteItemBtn = ({ id, type, date }: Props) => {
   const router = useRouter();
   const deleteItemHandler = async (id: string, type: string) => {
     const response = await fetch(
-      `${process.env.BASE_URL}api/items?type=${type}&id=${id}&date=${date}`,
+      `/api/items?type=${type}&id=${id}&date=${date}`,
       {
         method: "POST",
         headers: {

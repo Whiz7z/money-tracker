@@ -78,7 +78,7 @@ const Input = ({ type }: Props) => {
 
       router.refresh();
 
-      // await fetch("${process.env.BASE_URL}api/revalidate", {
+      // await fetch("/api/revalidate", {
       //   method: "GET",
       // });
     });
@@ -89,19 +89,14 @@ const Input = ({ type }: Props) => {
   };
 
   const createNewExpenseIncomeHandler = () => {
-    fetch(
-      `${process.env.BASE_URL}api/${
-        type === "expense" ? "expenses" : "incomes"
-      }`,
-      {
-        method: "POST",
-        body: JSON.stringify({
-          origin: currentOrigin,
-          amount: amount,
-          date: startDate,
-        }),
-      }
-    );
+    fetch(`/api/${type === "expense" ? "expenses" : "incomes"}`, {
+      method: "POST",
+      body: JSON.stringify({
+        origin: currentOrigin,
+        amount: amount,
+        date: startDate,
+      }),
+    });
 
     router.refresh();
     dispatch(resetCurrentOrigin());

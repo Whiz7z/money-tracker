@@ -40,16 +40,13 @@ const ExpensesList: any = async (props: Props) => {
   }
 
   console.log("dates", month, year);
-  const response = await fetch(
-    `${process.env.BASE_URL}api/${type}?month=${month}&year=${year}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${session.user.token}`,
-      },
-    }
-  );
+  const response = await fetch(`/api/${type}?month=${month}&year=${year}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${session.user.token}`,
+    },
+  });
   //console.log("data data", response);
   const data = response.ok ? await response.json() : undefined;
 

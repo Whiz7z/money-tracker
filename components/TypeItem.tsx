@@ -25,9 +25,7 @@ const TypeItem = ({ type, color, recordType }: Props) => {
       })
     );
     fetch(
-      `${process.env.BASE_URL}api/${
-        recordType === "expenses" ? "expenseOrigins" : "incomeOrigins"
-      }`,
+      `/api/${recordType === "expenses" ? "expenseOrigins" : "incomeOrigins"}`,
       {
         method: "PUT",
         body: JSON.stringify({
