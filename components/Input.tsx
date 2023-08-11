@@ -66,7 +66,7 @@ const Input = ({ type }: Props) => {
       // console.log(name, color, "new origin values");
 
       await fetch(
-        `api/${type === "expense" ? "expenseOrigins" : "incomeOrigins"}`,
+        `/api/${type === "expense" ? "expenseOrigins" : "incomeOrigins"}`,
         {
           method: "POST",
           body: JSON.stringify({ name: name, color: color }),
