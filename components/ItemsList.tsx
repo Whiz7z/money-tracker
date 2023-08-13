@@ -46,8 +46,8 @@ const ItemsList = async ({ searchParams }: Props) => {
       </h2>
       <div
         className="grid grid-rows-[max-content]  justify-self-center
-        w-[100%] overflow-y-auto
-      bg-muted p-[20px] rounded-[5px] 
+        w-[100%] overflow-y-auto 
+      bg-muted p-[40px] rounded-[5px] 
        text-skin-ordinary"
       >
         {data && data.items.length >= 1 ? (
