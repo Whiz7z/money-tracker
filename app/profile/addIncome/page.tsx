@@ -10,25 +10,29 @@ const addIncome = (props: Props) => {
   return (
     <>
       {/* <SignOut /> */}
-      <div className="w-[100%] text-skin-ordinary grid grid-cols-1">
-        <div className="w-[70px] h-[70px] text-skin-base bg-muted p-[20px] rounded-[5px] cursor-pointer">
-          <MoveBack />
-        </div>
-      </div>
-      <div
-        className="grid grid-rows-blockTypesGrid text-skin-ordinary 
-      w-[300px] tablet:w-[400px] laptop:w-[655px]  max-h-[860px]"
-      >
-        <p
-          className=" text-[3.2rem]  self-start justify-self-center 
-          text-skin-good bg-muted p-[20px] rounded-[5px] "
+      <div className="relative self-center w-[640px] h-[620px]">
+        <div className="block-shadow-addRecord"></div>
+        <div
+          className="absolute grid bg-[#000] grid-rows-blockTypesGrid text-skin-ordinary 
+      w-[640px] self-center h-[620px]"
         >
-          New Income
-        </p>
-
-        <Types type="incomes"></Types>
-
-        <Input type="income" />
+          <div
+            className="relative top-[6px] text-skin-basecursor-pointer 
+      h-[40px] w-[120px] bg-danger justify-self-start text-skin-ordinary 
+               font-medium text-[1.6rem] 
+               text-center leading-[4rem] cursor-pointer"
+          >
+            <MoveBack />
+          </div>
+          <p
+            className="absolute text-[2.4rem] self-start justify-self-center 
+          text-skin-danger mt-[50px]"
+          >
+            New income record
+          </p>
+          <Types type="incomes"></Types>
+          <Input type="income" />
+        </div>
       </div>
     </>
   );

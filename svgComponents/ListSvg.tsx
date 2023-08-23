@@ -22,8 +22,8 @@ const ListSvg = (props: Props) => {
     <div onClick={() => changeDisplayHandler()} className="cursor-pointer">
       <svg
         fill={props.fill}
-        width={window.innerWidth <= 460 ? "30px" : props.w}
-        height={window.innerWidth <= 460 ? "30px" : props.h}
+        width="30px"
+        height="30px"
         viewBox="0 0 512 512"
         xmlns="http://www.w3.org/2000/svg"
       >

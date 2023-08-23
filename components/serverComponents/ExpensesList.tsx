@@ -95,18 +95,22 @@ const ExpensesList: any = async (props: Props) => {
   if (display === "list") {
     return (
       <div
-        className="w-[440px] justify-self-center 
+        className="phone:w-[280px] tablet:w-[340px] laptop:w-[440px] justify-self-center 
       bg-transparent text-skin-ordinary h-[260px] "
       >
         <div
-          className="grid grid-cols-[80px_1fr_100px] w-[440px] bg-input h-[40px] 
-        justify-self-center text-skin-muted text-[1.6rem] font-regular border-b-[1px] border-b-border"
+          className="grid grid-cols-[75px_1fr_100px] phone:w-[280px] tablet:w-[340px] laptop:w-[440px] bg-input h-[40px] 
+        justify-self-center text-skin-muted  font-regular border-b-[1px] border-b-border tiny:text-[1.2rem] laptop:text-[1.6rem]"
         >
-          <div className="grid items-center">Color</div>
-          <div className="grid items-center justify-self-start ml-[40px]">
+          <div className="grid items-center tiny:text-[1.2rem] laptop:text-[1.6rem]">
+            Color
+          </div>
+          <div className="grid items-center justify-self-start ml-[40px] tiny:text-[1.2rem] laptop:text-[1.6rem]">
             Origin type
           </div>
-          <div className="grid items-center">Amount</div>
+          <div className="grid items-center tiny:text-[1.2rem] laptop:text-[1.6rem]">
+            Amount
+          </div>
         </div>
         <div className=" h-[240px] overflow-y-auto overflow-x-hidden">
           {type === "expenses" && data && data.groupedExpenses.length >= 1 ? (
@@ -151,12 +155,12 @@ const ExpensesList: any = async (props: Props) => {
 
   return (
     <div
-      className="w-[440px] justify-self-center gap-[15px] h-[260px]
+      className="phone:w-[280px] tablet:w-[340px] laptop:w-[440px] justify-self-center gap-[15px] h-[260px]
     bg-transparent rounded-[5px] text-skin-ordinary"
     >
       <div
-        className="grid grid-cols-[80px_1fr_100px] w-[440px] bg-input h-[40px] 
-        justify-self-center text-skin-muted text-[1.6rem] font-regular border-b-[1px] border-b-border"
+        className="grid grid-cols-[75px_1fr_100px] phone:w-[280px] tablet:w-[340px] laptop:w-[440px] bg-input h-[40px] 
+        justify-self-center text-skin-muted text-[1.6rem] font-regular border-b-[1px] border-b-border tiny:text-[1.2rem] laptop:text-[1.6rem]"
       >
         <div className="grid items-center">Color</div>
         <div className="grid items-center justify-self-start ml-[40px]">

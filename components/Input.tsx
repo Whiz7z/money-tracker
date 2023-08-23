@@ -131,7 +131,7 @@ const Input = ({ type }: Props) => {
             onClick={() => setShowColorPicker(true)}
           ></div>
           <div
-            className={`absolute`}
+            className={``}
             style={{ display: `${!showColorPicker ? "none" : "block"}` }}
           >
             {/* <InputColor
@@ -144,6 +144,7 @@ const Input = ({ type }: Props) => {
               onChange={(color: any) => {
                 setColor(color.hex);
               }}
+              className="absolute"
             />
           </div>
         </div>

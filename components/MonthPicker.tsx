@@ -90,11 +90,11 @@ const MonthPicker: any = (props: Props) => {
   }, [date]);
   return (
     <div
-      className="grid w-[440px]  gap-[20px] 
+      className="grid phone:w-[280px] tablet:w-[340px] laptop:w-[440px]  gap-[20px] 
             justify-self-center items-center"
     >
       <div
-        className="grid grid-cols-[1fr_3fr_1fr] w-[280px] h-[50px] px-[20px] 
+        className="grid grid-cols-[1fr_3fr_1fr] phone:w-[200px] tablet:w-[280px] h-[50px] px-[20px] 
       rounded-[15px] bg-input items-center justify-self-center"
       >
         <FaArrowLeft

@@ -36,7 +36,7 @@ const Types: any = async (props: Props) => {
   return (
     <div className="grid w-[440px] justify-self-center mt-[30px] ">
       <div
-        className="w-[440px] h-[150px] bg-input justify-self-center pl-[25px] p-[28px] items-center flex overflow-y-scroll  mb-[5px] justify-center 
+        className="w-[440px] h-[150px] bg-input justify-self-center pl-[25px] p-[28px] items-center flex overflow-y-auto  mb-[5px] justify-center 
       flex-wrap gap-y-[10px] gap-x-[35px] text-[1.4rem] 
       place-content-center"
       >

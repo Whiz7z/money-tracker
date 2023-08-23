@@ -46,19 +46,21 @@ const Profile: any = async ({ searchParams }) => {
   const balanse = await response.json();
   // if (balanse.expenseBalanse === undefined) {
   //   return <p>Huui</p>;
+
+  console.log(balanse, "balanseeeeee");
   // }
   return (
     <>
       {/* <SignOut /> */}
-      <div className="relative self-center w-[640px] h-[820px]">
+      <div className="relative self-center phone:w-[300px] tablet:w-[440px] laptop:w-[640px] h-[820px]">
         <div className="block-shadow-profile"></div>
         <div
           className="absolute grid justify-self-center text-skin-ordinary 
-         w-[640px] h-[820px] bg-[#000]
+         laptop:w-[640px] tablet:w-[440px] phone:w-[300px] h-[820px] bg-[#000]
         "
         >
           <LogOutBtn />
-          <div className="grid mt-[40px] h-[180px] rounded-[5px]">
+          <div className="grid mt-[40px] h-[180px]">
             {/* BALANSE */}
             <p className="text-[2.4rem] self-end text-skin-good font-regular">
               Hi, Yevhen
@@ -72,7 +74,7 @@ const Profile: any = async ({ searchParams }) => {
             {/* MONTH */}
           </div>
           {/* CHART OR LIST SWITCH */}
-          <div className="grid self-start mt-[5px] w-[440px] h-[40px] justify-self-center grid-cols-2 ">
+          <div className="grid self-start mt-[5px] phone:w-[280px] tablet:w-[340px] laptop:w-[440px] h-[40px] justify-self-center grid-cols-2 ">
             <div className="justify-self-start">
               <ListSvg w="30px" h="30px" fill="#64aa75" />
             </div>
@@ -96,10 +98,24 @@ const Profile: any = async ({ searchParams }) => {
           </Suspense>
 
           {/* BUTTONS */}
-          <div className="grid w-[440px] h-[255px] justify-self-center">
-            <div className="w-[440px] flex justify-self-center justify-between items-center">
-              <Button type={"income"} />
-              <Button type={"expense"} />
+          <div className="grid phone:w-[280px] tablet:w-[340px] laptop:w-[440px] h-[255px] justify-self-center">
+            <div className="phone:w-[280px] tablet:w-[340px] laptop:w-[440px] flex justify-self-center justify-between items-center">
+              <Button
+                type={"income"}
+                balanse={
+                  balanse.incomeBalanse === undefined
+                    ? 0
+                    : balanse.incomeBalanse?.amount
+                }
+              />
+              <Button
+                type={"expense"}
+                balanse={
+                  balanse.expenseBalanse === undefined
+                    ? 0
+                    : balanse.expenseBalanse?.amount
+                }
+              />
             </div>
           </div>
         </div>

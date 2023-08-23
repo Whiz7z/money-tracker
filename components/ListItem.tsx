@@ -15,7 +15,7 @@ const ListItem = ({ color, amount, originName, date, type }: Props) => {
     <Link
       href={`/items?month=${date.month}&year=${date.year}&type=${type}&originName=${originName}`}
       className={`grid grid-cols-[80px_1fr_100px] h-[40px] cursor-pointer p-[0] m-[0]
-       hover:bg-input border-b-[1px] border-b-border text-[1.6rem] bg-item ${
+       hover:bg-input border-b-[1px] border-b-border tiny:text-[1.2rem] laptop:text-[1.6rem] bg-item ${
          type === "expenses" ? "text-skin-danger" : "text-skin-good"
        } `}
     >

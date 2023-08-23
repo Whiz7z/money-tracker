@@ -15,18 +15,29 @@ const addExpense = (props: Props) => {
           <MoveBack />
         </div>
       </div> */}
-      <div
-        className="grid bg-[#000] grid-rows-blockTypesGrid text-skin-ordinary 
+      <div className="relative self-center w-[640px] h-[620px]">
+        <div className="block-shadow-addRecord"></div>
+        <div
+          className="absolute grid bg-[#000] grid-rows-blockTypesGrid text-skin-ordinary 
       w-[640px] self-center h-[620px]"
-      >
-        <p
-          className=" text-[2.4rem] self-start justify-self-center 
-          text-skin-danger mt-[50px]"
         >
-          New Expense
-        </p>
-        <Types type="expenses"></Types>
-        <Input type="expense" />
+          <div
+            className="relative top-[6px] text-skin-basecursor-pointer 
+      h-[40px] w-[120px] bg-danger justify-self-start text-skin-ordinary 
+               font-medium text-[1.6rem] 
+               text-center leading-[4rem] cursor-pointer"
+          >
+            <MoveBack />
+          </div>
+          <p
+            className="absolute text-[2.4rem] self-start justify-self-center 
+          text-skin-danger mt-[50px]"
+          >
+            New expense record
+          </p>
+          <Types type="expenses"></Types>
+          <Input type="expense" />
+        </div>
       </div>
     </>
   );

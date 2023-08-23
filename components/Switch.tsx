@@ -30,7 +30,7 @@ const Switch: any = ({ searchParams: initialParams }: Props) => {
   };
 
   return (
-    <div className="w-[440px] h-[40px] font-regular  self-start  grid grid-cols-2 items-center justify-self-center   text-[1.6rem] mt-[25px] rounded-[5px] border-[1px] border-border">
+    <div className="phone:w-[280px] tablet:w-[340px] laptop:w-[440px] h-[40px] font-regular  self-start  grid grid-cols-2 items-center justify-self-center   text-[1.6rem] mt-[25px] rounded-[5px] border-[1px] border-border">
       <div
         className={`grid cursor-pointer h-[100%]	text-skin-danger rounded-l-[4px] ${
           (active === "incomes" || active == undefined) && activeClassInc

@@ -165,6 +165,16 @@ html {
   top: 6px;
 }
 
+.block-shadow-addRecord {
+  width: 640px;
+  height: 620px;
+  background-color: white;
+  position: absolute;
+
+  left: 6px;
+  top: 6px;
+}
+
 .shadow-modal {
   width: 560px;
   height: 400px;
@@ -175,7 +185,7 @@ html {
   top: 5px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .shadow-modal {
     width: 300px;
     height: 400px;
@@ -184,5 +194,41 @@ html {
 
     left: 5px;
     top: 5px;
+  }
+
+  .block-shadow-profile {
+    width: 440px;
+  }
+}
+
+@media (max-width: 460px) {
+  .shadow-modal {
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    position: absolute;
+
+    left: 5px;
+    top: 5px;
+  }
+
+  .block-shadow-profile {
+    width: 300px;
+  }
+}
+
+@media (max-width: 300px) {
+  .shadow-modal {
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    position: absolute;
+
+    left: 5px;
+    top: 5px;
+  }
+
+  .block-shadow-profile {
+    width: 300px;
   }
 }
