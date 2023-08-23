@@ -5,10 +5,12 @@ import { getSession } from "next-auth/react";
 type Props = {
   searchParams: any;
 };
-const activeClass = "border-b-4 border-accent";
+const activeClassInc = "bg-good text-skin-ordinary";
+const activeClassExp = "bg-danger text-skin-ordinary";
+const activeClassP = "text-skin-ordinary";
 const Switch: any = ({ searchParams: initialParams }: Props) => {
   const router = useRouter();
-  const [active, setActive] = useState(initialParams.type);
+  const [active, setActive] = useState(initialParams.type || "expenses");
 
   const switchHandler = (type: string): void => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -28,24 +30,35 @@ const Switch: any = ({ searchParams: initialParams }: Props) => {
   };
 
   return (
-    <div className="max-w-[240px] self-start  grid grid-cols-switch justify-self-center gap-[5px] tablet:text-[2.4rem] laptop:text-[2.8rem] mt-[25px]">
-      <p
-        className={`cursor-pointer	text-skin-danger self-start ${
-          (active === "expenses" || active == undefined) && activeClass
-        }`}
-        onClick={() => switchHandler("expenses")}
-      >
-        Expenses
-      </p>
-      <p className="text-skin-accent self-start">/</p>
-      <p
-        className={`cursor-pointer text-skin-good self-start ${
-          active === "incomes" && activeClass
+    <div className="w-[440px] h-[40px] font-regular  self-start  grid grid-cols-2 items-center justify-self-center   text-[1.6rem] mt-[25px] rounded-[5px] border-[1px] border-border">
+      <div
+        className={`grid cursor-pointer h-[100%]	text-skin-danger rounded-l-[4px] ${
+          (active === "incomes" || active == undefined) && activeClassInc
         }`}
         onClick={() => switchHandler("incomes")}
       >
-        Incomes
-      </p>
+        <div
+          className={`grid items-center text-skin-good align-center ${
+            (active === "incomes" || active == undefined) && activeClassP
+          }`}
+        >
+          Incomes
+        </div>
+      </div>
+      <div
+        className={`grid cursor-pointer h-[100%]	 text-skin-good rounded-r-[4px] ${
+          active === "expenses" && activeClassExp
+        }`}
+        onClick={() => switchHandler("expenses")}
+      >
+        <div
+          className={` grid items-center text-skin-danger align-center ${
+            (active === "expenses" || active == undefined) && activeClassP
+          }`}
+        >
+          Expenses
+        </div>
+      </div>
     </div>
   );
 };

@@ -24,11 +24,11 @@
 @layer base {
   :root {
     --color-text-base: #c7ccdb;
-    --color-text-muted: rgb(30, 30, 30);
+    --color-text-muted: #a5a5a5;
     --color-text-inverted: #c7d;
-    --color-text-danger: rgb(232, 72, 85);
-    --color-text-good: #86bc34;
-    --color-text-ordinary: #c98218;
+    --color-text-danger: #c0586b;
+    --color-text-good: #64aa75;
+    --color-text-ordinary: #1d1d1d;
     /* --color-fill: #84a6b0; */
     --color-fill: rgb(156, 175, 183);
     --color-block: #141e29;
@@ -37,8 +37,11 @@
     --color-btn-accent: rgba(228, 153, 64, 0.8);
     --color-btn-accent-hover: #76b6c0;
     --color-btn-muted: #141e29;
-    --color-btn-danger: #6f1a07;
-    --color-btn-good: #a8c69f;
+    --color-btn-danger: #c0586b;
+    --color-btn-good: #64aa75;
+    --color-btn-inputbg: #1d1d1d;
+    --color-btn-border: #323232;
+    --color-item-bg: #131313;
     --color-modal: rgba(92, 91, 90, 0.3);
   }
 }
@@ -102,7 +105,7 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--color-text-ordinary);
+  -webkit-text-fill-color: var(--color-text-muted);
   background-color: transparent;
   /* -webkit-box-shadow: 0 0 0px 1000px #000 inset;
   transition: background-color 5000s ease-in-out 0s; */
@@ -129,4 +132,57 @@ html {
 
 .react-datepicker-wrapper {
   display: none;
+}
+
+.block-shadow {
+  width: 450px;
+  height: 320px;
+  background-color: white;
+  position: absolute;
+
+  left: 6px;
+  top: 6px;
+  /* top: calc(50% - 150px); */
+}
+
+.block-shadow-profile {
+  width: 640px;
+  height: 820px;
+  background-color: white;
+  position: absolute;
+
+  left: 6px;
+  top: 6px;
+}
+
+.block-shadow-items {
+  width: 640px;
+  height: 726px;
+  background-color: white;
+  position: absolute;
+
+  left: 6px;
+  top: 6px;
+}
+
+.shadow-modal {
+  width: 560px;
+  height: 400px;
+  background-color: white;
+  position: absolute;
+
+  left: 5px;
+  top: 5px;
+}
+
+@media (max-width: 768px) {
+  .shadow-modal {
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    position: absolute;
+
+    left: 5px;
+    top: 5px;
+  }
 }

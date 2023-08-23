@@ -6,14 +6,7 @@ type Props = {};
 
 const MoveBack = (props: Props) => {
   const router = useRouter();
-  return (
-    <LeftArrow
-      w="30px"
-      h="30px"
-      color="#e49940"
-      onClick={() => router.back()}
-    />
-  );
+  return <div onClick={() => router.back()}>Back</div>;
 };
 
 export default MoveBack;

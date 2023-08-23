@@ -34,26 +34,26 @@ const deleteItemBtn = ({ id, type, date }: Props) => {
     <>
       <button
         type="button"
-        className="w-[35px] h-[100%] hover:bg-danger justify-self-end"
+        className="w-[35px] h-[100%] ease-in-out duration-300 hover:rotate-90 justify-self-end mr-[26px]"
         onClick={() => setOpenModal(true)}
       >
-        <Times w="35px" h="35px" color="#e49940" />
+        <Times w="35px" h="35px" color="#c0586b" />
       </button>
       {openModal && (
         <Modal>
-          <p className="self-end text-skin-ordinary text-[1.8rem] laptop:text-[2.2rem] px-[15px]">
+          <p className="self-end text-skin-muted text-[1.8rem] px-[15px]">
             Do you want to delete this record?
           </p>
           <div className="grid grid-cols-2 gap-x-[20px] self-center w-[100%] ">
             <button
               onClick={() => setOpenModal(false)}
-              className="w-[100px] laptop:w-[200px] bg-semitransparent rounded-[10px] h-[40px] justify-self-end text-skin-ordinary font-bold"
+              className="w-[100px] laptop:w-[160px]   bg-good h-[40px] justify-self-end text-skin-ordinary font-bold"
             >
               No
             </button>
             <button
               onClick={() => deleteItemHandler(id, type)}
-              className="w-[100px] laptop:w-[200px] bg-accent rounded-[10px] h-[40px] justify-self-start text-skin-dark font-bold"
+              className=" w-[100px] laptop:w-[160px]  bg-danger h-[40px] justify-self-start text-skin-ordinary font-bold"
             >
               Yes
             </button>

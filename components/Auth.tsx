@@ -66,106 +66,93 @@ function Auth(props: Props) {
   };
 
   return (
-    <div className="h-[640px] tablet:w-[420px] laptop:w-[655px] self-center ">
-      <h2 className="text-skin-ordinary bg-muted p-[20px] rounded-[5px] tablet:text-[3rem]  laptop:text-[3.6rem] font-bold">
-        {isLogin ? "Login" : "Register"}
-      </h2>
+    <>
+      <div className="relative self-center w-[450px] h-[320px]">
+        <div className="block-shadow"></div>
+        <div className="absolute h-[320px] w-[450px] self-center bg-[#000]">
+          <h2 className="text-skin-good  tablet:text-[2.4rem]  font-bold mt-[30px] mb-[35px]">
+            {isLogin ? "Login" : "Register"}
+          </h2>
 
-      {isError && (
-        <p className="text-skin-danger text-[1.6rem] relative top-[40px]">
-          {isError}
-        </p>
-      )}
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="grid gap-[20px] mt-[40px]"
-      >
-        <div className="grid w-[100%] bg-muted p-[20px] rounded-[5px] relative">
-          <label
-            className="justify-self-start  text-left  
-          text-skin-ordinary text-[1.4rem]
-          tablet:text-[1.6rem]  laptop:text-[2rem]"
-          >
-            Username
-          </label>
-          <input
-            autoComplete="false"
-            className="block font-bold w-[100%] bg-transparent pl-[25px] 
-            border-[1px] tablet:border-[3px] text-skin-ordinary placeholder:text-skin-ordinary 
-            border-ordinary  rounded-[25px] h-[40px] tablet:h-[60px] text-[1.4rem]
-          tablet:text-[1.6rem]  laptop:text-[2rem]
-            mt-[20px]"
-            type="text"
-            placeholder="Username"
-            {...register("username", {
-              required: "Required",
-              minLength: { value: 5, message: "Min 5 symbols" },
-              maxLength: { value: 30, message: "Max 30 symbols" },
-            })}
-          />
-          <p className="block text-skin-danger text-left text-[1.8rem] top-[105%] absolute">
-            {errors?.username && <>{errors?.username?.message || "Error"}</>}
-          </p>
-        </div>
+          {isError && (
+            <p className="text-skin-danger text-[1.4rem] absolute py-[5px] w-[100%] top-[60px]">
+              {isError}
+            </p>
+          )}
+          <form onSubmit={handleSubmit(onSubmit)} className="grid">
+            <div className="grid w-[300px] justify-self-center  relative mb-[20px]">
+              <input
+                autoComplete="false"
+                className="block font-medium w-[100%] bg-input pl-[25px] 
+            border-[1px]   text-skin-muted placeholder:text-skin-muted placeholder:font-normal
+            border-border h-[40px]  text-[1.4rem]
+            "
+                type="text"
+                placeholder="Username"
+                {...register("username", {
+                  required: "Required",
+                  minLength: { value: 5, message: "Min 5 symbols" },
+                  maxLength: { value: 30, message: "Max 30 symbols" },
+                })}
+              />
+              <p className="block text-skin-danger text-left text-[1.2rem] top-[105%] absolute">
+                {errors?.username && (
+                  <>{errors?.username?.message || "Error"}</>
+                )}
+              </p>
+            </div>
 
-        <div className="grid w-[100%] bg-muted p-[20px] rounded-[5px] relative">
-          <label
-            className="justify-self-start text-left text-skin-ordinary text-[1.4rem]
-          tablet:text-[1.6rem]  laptop:text-[2rem]
-           w-[100% "
-          >
-            Password
-          </label>
-          <input
-            className="block font-bold w-[100%] bg-transparent pl-[25px] 
-            border-[1px] tablet:border-[3px] text-skin-ordinary placeholder:text-skin-ordinary 
-            border-ordinary  rounded-[25px] h-[40px] tablet:h-[60px] text-[1.4rem]
-          tablet:text-[1.6rem]  laptop:text-[2rem]
-            mt-[20px]"
-            type="password"
-            placeholder="Password"
-            {...register("password", {
-              required: "Required",
-              minLength: { value: 5, message: "Min 5 symbols" },
-              maxLength: { value: 25, message: "Max 25 symbols" },
-            })}
-          />
-          <p className="block text-skin-danger text-left text-[1.8rem]  top-[105%] absolute">
-            {errors?.password && <>{errors?.password?.message || "Error"}</>}
-          </p>
-        </div>
-        {/* <p className="text-skin-base text-[2rem] font-bold text-center absolute"></p> */}
-        <div className="grid grid-cols-2 bg-muted p-[20px] rounded-[5px] gap-[30px] laptop:mt-[80px]">
-          <button
-            className={`${
-              isValid
-                ? "bg-accent text-skin-dark"
-                : "bg-semitransparent text-skin-ordinary "
-            } rounded-[15px] w-[110px] laptop:w-[220px] tablet:w-[160px] h-[40px]  laptop:h-[60px] 
+            <div className="grid w-[300px] justify-self-center relative mb-[35px]">
+              <input
+                className="block font-placeholder:font-normal w-[100%] bg-input pl-[25px] 
+            border-[1px]  text-skin-muted placeholder:text-skin-muted placeholder:font-normal
+            border-border h-[40px] text-[1.4rem]"
+                type="password"
+                placeholder="Password"
+                {...register("password", {
+                  required: "Required",
+                  minLength: { value: 5, message: "Min 5 symbols" },
+                  maxLength: { value: 25, message: "Max 25 symbols" },
+                })}
+              />
+              <p className="block text-skin-danger text-left text-[1.2rem]  top-[105%] absolute">
+                {errors?.password && (
+                  <>{errors?.password?.message || "Error"}</>
+                )}
+              </p>
+            </div>
+            {/* <p className="text-skin-base text-[2rem] font-bold text-center absolute"></p> */}
+            <div className="grid grid-cols-2 text-skin-ordinary w-[300px] justify-self-center">
+              <button
+                className={`${
+                  isValid ? "bg-good text-skin-dark" : "bg-fill"
+                } w-[110px] laptop:w-[120px] tablet:w-[120px] h-[40px] 
             font-bold  
-            text-[1.6rem] tablet:text-[2.2rem] laptop:text-[2.8rem] justify-self-end`}
-            type="submit"
-            disabled={!isValid}
-          >
-            {isLogin && !loading
-              ? "Login"
-              : isLogin && loading
-              ? "Loading..."
-              : !isLogin && loading
-              ? "Loading..."
-              : "Register"}
-          </button>
-          <button
-            className="bg-semitransparent rounded-[15px] w-[110px] laptop:w-[220px] tablet:w-[160px]
-             h-[40px]  laptop:h-[60px]  font-bold text-skin-ordinary text-[1.6rem] tablet:text-[2.2rem] laptop:text-[2.8rem] justify-self-start"
-            type="button"
-            onClick={() => setIsLogin((prev) => !prev)}
-          >
-            {isLogin ? "To register" : "To login"}
-          </button>
+            text-[1.6rem] justify-self-start`}
+                type="submit"
+                disabled={!isValid}
+              >
+                {isLogin && !loading
+                  ? "Login"
+                  : isLogin && loading
+                  ? "Loading..."
+                  : !isLogin && loading
+                  ? "Loading..."
+                  : "Register"}
+              </button>
+              <button
+                className="bg-danger w-[110px] laptop:w-[120px] tablet:w-[120px]
+             h-[40px]  font-bold text-[1.6rem] justify-self-end"
+                type="button"
+                onClick={() => setIsLogin((prev) => !prev)}
+              >
+                {isLogin ? "To register" : "To login"}
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
+      </div>
+    </>
   );
 }
 

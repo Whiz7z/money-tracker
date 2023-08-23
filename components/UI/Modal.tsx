@@ -9,10 +9,14 @@ const Modal = ({ children }: { children: React.ReactNode }) => {
       {createPortal(
         <div className="fixed grid h-screen w-screen bg-modal ">
           <div
-            className="fixed grid w-[300px] laptop:w-[560px] h-[400px] bg-muted justify-self-center self-center
-          rounded-[5px]"
+            className="fixed grid w-[300px] laptop:w-[560px] h-[400px] bg-[#000] 
+            justify-self-center self-center
+          "
           >
-            {children}
+            <div className="shadow-modal"></div>
+            <div className="relative w-[300px] grid justify-self-center laptop:w-[560px] h-[400px] bg-[#000] ">
+              {children}
+            </div>
           </div>
         </div>,
         document.getElementById("main")

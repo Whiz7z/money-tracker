@@ -47,6 +47,7 @@
     "react-dom": "18.2.0",
     "react-google-charts": "^4.0.0",
     "react-hook-form": "^7.44.3",
+    "react-icons": "^4.10.1",
     "react-input-color": "^4.0.1",
     "react-minimal-pie-chart": "^8.4.0",
     "react-redux": "^8.0.5",

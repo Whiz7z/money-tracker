@@ -30,6 +30,9 @@ module.exports = {
         accentHover: "var(--color-btn-accent-hover)",
         muted: "var(--color-btn-muted)",
         danger: "var(--color-btn-danger)",
+        input: "var(--color-btn-inputbg)",
+        border: "var(--color-btn-border)",
+        item: "var(--color-item-bg)",
       },
       gridTemplateColumns: {
         // Complex site-specific column configuration
@@ -53,6 +56,7 @@ module.exports = {
         base: "var(--color-text-base)",
         accent: "var(--color-btn-accent)",
         ordinary: "var(--color-text-ordinary)",
+        border: "var(--color-btn-border)",
       },
       boxShadow: {
         mainBlock: "0px 30px 90px 5px #1E1E1E;",

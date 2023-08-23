@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 type Props = {};
 
 const months = [
@@ -89,10 +90,51 @@ const MonthPicker: any = (props: Props) => {
   }, [date]);
   return (
     <div
-      className="grid min-w-[200px] phone:grid-cols-monthPhone tablet:grid-cols-month gap-[20px] 
-            justify-self-center "
+      className="grid w-[440px]  gap-[20px] 
+            justify-self-center items-center"
     >
       <div
+        className="grid grid-cols-[1fr_3fr_1fr] w-[280px] h-[50px] px-[20px] 
+      rounded-[15px] bg-input items-center justify-self-center"
+      >
+        <FaArrowLeft
+          color="#64aa75"
+          className="justify-self-start cursor-pointer"
+          onClick={() => prevMonthHandler()}
+        />
+
+        <p
+          className="text-skin-good cursor-pointer"
+          onClick={() => pickerRef.current.showPicker()}
+        >
+          {months[date.getMonth()]}
+        </p>
+        <input
+          ref={pickerRef}
+          id="monthPicker"
+          name="monthPicker"
+          type="month"
+          value={`${date.getFullYear()}-${
+            date.getMonth() + 1 < 10
+              ? "0" + (date.getMonth() + 1).toString()
+              : date.getMonth() + 1
+          }`}
+          onChange={setDateHandler}
+          className=" absolute w-[0px] h-[0px] bg-transparent"
+        />
+
+        <FaArrowRight
+          color="#64aa75"
+          className="justify-self-end cursor-pointer"
+          onClick={() => nextMonthHandler()}
+        />
+      </div>
+
+      {/* <div className="grid w-[100px] h-[50px] rounded-[15px] bg-input justify-self-end cursor-pointer">
+        <p className="text-skin-good self-center">{date.getFullYear()}</p>
+      </div> */}
+
+      {/* <div
         onClick={() => prevMonthHandler()}
         className="w-[30px] h-[30px] arrow-clip-left bg-accent col-1 self-end 
               relative bottom-[5px] cursor-pointer hover:w-[35px] hover:h-[35px] justify-self-end"
@@ -128,7 +170,7 @@ const MonthPicker: any = (props: Props) => {
         onClick={() => nextMonthHandler()}
         className="w-[30px] h-[30px] arrow-clip-right bg-accent col-3 justify-self-start self-end
                relative bottom-[5px] cursor-pointer  hover:w-[35px] hover:h-[35px]"
-      ></div>
+      ></div> */}
     </div>
   );
 };

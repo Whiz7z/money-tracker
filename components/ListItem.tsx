@@ -14,17 +14,19 @@ const ListItem = ({ color, amount, originName, date, type }: Props) => {
   return (
     <Link
       href={`/items?month=${date.month}&year=${date.year}&type=${type}&originName=${originName}`}
-      className="grid grid-cols-listItem h-[45px] cursor-pointer
-       hover:bg-semitransparent  pl-[10px] rounded-[5px] gap-[20px]"
+      className={`grid grid-cols-[80px_1fr_100px] h-[40px] cursor-pointer p-[0] m-[0]
+       hover:bg-input border-b-[1px] border-b-border text-[1.6rem] bg-item ${
+         type === "expenses" ? "text-skin-danger" : "text-skin-good"
+       } `}
     >
       <div
-        className={`w-[40px] tablet:w-[70px] laptop:w-[100px] h-[30px] self-center`}
+        className={`w-[100%] h-[100%] self-center`}
         style={{ backgroundColor: `${color}` }}
       ></div>
-      <div className="justify-self-start self-center text-[1.2rem] laptop:text-[2.8rem] tablet:text-[2rem]">
+      <div className="justify-self-start self-center ml-[40px]">
         {originName}
       </div>
-      <div className="laptop:text-[2.8rem] text-[1.2rem]  tablet:text-[2rem] self-center mr-[10px]">
+      <div className="grid self-center mr-[20px] justify-self-end">
         ${amount}
       </div>
     </Link>

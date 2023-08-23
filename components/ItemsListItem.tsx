@@ -23,18 +23,21 @@ const ItemsListItem: any = ({ item, type }: Props) => {
     new Date(date).getDate() + " " + months[new Date(date).getMonth()];
   return (
     <div
-      className="grid grid-cols-[1fr_1fr_auto] cursor-pointer 
-      p-[10px]  content-center w-[100%] h-[45px] justify-self-center
-      border-b-2 border-transparent
-       hover:transition-all hover:bg-semitransparent hover:border-b-2 hover:border-ordinary
-       text-[1.6rem] tablet:text-[1.8rem] laptop:text-[2.2rem]"
+      className={`grid grid-cols-[100px_1fr_80px] cursor-pointer 
+      content-center w-[100%] h-[45px] justify-self-center
+      border-transparent bg-item  border-b-[1px] border-b-border
+       hover:transition-all hover:bg-input hover:border-b-2 hover:border-ordinary
+      text-[1.6rem] ${
+        type === "expenses" ? "text-skin-danger" : "text-skin-good"
+      } `}
     >
-      <div className="grid grid-cols-2 items-center content-center">
+      <div className="grid grid-cols-2 items-center content-center ml-[21px]">
         <div className="justify-self-start self-center">${amount}</div>
-        <div className="justify-self-start">{origin.name}</div>
       </div>
 
-      <div className="justify-self-center self-center">{dayAndMonth}</div>
+      <div className="justify-self-start self-center ml-[66px]">
+        {dayAndMonth}
+      </div>
       <DeleteItemBtn id={item._id} date={date} type={type} />
     </div>
   );
