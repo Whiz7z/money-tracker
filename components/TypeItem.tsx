@@ -46,20 +46,18 @@ const TypeItem = ({ type, color, recordType }: Props) => {
   return (
     <>
       <div
-        className="relative"
+        className="grid relative  cursor-pointer text-skin-ordinary h-[25px]
+         "
         onMouseEnter={() => setShowCross(true)}
         onMouseLeave={() => setShowCross(false)}
         onClick={() => setCurrentOriginHandler()}
         style={{
-          backgroundColor:
-            currentOrigin.name === type ? "#e49940" : "transparent",
-
-          color: currentOrigin.name === type && "#1e1e1e",
+          backgroundColor: color,
           fontWeight: currentOrigin.name === type && "bold",
         }}
       >
         <p
-          className={`border-b-4 self-start cursor-pointer `}
+          className={`self-center  px-[15px]`}
           style={{ borderColor: `${color}` }}
         >
           {type}

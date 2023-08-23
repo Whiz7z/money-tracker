@@ -10,18 +10,18 @@ const addExpense = (props: Props) => {
   return (
     <>
       {/* <SignOut /> */}
-      <div className=" w-[100%] grid grid-cols-1">
+      {/* <div className=" w-[100%] grid grid-cols-1">
         <div className="w-[70px] h-[70px] text-skin-base bg-muted p-[20px] rounded-[5px] cursor-pointer">
           <MoveBack />
         </div>
-      </div>
+      </div> */}
       <div
-        className="grid grid-rows-blockTypesGrid text-skin-ordinary 
-      w-[300px] tablet:w-[400px] laptop:w-[655px]  max-h-[860px]"
+        className="grid bg-[#000] grid-rows-blockTypesGrid text-skin-ordinary 
+      w-[640px] self-center h-[620px]"
       >
         <p
-          className=" text-[3.2rem] self-start justify-self-center 
-          text-skin-danger bg-muted p-[20px] rounded-[5px]"
+          className=" text-[2.4rem] self-start justify-self-center 
+          text-skin-danger mt-[50px]"
         >
           New Expense
         </p>
