@@ -125,7 +125,7 @@ const ExpensesList: any = async (props: Props) => {
               />
             ))
           ) : type === "expenses" && data && data.groupedExpenses.length < 1 ? (
-            <p className="self-center mt-[100px] text-skin-muted">
+            <p className="self-center mt-[100px] text-skin-muted  tiny:text-[1.4rem] tablet:text-[1.8rem] laptop:text-[2.2rem]">
               No expense found for this month
             </p>
           ) : type === "incomes" && data && data.groupedIncomes.length >= 1 ? (
@@ -143,7 +143,7 @@ const ExpensesList: any = async (props: Props) => {
             type === "incomes" &&
             data &&
             data.groupedIncomes.length < 1 && (
-              <p className="self-center mt-[100px] text-skin-muted">
+              <p className="self-center mt-[100px] text-skin-muted tiny:text-[1.4rem] tablet:text-[1.8rem] laptop:text-[2.2rem]">
                 No income found for this month
               </p>
             )
@@ -159,11 +159,11 @@ const ExpensesList: any = async (props: Props) => {
     bg-transparent rounded-[5px] text-skin-ordinary"
     >
       <div
-        className="grid grid-cols-[75px_1fr_100px] phone:w-[280px] tablet:w-[340px] laptop:w-[440px] bg-input h-[40px] 
+        className="grid grid-cols-[75px_1fr_60px] phone:w-[280px] tablet:w-[340px] laptop:w-[440px] bg-input h-[40px] 
         justify-self-center text-skin-muted text-[1.6rem] font-regular border-b-[1px] border-b-border tiny:text-[1.2rem] laptop:text-[1.6rem]"
       >
         <div className="grid items-center">Color</div>
-        <div className="grid items-center justify-self-start ml-[40px]">
+        <div className="grid items-center justify-self-start ml-[30px]">
           Origin type
         </div>
         <div className="grid items-center">Amount</div>
@@ -181,11 +181,11 @@ const ExpensesList: any = async (props: Props) => {
             />
           ))
         ) : type === "expenses" && data && data.groupedExpenses.length < 1 ? (
-          <p className="self-center mt-[100px] text-skin-muted">
+          <p className="self-center mt-[100px] text-skin-muted tiny:text-[1.4rem] tablet:text-[1.8rem] laptop:text-[2.2rem]">
             No expense found for this month
           </p>
         ) : type === "expenses" && !data ? (
-          <p className="self-center mt-[100px] text-skin-muted">
+          <p className="self-center mt-[100px] text-skin-muted tiny:text-[1.4rem] tablet:text-[1.8rem] laptop:text-[2.2rem]">
             No expense found for this month
           </p>
         ) : type === "incomes" && data && data.groupedIncomes.length >= 1 ? (
@@ -202,7 +202,7 @@ const ExpensesList: any = async (props: Props) => {
           (type === "incomes" || type === "expenses") &&
           data &&
           data.groupedIncomes.length < 1 && (
-            <p className="self-center mt-[100px] text-skin-muted">
+            <p className="self-center mt-[100px] text-skin-muted tiny:text-[1.4rem] tablet:text-[1.8rem] laptop:text-[2.2rem]">
               No income found for this month
             </p>
           )

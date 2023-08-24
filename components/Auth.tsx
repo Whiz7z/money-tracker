@@ -67,9 +67,9 @@ function Auth(props: Props) {
 
   return (
     <>
-      <div className="relative self-center w-[450px] h-[320px]">
+      <div className="relative self-center w-[300px] tablet:w-[300px] bigtablet:w-[320px]  laptop:w-[450px] h-[320px]">
         <div className="block-shadow"></div>
-        <div className="absolute h-[320px] w-[450px] self-center bg-[#000]">
+        <div className="absolute h-[320px] w-[300px] tablet:w-[300px] bigtablet:w-[320px] laptop:w-[450px] self-center bg-[#000]">
           <h2 className="text-skin-good  tablet:text-[2.4rem]  font-bold mt-[30px] mb-[35px]">
             {isLogin ? "Login" : "Register"}
           </h2>
@@ -80,7 +80,7 @@ function Auth(props: Props) {
             </p>
           )}
           <form onSubmit={handleSubmit(onSubmit)} className="grid">
-            <div className="grid w-[300px] justify-self-center  relative mb-[20px]">
+            <div className="grid w-[260px] bigtablet:w-[260px] laptop:w-[300px] justify-self-center  relative mb-[20px]">
               <input
                 autoComplete="false"
                 className="block font-medium w-[100%] bg-input pl-[25px] 
@@ -102,7 +102,7 @@ function Auth(props: Props) {
               </p>
             </div>
 
-            <div className="grid w-[300px] justify-self-center relative mb-[35px]">
+            <div className="grid w-[260px] bigtablet:w-[260px] laptop:w-[300px] justify-self-center relative mb-[35px]">
               <input
                 className="block font-placeholder:font-normal w-[100%] bg-input pl-[25px] 
             border-[1px]  text-skin-muted placeholder:text-skin-muted placeholder:font-normal
@@ -122,7 +122,7 @@ function Auth(props: Props) {
               </p>
             </div>
             {/* <p className="text-skin-base text-[2rem] font-bold text-center absolute"></p> */}
-            <div className="grid grid-cols-2 text-skin-ordinary w-[300px] justify-self-center">
+            <div className="grid grid-cols-2 text-skin-ordinary w-[260px] bigtablet:w-[260px] laptop:w-[300px] justify-self-center">
               <button
                 className={`${
                   isValid ? "bg-good text-skin-dark" : "bg-fill"

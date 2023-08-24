@@ -104,7 +104,7 @@ const MonthPicker: any = (props: Props) => {
         />
 
         <p
-          className="text-skin-good cursor-pointer"
+          className="text-skin-good cursor-pointer tiny:text-[1.8rem] telaptop:text-[2.4rem]"
           onClick={() => pickerRef.current.showPicker()}
         >
           {months[date.getMonth()]}

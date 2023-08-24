@@ -26,10 +26,10 @@ const Button = ({ type, balanse }: Props) => {
     return (
       <div
         onClick={() => setLoadingIncomeHandler()}
-        className="grid tiny:w-[130px] tablet:w-[190px] h-[130px] justify-self-end
+        className="grid tiny:w-[130px] tablet:w-[160px] laptop:w-[190px] h-[130px] justify-self-end
                bg-input"
       >
-        <div className="grid tiny:grid-cols-[50px_80px]  tablet:grid-cols-[85px_105px]  h-[110px]">
+        <div className="grid tiny:grid-cols-[50px_80px] tablet:grid-cols-[60px_100px] laptop:grid-cols-[85px_105px]  h-[110px]">
           <div
             onClick={() => setLoadingIncomeHandler()}
             className="grid items-center tiny:w-[34px] tiny:h-[34px] tablet:w-[44px]  tablet:h-[44px] bg-good rounded-[7px] self-center 
@@ -62,10 +62,10 @@ const Button = ({ type, balanse }: Props) => {
     return (
       <div
         onClick={() => setLoadingIncomeHandler()}
-        className="grid tiny:w-[130px] tablet:w-[190px] h-[130px] justify-self-end
+        className="grid tiny:w-[130px] tablet:w-[160px] laptop:w-[190px] h-[130px] justify-self-end
                bg-input"
       >
-        <div className="grid tiny:grid-cols-[50px_80px] tablet:grid-cols-[85px_105px] h-[110px]">
+        <div className="grid tiny:grid-cols-[50px_80px] tablet:grid-cols-[60px_100px] laptop:grid-cols-[85px_105px] h-[110px]">
           <div
             onClick={() => setLoadingIncomeHandler()}
             className="grid items-center tiny:w-[34px] tiny:h-[34px] tablet:w-[44px]  tablet:h-[44px] bg-danger rounded-[7px] self-center 

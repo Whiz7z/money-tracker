@@ -62,7 +62,7 @@ const Profile: any = async ({ searchParams }) => {
           <LogOutBtn />
           <div className="grid mt-[40px] h-[180px]">
             {/* BALANSE */}
-            <p className="text-[2.4rem] self-end text-skin-good font-regular">
+            <p className="tiny:text-[1.8rem] telaptop:text-[2.4rem] self-end text-skin-good font-regular">
               Hi, Yevhen
             </p>
 

@@ -199,6 +199,20 @@ html {
   .block-shadow-profile {
     width: 440px;
   }
+
+  .block-shadow {
+    width: 320px;
+
+    /* top: calc(50% - 150px); */
+  }
+}
+
+@media (max-width: 500px) {
+  .block-shadow {
+    width: 300px;
+
+    /* top: calc(50% - 150px); */
+  }
 }
 
 @media (max-width: 460px) {
