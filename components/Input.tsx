@@ -177,9 +177,7 @@ const Input = ({ type }: Props) => {
           }`}
           onClick={(e) => openDatePicker()}
         >
-          {`${weekday[startDate.getDay()]}, ${startDate.getDate()} ${
-            months[startDate.getMonth()]
-          }`}
+          {`${startDate.getDate()} ${months[startDate.getMonth()]}`}
         </p>
         <div className="w-[200px] justify-self-center">
           <DatePicker

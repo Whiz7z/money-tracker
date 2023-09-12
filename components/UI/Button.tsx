@@ -30,13 +30,14 @@ const Button = ({ type, balanse }: Props) => {
                bg-input"
       >
         <div className="grid tiny:grid-cols-[50px_80px] tablet:grid-cols-[60px_100px] laptop:grid-cols-[85px_105px]  h-[110px]">
-          <div
+          <Link
+            href="/profile/addIncome"
             onClick={() => setLoadingIncomeHandler()}
             className="grid items-center tiny:w-[34px] tiny:h-[34px] tablet:w-[44px]  tablet:h-[44px] bg-good rounded-[7px] self-center 
             justify-self-center cursor-pointer"
           >
             <FaPlus className="justify-self-center ml-[1px] mt-[1px]" />
-          </div>
+          </Link>
           <div className="grid justify-items-start self-center">
             <p className="tiny:text-[1.2rem] tablet:text-[1.6rem] text-skin-muted">
               Income
@@ -66,13 +67,14 @@ const Button = ({ type, balanse }: Props) => {
                bg-input"
       >
         <div className="grid tiny:grid-cols-[50px_80px] tablet:grid-cols-[60px_100px] laptop:grid-cols-[85px_105px] h-[110px]">
-          <div
+          <Link
+            href="/profile/addIncome"
             onClick={() => setLoadingIncomeHandler()}
             className="grid items-center tiny:w-[34px] tiny:h-[34px] tablet:w-[44px]  tablet:h-[44px] bg-danger rounded-[7px] self-center 
             justify-self-center cursor-pointer"
           >
             <FaMinus className="justify-self-center ml-[1px] mt-[1px]" />
-          </div>
+          </Link>
           <div className="grid justify-items-start self-center">
             <p className="tiny:text-[1.2rem] tablet:text-[1.6rem] text-skin-muted">
               Expense

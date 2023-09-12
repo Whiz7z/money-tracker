@@ -14,7 +14,7 @@ const ListItem = ({ color, amount, originName, date, type }: Props) => {
   return (
     <Link
       href={`/items?month=${date.month}&year=${date.year}&type=${type}&originName=${originName}`}
-      className={`grid grid-cols-[80px_1fr_60px] h-[40px] cursor-pointer p-[0] m-[0]
+      className={`grid laptop:grid-cols-[75px_1fr_100px] phone:grid-cols-[75px_1fr_60px] h-[40px] cursor-pointer p-[0] m-[0]
        hover:bg-input border-b-[1px] border-b-border tiny:text-[1.2rem] laptop:text-[1.6rem] bg-item ${
          type === "expenses" ? "text-skin-danger" : "text-skin-good"
        } `}
@@ -23,10 +23,10 @@ const ListItem = ({ color, amount, originName, date, type }: Props) => {
         className={`w-[100%] h-[100%] self-center`}
         style={{ backgroundColor: `${color}` }}
       ></div>
-      <div className="justify-self-start self-center ml-[25px]">
+      <div className="justify-self-start self-center laptop:ml-[30px] tiny:ml-[25px]">
         {originName}
       </div>
-      <div className="grid self-center mr-[10px] justify-self-end">
+      <div className="grid self-center tiny:mr-[15px] laptop:mr-[20px] justify-self-end">
         ${amount}
       </div>
     </Link>

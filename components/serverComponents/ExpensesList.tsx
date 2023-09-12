@@ -159,14 +159,16 @@ const ExpensesList: any = async (props: Props) => {
     bg-transparent rounded-[5px] text-skin-ordinary"
     >
       <div
-        className="grid grid-cols-[75px_1fr_60px] phone:w-[280px] tablet:w-[340px] laptop:w-[440px] bg-input h-[40px] 
+        className="grid laptop:grid-cols-[75px_1fr_100px] phone:grid-cols-[75px_1fr_60px] phone:w-[280px] tablet:w-[340px] laptop:w-[440px] bg-input h-[40px] 
         justify-self-center text-skin-muted text-[1.6rem] font-regular border-b-[1px] border-b-border tiny:text-[1.2rem] laptop:text-[1.6rem]"
       >
         <div className="grid items-center">Color</div>
-        <div className="grid items-center justify-self-start ml-[30px]">
+        <div className="grid items-center justify-self-start tiny:ml-[23px] laptop:ml-[30px]">
           Origin type
         </div>
-        <div className="grid items-center">Amount</div>
+        <div className="grid items-center tiny:mr-[20px] laptop:mr-[0px]">
+          Amount
+        </div>
       </div>
 
       <div className=" h-[240px] overflow-y-auto overflow-x-hidden">
