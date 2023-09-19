@@ -10,11 +10,11 @@ const addIncome = (props: Props) => {
   return (
     <>
       {/* <SignOut /> */}
-      <div className="relative self-center w-[640px] h-[620px]">
+      <div className="relative self-center phone:w-[300px] tablet:w-[440px] laptop:w-[640px] h-[620px]">
         <div className="block-shadow-addRecord"></div>
         <div
           className="absolute grid bg-[#000] grid-rows-blockTypesGrid text-skin-ordinary 
-      w-[640px] self-center h-[620px]"
+      phone:w-[300px] tablet:w-[440px] laptop:w-[640px] self-center h-[620px]"
         >
           <div
             className="relative top-[6px] text-skin-basecursor-pointer 
@@ -25,7 +25,7 @@ const addIncome = (props: Props) => {
             <MoveBack />
           </div>
           <p
-            className="absolute text-[2.4rem] self-start justify-self-center 
+            className="absolute laptop:text-[2.4rem] self-start justify-self-center 
           text-skin-danger mt-[50px]"
           >
             New income record

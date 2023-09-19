@@ -27,7 +27,7 @@ const ItemsListItem: any = ({ item, type }: Props) => {
       content-center w-[100%] h-[45px] justify-self-center
       border-transparent bg-item  border-b-[1px] border-b-border
        hover:transition-all hover:bg-input hover:border-b-2 hover:border-ordinary
-      text-[1.6rem] ${
+      text-[1.4rem] tablet:text-[1.6rem] ${
         type === "expenses" ? "text-skin-danger" : "text-skin-good"
       } `}
     >

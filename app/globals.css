@@ -209,6 +209,10 @@ html {
 
     /* top: calc(50% - 150px); */
   }
+
+  .block-shadow-items {
+    width: 440px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -237,6 +241,10 @@ html {
   .block-shadow-profile {
     width: 300px;
   }
+
+  .block-shadow-items {
+    width: 300px;
+  }
 }
 
 @media (max-width: 300px) {
@@ -251,6 +259,10 @@ html {
   }
 
   .block-shadow-profile {
+    width: 300px;
+  }
+
+  .block-shadow-items {
     width: 300px;
   }
 }

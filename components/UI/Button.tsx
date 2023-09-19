@@ -68,7 +68,7 @@ const Button = ({ type, balanse }: Props) => {
       >
         <div className="grid tiny:grid-cols-[50px_80px] tablet:grid-cols-[60px_100px] laptop:grid-cols-[85px_105px] h-[110px]">
           <Link
-            href="/profile/addIncome"
+            href="/profile/addExpense"
             onClick={() => setLoadingIncomeHandler()}
             className="grid items-center tiny:w-[34px] tiny:h-[34px] tablet:w-[44px]  tablet:h-[44px] bg-danger rounded-[7px] self-center 
             justify-self-center cursor-pointer"

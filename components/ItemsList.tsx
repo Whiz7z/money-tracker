@@ -33,9 +33,9 @@ const ItemsList = async ({ searchParams }: Props) => {
   //console.log(data);
 
   return (
-    <div className="relative self-center w-[640px] h-[726px]">
+    <div className="relative self-center phone:w-[300px] tablet:w-[440px] laptop:w-[640px] h-[726px]">
       <div className="block-shadow-items"></div>
-      <div className="absolute grid self-center w-[640px] text-skin-base  bg-[#000] ">
+      <div className="absolute grid self-center phone:w-[300px] tablet:w-[440px] laptop:w-[640px] text-skin-base  bg-[#000] ">
         <div
           className="relative top-[6px] text-skin-basecursor-pointer 
       h-[40px] w-[120px] bg-danger justify-self-start text-skin-ordinary 
@@ -53,8 +53,8 @@ const ItemsList = async ({ searchParams }: Props) => {
           {originName} {type === "expenses" ? "Expenses" : "Incomes"}
         </h2>
         <div
-          className="grid grid-cols-[100px_1fr] w-[440px] bg-input h-[40px] mt-[40px]
-        justify-self-center text-skin-muted text-[1.6rem] font-regular border-b-[1px] border-b-border"
+          className="grid grid-cols-[100px_1fr] phone:w-[300px] tablet:w-[380px] laptop:w-[440px] bg-input h-[40px] mt-[40px]
+        justify-self-center text-skin-muted text-[1.4rem] tablet:text-[1.6rem] font-regular border-b-[1px] border-b-border"
         >
           <div className="grid items-center">Amount</div>
           <div className="grid items-center justify-self-start ml-[66px]">
@@ -63,7 +63,7 @@ const ItemsList = async ({ searchParams }: Props) => {
         </div>
         <div
           className="justify-self-center
-        w-[440px] h-[440px] overflow-y-auto 
+        phone:w-[300px] tablet:w-[380px] laptop:w-[440px] h-[440px] overflow-y-auto 
        text-skin-ordinary mb-[80px]"
         >
           {data && data.items.length >= 1 ? (
