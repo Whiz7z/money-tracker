@@ -34,9 +34,9 @@ const Types: any = async (props: Props) => {
   const parsedData = await data.json();
 
   return (
-    <div className="grid w-[440px] justify-self-center mt-[30px] ">
+    <div className="grid phone:w-[300px] tablet:w-[420px] justify-self-center mt-[30px] ">
       <div
-        className="w-[440px] h-[150px] bg-input justify-self-center pl-[25px] p-[28px] items-center flex overflow-y-auto  mb-[5px] justify-center 
+        className="phone:w-[300px] tablet:w-[420px] h-[150px] bg-input justify-self-center pl-[25px] p-[28px] items-center flex overflow-y-auto  mb-[5px] justify-center 
       flex-wrap gap-y-[10px] gap-x-[35px] text-[1.4rem] 
       place-content-center"
       >

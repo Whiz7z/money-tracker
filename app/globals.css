@@ -145,6 +145,16 @@ html {
   /* top: calc(50% - 150px); */
 }
 
+.block-shadow-addRecord {
+  width: 640px;
+  height: 620px;
+  background-color: white;
+  position: absolute;
+
+  left: 6px;
+  top: 6px;
+}
+
 .block-shadow-profile {
   width: 640px;
   height: 820px;
@@ -158,16 +168,6 @@ html {
 .block-shadow-items {
   width: 640px;
   height: 726px;
-  background-color: white;
-  position: absolute;
-
-  left: 6px;
-  top: 6px;
-}
-
-.block-shadow-addRecord {
-  width: 640px;
-  height: 620px;
   background-color: white;
   position: absolute;
 
@@ -200,6 +200,10 @@ html {
     width: 440px;
   }
 
+  .block-shadow-addRecord {
+    width: 440px;
+  }
+
   .block-shadow {
     width: 320px;
 
@@ -224,6 +228,10 @@ html {
 
     left: 5px;
     top: 5px;
+  }
+
+  .block-shadow-addRecord {
+    width: 300px;
   }
 
   .block-shadow-profile {

@@ -107,8 +107,8 @@ const Input = ({ type }: Props) => {
   }, [startDate]);
 
   return (
-    <div className="grid gap-[20px] w-[300px] tablet:w-[440px] justify-self-center mt-[15px]">
-      <div className="flex w-[300px] tablet:w-[400px] justify-self-center ">
+    <div className="grid gap-[20px] w-[300px] tablet:w-[440px]  justify-self-center mt-[15px]">
+      <div className="flex w-[280px] tablet:w-[400px] justify-self-center ">
         <input
           type="text"
           placeholder="Add new origin"
@@ -120,7 +120,7 @@ const Input = ({ type }: Props) => {
               h-[40px] placeholder:text-skin-muted pl-[15px]"
         />
         <div
-          className="ml-[25px]"
+          className="ml-[10px] tablet:ml-[25px]"
           style={{ justifySelf: "flex-end" }}
           onMouseLeave={() => setShowColorPicker(false)}
         >
@@ -149,9 +149,9 @@ const Input = ({ type }: Props) => {
           </div>
         </div>
         <button
-          className="h-[40px] ml-[40px] bg-good text-skin-ordinary font-bold  
+          className="h-[40px] ml-[20px] tablet:ml-[40px] bg-good text-skin-ordinary font-bold  
             px-[10px] self-start text-center
-           text-[1.4rem] w-[80px]"
+           text-[1rem] tablet:text-[1.4rem] w-[80px]"
           type="button"
           onClick={() => createNewOrigin(newOriginValue, color)}
         >
@@ -190,13 +190,13 @@ const Input = ({ type }: Props) => {
           />
         </div>
       </div>
-      <div className="grid gap-[20px] w-[300px] tablet:w-[440px] mt-[50px]">
+      <div className="grid gap-[20px] w-[280px] tablet:w-[420px] justify-self-center mt-[25px] tablet:mt-[50px]">
         <div
-          className="grid justify-self-center tablet:grid-cols-2 justify-items-start w-[300px] tablet:w-[440px] 
+          className="grid justify-self-center tablet:grid-cols-2 justify-items-start w-[280px] tablet:w-[420px] 
         "
         >
           <div
-            className={`justify-self-center tablet:justify-self-start self-center text-center font-regular phone:text-[1.8rem] laptop:text-[2.4rem] ${
+            className={`justify-self-center tablet:justify-self-start self-center text-center font-regular phone:text-[1.6rem] tablet:text-[1.8rem] laptop:text-[2.4rem] ${
               type === "expense" ? "text-skin-danger" : "text-skin-good"
             }`}
           >
@@ -205,28 +205,32 @@ const Input = ({ type }: Props) => {
               : `${type === "expense" ? "Expense" : "Income"} origin`}
           </div>
           <div className="justify-self-center tablet:justify-self-end self-center">
-            <span className="font-regular text-[2.4rem] mr-[20px] text-skin-muted">
+            <span className="font-regular text-[2.4rem] mr-[10px] tablet:mr-[20px] text-skin-muted">
               $
             </span>
             <input
-              className="text-center font-regular w-[120px] laptop:w-[160px] bg-input 
+              className="text-center font-regular w-[80px] tablet:w-[120px] laptop:w-[160px] bg-input 
               text-skin-muted placeholder:text-skin-muted h-[40px] text-[1.8rem] tablet:text-[2.4rem]"
               placeholder="00.00"
               value={amount}
               type="number"
               onChange={changeAmountHandler}
+              onClick={(e) => {
+                setAmount("");
+                e.currentTarget.placeholder = "";
+              }}
             />
           </div>
         </div>
 
-        <div className="p-[20px] w-[300px] tablet:w-[440px]">
+        <div className="p-[20px] justify-self-center w-[280px] tablet:w-[420px]">
           <button
             onClick={() => {
               createNewExpenseIncomeHandler();
             }}
             className={`inline-block w-[120px] h-[40px] 
             justify-self-center self-end
-                font-bold text-[2.4rem] 
+                font-bold text-[2rem] laptop:text-[2.4rem] 
                text-skin-ordinary text-center ${
                  type === "expense" ? "bg-danger" : "bg-good"
                }`}
